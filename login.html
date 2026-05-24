@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Portal – MMI Jammu</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+</head>
+<body class="login-body">
+
+  <div class="login-wrap">
+
+    <!-- LEFT PANEL -->
+    <div class="login-left-panel">
+      <div class="llp-inner">
+        <a href="index.html" class="llp-back"><i class="fa fa-arrow-left"></i> Back to Website</a>
+
+        <div class="llp-logo-area">
+          <!-- White card wrapper so the logo (white bg) is visible on the red panel -->
+          <div class="llp-logo-card">
+            <img src="mmi-logo-web.webp" alt="MMI Jammu" class="llp-logo"/>
+          </div>
+          <p class="llp-tagline">Modern Montessori International<br><strong>Jammu – Student Portal</strong></p>
+        </div>
+
+        <div class="llp-features">
+          <div class="llp-feat"><span class="feat-icon"><i class="fa fa-calendar-check"></i></span><span>Track your attendance</span></div>
+          <div class="llp-feat"><span class="feat-icon"><i class="fa fa-chart-bar"></i></span><span>View results &amp; progress reports</span></div>
+          <div class="llp-feat"><span class="feat-icon"><i class="fa fa-book-open"></i></span><span>Access study materials</span></div>
+          <div class="llp-feat"><span class="feat-icon"><i class="fa fa-bell"></i></span><span>Stay updated with school notices</span></div>
+          <div class="llp-feat"><span class="feat-icon"><i class="fa fa-rupee-sign"></i></span><span>Check fee payment status</span></div>
+        </div>
+
+        <div class="llp-demo-box">
+          <p class="demo-label"><i class="fa fa-info-circle"></i> Demo Credentials</p>
+          <div class="demo-row"><span>Username</span><strong>student1</strong></div>
+          <div class="demo-row"><span>Password</span><strong>mmi@1234</strong></div>
+        </div>
+
+        <div class="llp-footer">
+          &copy; 2025 Modern Montessori International – Jammu
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="login-right-panel">
+      <div class="lrp-inner">
+
+        <!-- Login type tabs -->
+        <div class="login-tabs">
+          <button class="ltab active" onclick="switchLoginTab('student', this)">
+            <i class="fa fa-user-graduate"></i> Student
+          </button>
+          <button class="ltab" onclick="switchLoginTab('parent', this)">
+            <i class="fa fa-user-friends"></i> Parent
+          </button>
+          <button class="ltab" onclick="switchLoginTab('staff', this)">
+            <i class="fa fa-chalkboard-teacher"></i> Staff
+          </button>
+        </div>
+
+        <!-- STUDENT TAB -->
+        <div class="login-tab-pane active" id="ltab-student">
+          <h2 class="login-title">Student Login</h2>
+          <p class="login-subtitle">Access your personal learning portal</p>
+
+          <form onsubmit="doLogin(event, 'student')">
+            <div class="lf-group">
+              <label><i class="fa fa-id-card"></i> Roll No. / Username</label>
+              <input type="text" id="st-user" placeholder="e.g. student1" autocomplete="username"/>
+            </div>
+            <div class="lf-group">
+              <label><i class="fa fa-lock"></i> Password</label>
+              <div class="pw-wrap">
+                <input type="password" id="st-pass" placeholder="Enter your password" autocomplete="current-password"/>
+                <button type="button" class="pw-toggle" onclick="togglePw('st-pass','st-eye')">
+                  <i class="fa fa-eye" id="st-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="lf-row">
+              <label class="lf-check"><input type="checkbox"/> Remember me</label>
+              <a href="#" class="lf-forgot">Forgot Password?</a>
+            </div>
+            <button type="submit" class="login-submit red-submit">
+              Login to Portal <i class="fa fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- PARENT TAB -->
+        <div class="login-tab-pane" id="ltab-parent">
+          <h2 class="login-title">Parent Login</h2>
+          <p class="login-subtitle">Monitor your child's progress and updates</p>
+
+          <form onsubmit="doLogin(event, 'parent')">
+            <div class="lf-group">
+              <label><i class="fa fa-id-card"></i> Parent ID / Mobile</label>
+              <input type="text" placeholder="Registered mobile number"/>
+            </div>
+            <div class="lf-group">
+              <label><i class="fa fa-lock"></i> Password</label>
+              <div class="pw-wrap">
+                <input type="password" id="par-pass" placeholder="Enter your password"/>
+                <button type="button" class="pw-toggle" onclick="togglePw('par-pass','par-eye')">
+                  <i class="fa fa-eye" id="par-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="lf-row">
+              <label class="lf-check"><input type="checkbox"/> Remember me</label>
+              <a href="#" class="lf-forgot">Forgot Password?</a>
+            </div>
+            <button type="submit" class="login-submit green-submit">
+              Login to Portal <i class="fa fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- STAFF TAB -->
+        <div class="login-tab-pane" id="ltab-staff">
+          <h2 class="login-title">Staff Login</h2>
+          <p class="login-subtitle">Faculty &amp; Admin access panel</p>
+
+          <form onsubmit="doLogin(event, 'staff')">
+            <div class="lf-group">
+              <label><i class="fa fa-id-badge"></i> Employee ID</label>
+              <input type="text" placeholder="e.g. MMI-FAC-001"/>
+            </div>
+            <div class="lf-group">
+              <label><i class="fa fa-lock"></i> Password</label>
+              <div class="pw-wrap">
+                <input type="password" id="st2-pass" placeholder="Enter your password"/>
+                <button type="button" class="pw-toggle" onclick="togglePw('st2-pass','st2-eye')">
+                  <i class="fa fa-eye" id="st2-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="lf-row">
+              <label class="lf-check"><input type="checkbox"/> Remember me</label>
+              <a href="#" class="lf-forgot">Forgot Password?</a>
+            </div>
+            <button type="submit" class="login-submit dark-submit">
+              Login to Portal <i class="fa fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+
+        <p class="login-help">
+          Having trouble logging in? <a href="mailto:info@mmijammu.edu.in">Contact the school office</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

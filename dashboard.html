@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portal – MMI Jammu</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+</head>
+<body class="dash-body">
+
+<div class="dash-layout">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <div class="dsb-header">
+      <img src="mmi-logo-web.webp" alt="MMI Jammu" class="dsb-logo"/>
+      <button class="dsb-close" id="dsbClose"><i class="fa fa-times"></i></button>
+    </div>
+
+    <!-- Profile Card -->
+    <div class="dsb-profile">
+      <div class="dsb-avatar">
+        <i class="fa fa-user-graduate"></i>
+        <span class="online-dot"></span>
+      </div>
+      <div class="dsb-profile-info">
+        <strong id="sb-fullname">Aarav Sharma</strong>
+        <span>Roll: MMI-2025-001</span>
+        <span>Preschool – Group A</span>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="dsb-nav">
+      <p class="dsb-nav-label">Main Menu</p>
+      <a class="dsb-link active" href="#" onclick="gotoSection('home', this)"><i class="fa fa-th-large"></i> Dashboard</a>
+      <a class="dsb-link" href="#" onclick="gotoSection('attendance', this)"><i class="fa fa-calendar-check"></i> Attendance</a>
+      <a class="dsb-link" href="#" onclick="gotoSection('timetable', this)"><i class="fa fa-clock"></i> Timetable</a>
+      <a class="dsb-link" href="#" onclick="gotoSection('results', this)"><i class="fa fa-chart-bar"></i> Results</a>
+      <a class="dsb-link" href="#" onclick="gotoSection('assignments', this)"><i class="fa fa-tasks"></i> Assignments <span class="nav-badge">2</span></a>
+      <a class="dsb-link" href="#" onclick="gotoSection('syllabus', this)"><i class="fa fa-book"></i> Syllabus</a>
+      <a class="dsb-link" href="#" onclick="gotoSection('notices', this)"><i class="fa fa-bell"></i> Notices <span class="nav-badge">3</span></a>
+      <p class="dsb-nav-label">Account</p>
+      <a class="dsb-link" href="#" onclick="gotoSection('fees', this)"><i class="fa fa-rupee-sign"></i> Fee Details</a>
+      <a class="dsb-link" href="#" onclick="gotoSection('profile', this)"><i class="fa fa-user-cog"></i> My Profile</a>
+      <a class="dsb-link dsb-logout" href="index.html"><i class="fa fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+
+  <!-- ═══ OVERLAY (mobile) ═══ -->
+  <div class="dsb-overlay" id="dsbOverlay"></div>
+
+  <!-- ═══ MAIN AREA ═══ -->
+  <div class="dash-main" id="dashMain">
+
+    <!-- Top Bar -->
+    <header class="dash-topbar">
+      <div class="dtb-left">
+        <button class="dsb-toggle" id="dsbToggle"><i class="fa fa-bars"></i></button>
+        <span class="dtb-breadcrumb" id="dtbCrumb">Dashboard</span>
+      </div>
+      <div class="dtb-right">
+        <span class="dtb-date" id="dtbDate"></span>
+        <div class="dtb-notif">
+          <i class="fa fa-bell"></i>
+          <span class="notif-badge">3</span>
+        </div>
+        <div class="dtb-user-chip">
+          <div class="dtb-avatar"><i class="fa fa-user-graduate"></i></div>
+          <span id="dtb-name">Aarav</span>
+          <i class="fa fa-caret-down"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ SECTIONS ═══ -->
+    <div class="dash-sections">
+
+      <!-- ──── DASHBOARD HOME ──── -->
+      <section class="dsec active" id="sec-home">
+
+        <!-- Welcome Banner -->
+        <div class="welcome-bar">
+          <div class="wb-text">
+            <h2>Welcome back, <span id="wbName">Aarav</span>! 👋</h2>
+            <p>Here's your learning snapshot for today.</p>
+          </div>
+          <div class="wb-logo"><img src="mmi-logo-web.webp" alt="MMI" class="wb-logo-img" style="background:#fff;padding:5px 9px;border-radius:6px;height:40px;opacity:0.9;"/></div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="quick-stats">
+          <div class="qs-card qs-blue">
+            <i class="fa fa-calendar-check"></i>
+            <div><span class="qs-num">92%</span><p>Attendance</p></div>
+          </div>
+          <div class="qs-card qs-green">
+            <i class="fa fa-star"></i>
+            <div><span class="qs-num">A+</span><p>Current Grade</p></div>
+          </div>
+          <div class="qs-card qs-red">
+            <i class="fa fa-tasks"></i>
+            <div><span class="qs-num">2</span><p>Pending Tasks</p></div>
+          </div>
+          <div class="qs-card qs-orange">
+            <i class="fa fa-bell"></i>
+            <div><span class="qs-num">3</span><p>New Notices</p></div>
+          </div>
+        </div>
+
+        <!-- 2-col grid -->
+        <div class="dash-two-col">
+
+          <!-- Today's Activities -->
+          <div class="dash-card">
+            <div class="dc-header">
+              <h3><i class="fa fa-clock"></i> Today's Activities</h3>
+              <a href="#" onclick="gotoSection('timetable', null)" class="dc-more">View All</a>
+            </div>
+            <div class="activity-list">
+              <div class="act-row now">
+                <div class="act-time">08:00 – 08:45</div>
+                <div class="act-info"><strong>Practical Life</strong><span>Ms. Priya Sharma · Room 1</span></div>
+                <span class="act-tag now-tag">Now</span>
+              </div>
+              <div class="act-row">
+                <div class="act-time">08:45 – 09:30</div>
+                <div class="act-info"><strong>Sensorial Activities</strong><span>Ms. Kavita Dogra · Room 1</span></div>
+              </div>
+              <div class="act-row">
+                <div class="act-time">09:30 – 10:15</div>
+                <div class="act-info"><strong>Language Work</strong><span>Ms. Priya Sharma · Room 1</span></div>
+              </div>
+              <div class="act-row">
+                <div class="act-time">10:30 – 11:15</div>
+                <div class="act-info"><strong>Mathematics Materials</strong><span>Ms. Kavita Dogra · Room 1</span></div>
+              </div>
+              <div class="act-row">
+                <div class="act-time">11:15 – 12:00</div>
+                <div class="act-info"><strong>Outdoor / Free Play</strong><span>All Staff · Play Area</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notices -->
+          <div class="dash-card">
+            <div class="dc-header">
+              <h3><i class="fa fa-bell"></i> Notices</h3>
+              <a href="#" onclick="gotoSection('notices', null)" class="dc-more">View All</a>
+            </div>
+            <div class="notice-snippet-list">
+              <div class="ns-item urgent">
+                <span class="ns-type urgent-type">Urgent</span>
+                <p>Parent-Teacher Meeting scheduled for <strong>[Date]</strong> – all parents must attend.</p>
+                <span class="ns-time">2 hrs ago</span>
+              </div>
+              <div class="ns-item">
+                <span class="ns-type">General</span>
+                <p>Annual Day preparations begin next week. Children may bring craft materials.</p>
+                <span class="ns-time">Yesterday</span>
+              </div>
+              <div class="ns-item">
+                <span class="ns-type holiday-type">Holiday</span>
+                <p>School closed on <strong>[Date]</strong> – Eid / [Festival]. Classes resume [Date].</p>
+                <span class="ns-time">3 days ago</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Attendance Widget -->
+          <div class="dash-card">
+            <div class="dc-header">
+              <h3><i class="fa fa-chart-pie"></i> Attendance (This Month)</h3>
+              <a href="#" onclick="gotoSection('attendance', null)" class="dc-more">Details</a>
+            </div>
+            <div class="att-widget">
+              <div class="att-donut-wrap">
+                <svg viewBox="0 0 120 120" class="att-donut">
+                  <circle cx="60" cy="60" r="50" fill="none" stroke="#eee" stroke-width="12"/>
+                  <circle cx="60" cy="60" r="50" fill="none" stroke="#126b36" stroke-width="12"
+                    stroke-dasharray="314" stroke-dashoffset="25" stroke-linecap="round"
+                    transform="rotate(-90 60 60)"/>
+                </svg>
+                <span class="att-donut-pct">92%</span>
+              </div>
+              <div class="att-legend">
+                <div class="att-leg-row"><span class="leg-dot green-dot-sm"></span>Present: <strong>22 days</strong></div>
+                <div class="att-leg-row"><span class="leg-dot red-dot-sm"></span>Absent: <strong>2 days</strong></div>
+                <div class="att-leg-row"><span class="leg-dot orange-dot-sm"></span>Leave: <strong>0 days</strong></div>
+                <div class="att-leg-row"><span class="leg-dot grey-dot-sm"></span>Holiday: <strong>2 days</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress / Results -->
+          <div class="dash-card">
+            <div class="dc-header">
+              <h3><i class="fa fa-chart-bar"></i> Progress Report</h3>
+              <a href="#" onclick="gotoSection('results', null)" class="dc-more">Full Report</a>
+            </div>
+            <table class="prog-table">
+              <thead><tr><th>Area</th><th>Level</th><th>Grade</th></tr></thead>
+              <tbody>
+                <tr><td>Practical Life</td><td>Excellent</td><td><span class="gr gr-a">A+</span></td></tr>
+                <tr><td>Sensorial</td><td>Very Good</td><td><span class="gr gr-a">A</span></td></tr>
+                <tr><td>Language</td><td>Very Good</td><td><span class="gr gr-a">A</span></td></tr>
+                <tr><td>Mathematics</td><td>Good</td><td><span class="gr gr-b">B+</span></td></tr>
+                <tr><td>Cultural</td><td>Excellent</td><td><span class="gr gr-a">A+</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ──── ATTENDANCE ──── -->
+      <section class="dsec" id="sec-attendance">
+        <h2 class="sec-title">Attendance Record</h2>
+        <div class="att-page-grid">
+          <div class="att-overview">
+            <div class="att-donut-wrap large">
+              <svg viewBox="0 0 120 120" class="att-donut">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#eee" stroke-width="12"/>
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#126b36" stroke-width="12"
+                  stroke-dasharray="314" stroke-dashoffset="25" stroke-linecap="round"
+                  transform="rotate(-90 60 60)"/>
+              </svg>
+              <span class="att-donut-pct large-pct">92%</span>
+            </div>
+            <div class="att-summary-stats">
+              <div class="ass-item"><span class="ass-num green-num">22</span><p>Present</p></div>
+              <div class="ass-item"><span class="ass-num red-num">2</span><p>Absent</p></div>
+              <div class="ass-item"><span class="ass-num orange-num">0</span><p>Leave</p></div>
+            </div>
+          </div>
+          <div class="att-cal-placeholder">
+            <div class="page-placeholder"><i class="fa fa-calendar-alt"></i><p>Monthly Calendar View</p><span>Calendar attendance map will appear here</span></div>
+          </div>
+        </div>
+        <div class="att-subject-breakdown">
+          <h3>Activity-wise Attendance</h3>
+          <table class="prog-table full-prog-table">
+            <thead><tr><th>Activity Area</th><th>Total Sessions</th><th>Attended</th><th>%</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Practical Life</td><td>24</td><td>23</td><td>95.8%</td><td><span class="gr gr-a">Excellent</span></td></tr>
+              <tr><td>Sensorial</td><td>24</td><td>22</td><td>91.6%</td><td><span class="gr gr-a">Good</span></td></tr>
+              <tr><td>Language</td><td>24</td><td>22</td><td>91.6%</td><td><span class="gr gr-a">Good</span></td></tr>
+              <tr><td>Mathematics</td><td>24</td><td>21</td><td>87.5%</td><td><span class="gr gr-b">Average</span></td></tr>
+              <tr><td>Cultural Studies</td><td>24</td><td>22</td><td>91.6%</td><td><span class="gr gr-a">Good</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ──── TIMETABLE ──── -->
+      <section class="dsec" id="sec-timetable">
+        <h2 class="sec-title">My Timetable</h2>
+        <div class="page-placeholder tall-ph"><i class="fa fa-clock"></i><p>Weekly Timetable</p><span>Full Mon–Sat timetable grid will be displayed here</span></div>
+      </section>
+
+      <!-- ──── RESULTS ──── -->
+      <section class="dsec" id="sec-results">
+        <h2 class="sec-title">Results &amp; Progress Reports</h2>
+        <div class="result-tabs">
+          <button class="rt active" onclick="selectRT(this)">Term 1</button>
+          <button class="rt" onclick="selectRT(this)">Term 2</button>
+          <button class="rt" onclick="selectRT(this)">Annual</button>
+        </div>
+        <table class="prog-table full-prog-table">
+          <thead><tr><th>Activity Area</th><th>Max</th><th>Marks</th><th>%</th><th>Grade</th><th>Remark</th></tr></thead>
+          <tbody>
+            <tr><td>Practical Life</td><td>100</td><td>97</td><td>97%</td><td><span class="gr gr-a">A+</span></td><td>Outstanding</td></tr>
+            <tr><td>Sensorial Activities</td><td>100</td><td>91</td><td>91%</td><td><span class="gr gr-a">A</span></td><td>Excellent</td></tr>
+            <tr><td>Language</td><td>100</td><td>89</td><td>89%</td><td><span class="gr gr-a">A</span></td><td>Very Good</td></tr>
+            <tr><td>Mathematics</td><td>100</td><td>83</td><td>83%</td><td><span class="gr gr-b">B+</span></td><td>Good</td></tr>
+            <tr><td>Cultural Studies</td><td>100</td><td>95</td><td>95%</td><td><span class="gr gr-a">A+</span></td><td>Outstanding</td></tr>
+            <tr class="total-row"><td><strong>Overall</strong></td><td><strong>500</strong></td><td><strong>455</strong></td><td><strong>91%</strong></td><td><span class="gr gr-a">A+</span></td><td><strong>Distinction</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="section-actions">
+          <button class="btn-red"><i class="fa fa-download"></i> Download Report Card</button>
+        </div>
+      </section>
+
+      <!-- ──── ASSIGNMENTS ──── -->
+      <section class="dsec" id="sec-assignments">
+        <h2 class="sec-title">Assignments &amp; Activities</h2>
+        <div class="assign-list">
+          <div class="assign-card pending-assign">
+            <div class="assign-head">
+              <span class="assign-subj">Language</span>
+              <span class="assign-status st-pending">Pending</span>
+            </div>
+            <h4>Draw and label 5 animals you know</h4>
+            <p>Using the picture cards from class, draw and write the names of 5 animals. Bring to school on [Date].</p>
+            <div class="assign-meta"><span><i class="fa fa-calendar"></i> Due: [Date]</span><span><i class="fa fa-user"></i> Ms. Priya Sharma</span></div>
+          </div>
+          <div class="assign-card pending-assign">
+            <div class="assign-head">
+              <span class="assign-subj">Cultural</span>
+              <span class="assign-status st-pending">Pending</span>
+            </div>
+            <h4>My Family Tree Activity</h4>
+            <p>Create a simple family tree with photos or drawings of your family members. Labels optional.</p>
+            <div class="assign-meta"><span><i class="fa fa-calendar"></i> Due: [Date]</span><span><i class="fa fa-user"></i> Ms. Kavita Dogra</span></div>
+          </div>
+          <div class="assign-card">
+            <div class="assign-head">
+              <span class="assign-subj">Practical Life</span>
+              <span class="assign-status st-done">Submitted</span>
+            </div>
+            <h4>Pouring Activity Practice</h4>
+            <p>Practise the pouring activity at home with dry beans or water with parental supervision.</p>
+            <div class="assign-meta"><span><i class="fa fa-calendar"></i> Due: [Date]</span><span><i class="fa fa-user"></i> Ms. Priya Sharma</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ──── NOTICES ──── -->
+      <section class="dsec" id="sec-notices">
+        <h2 class="sec-title">Notices &amp; Announcements</h2>
+        <div class="full-notice-list">
+          <div class="fn-card urgent-fn">
+            <div class="fn-left">
+              <div class="fn-icon fn-red"><i class="fa fa-exclamation"></i></div>
+              <div class="fn-date"><span class="fn-day">24</span><span class="fn-mon">May</span></div>
+            </div>
+            <div class="fn-body">
+              <span class="fn-tag urgent-tag">Urgent</span>
+              <h4>Parent-Teacher Meeting – [Date]</h4>
+              <p>All parents are requested to attend the Parent-Teacher Meeting scheduled on [Date] from 10:00 AM to 1:00 PM. Individual slots will be allocated. Please confirm your attendance with the class teacher.</p>
+            </div>
+          </div>
+          <div class="fn-card">
+            <div class="fn-left">
+              <div class="fn-icon fn-green"><i class="fa fa-info"></i></div>
+              <div class="fn-date"><span class="fn-day">20</span><span class="fn-mon">May</span></div>
+            </div>
+            <div class="fn-body">
+              <span class="fn-tag general-tag">General</span>
+              <h4>Annual Day Preparations – Theme: Nature &amp; Colours</h4>
+              <p>Annual Day will be held on [Date]. The theme this year is "Nature &amp; Colours". Children may bring craft supplies as instructed by their class teacher.</p>
+            </div>
+          </div>
+          <div class="fn-card">
+            <div class="fn-left">
+              <div class="fn-icon fn-orange"><i class="fa fa-star"></i></div>
+              <div class="fn-date"><span class="fn-day">18</span><span class="fn-mon">May</span></div>
+            </div>
+            <div class="fn-body">
+              <span class="fn-tag holiday-tag">Holiday</span>
+              <h4>School Holiday – [Festival / Occasion]</h4>
+              <p>School will remain closed on [Date] on account of [Festival / Reason]. Regular classes will resume from [Date].</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ──── FEES ──── -->
+      <section class="dsec" id="sec-fees">
+        <h2 class="sec-title">Fee Details</h2>
+        <div class="fee-cards">
+          <div class="fee-card fc-green"><i class="fa fa-check-circle"></i><span>Last Paid</span><strong>₹ [Amount]</strong><p>[Date]</p></div>
+          <div class="fee-card fc-red"><i class="fa fa-clock"></i><span>Amount Due</span><strong>₹ [Amount]</strong><p>Due: [Date]</p></div>
+          <div class="fee-card fc-blue"><i class="fa fa-rupee-sign"></i><span>Annual Fee</span><strong>₹ [Amount]</strong><p>Session 2025-26</p></div>
+        </div>
+        <table class="prog-table full-prog-table" style="margin-top:20px;">
+          <thead><tr><th>Fee Type</th><th>Period</th><th>Amount</th><th>Status</th><th>Receipt</th></tr></thead>
+          <tbody>
+            <tr><td>Tuition Fee</td><td>April 2025</td><td>₹ [Amount]</td><td><span class="gr gr-a">Paid</span></td><td><a href="#" class="tbl-link"><i class="fa fa-download"></i> Download</a></td></tr>
+            <tr><td>Activity Fee</td><td>April 2025</td><td>₹ [Amount]</td><td><span class="gr gr-a">Paid</span></td><td><a href="#" class="tbl-link"><i class="fa fa-download"></i> Download</a></td></tr>
+            <tr><td>Tuition Fee</td><td>May 2025</td><td>₹ [Amount]</td><td><span class="gr gr-c">Due</span></td><td>–</td></tr>
+          </tbody>
+        </table>
+        <div class="section-actions" style="margin-top:16px;">
+          <button class="btn-red"><i class="fa fa-credit-card"></i> Pay Now</button>
+        </div>
+      </section>
+
+      <!-- ──── SYLLABUS ──── -->
+      <section class="dsec" id="sec-syllabus">
+        <h2 class="sec-title">Syllabus &amp; Materials</h2>
+        <div class="syl-list">
+          <div class="syl-item">
+            <div class="syl-icon syl-red"><i class="fa fa-hands"></i></div>
+            <div class="syl-info"><strong>Practical Life</strong><p>Dressing frames, pouring, spooning, care of environment, grace &amp; courtesy</p></div>
+            <a href="#" class="btn-outline-sm"><i class="fa fa-download"></i> Download</a>
+          </div>
+          <div class="syl-item">
+            <div class="syl-icon syl-green"><i class="fa fa-cube"></i></div>
+            <div class="syl-info"><strong>Sensorial Materials</strong><p>Pink tower, broad stair, red rods, colour tablets, geometric solids</p></div>
+            <a href="#" class="btn-outline-sm"><i class="fa fa-download"></i> Download</a>
+          </div>
+          <div class="syl-item">
+            <div class="syl-icon syl-red"><i class="fa fa-font"></i></div>
+            <div class="syl-info"><strong>Language Programme</strong><p>Sandpaper letters, moveable alphabet, picture-word matching, storytelling</p></div>
+            <a href="#" class="btn-outline-sm"><i class="fa fa-download"></i> Download</a>
+          </div>
+          <div class="syl-item">
+            <div class="syl-icon syl-green"><i class="fa fa-calculator"></i></div>
+            <div class="syl-info"><strong>Mathematics</strong><p>Number rods, sandpaper numerals, spindle box, bead chain, golden beads</p></div>
+            <a href="#" class="btn-outline-sm"><i class="fa fa-download"></i> Download</a>
+          </div>
+          <div class="syl-item">
+            <div class="syl-icon syl-red"><i class="fa fa-globe"></i></div>
+            <div class="syl-info"><strong>Cultural Studies</strong><p>Botany, zoology, geography puzzles, music, art &amp; craft, science exploration</p></div>
+            <a href="#" class="btn-outline-sm"><i class="fa fa-download"></i> Download</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ──── PROFILE ──── -->
+      <section class="dsec" id="sec-profile">
+        <h2 class="sec-title">My Profile</h2>
+        <div class="profile-page-card">
+          <div class="pp-avatar-col">
+            <div class="pp-avatar"><i class="fa fa-user-graduate"></i></div>
+            <button class="pp-change-photo"><i class="fa fa-camera"></i> Change Photo</button>
+            <div class="pp-id-badge">
+              <img src="mmi-logo-web.webp" alt="MMI" class="pp-badge-logo"/>
+              <p class="pp-badge-roll">MMI-2025-001</p>
+              <p class="pp-badge-class">Preschool – Group A</p>
+            </div>
+          </div>
+          <div class="pp-details">
+            <div class="pp-details-grid">
+              <div class="pp-field"><label>Full Name</label><p>Aarav Sharma</p></div>
+              <div class="pp-field"><label>Roll Number</label><p>MMI-2025-001</p></div>
+              <div class="pp-field"><label>Programme</label><p>Preschool</p></div>
+              <div class="pp-field"><label>Group / Section</label><p>Group A</p></div>
+              <div class="pp-field"><label>Date of Birth</label><p>15 / 08 / 2021</p></div>
+              <div class="pp-field"><label>Age</label><p>3 Years 9 Months</p></div>
+              <div class="pp-field"><label>Father's Name</label><p>Mr. Rohit Sharma</p></div>
+              <div class="pp-field"><label>Mother's Name</label><p>Mrs. Sunita Sharma</p></div>
+              <div class="pp-field"><label>Contact Number</label><p>+91-XXXXXXXXXX</p></div>
+              <div class="pp-field"><label>Email</label><p>rohit.sharma@email.com</p></div>
+              <div class="pp-field pp-full"><label>Home Address</label><p>[Full Address], Jammu, J&amp;K</p></div>
+              <div class="pp-field"><label>Class Teacher</label><p>Ms. Priya Sharma</p></div>
+              <div class="pp-field"><label>Session</label><p>2025 – 26</p></div>
+            </div>
+            <div class="section-actions">
+              <button class="btn-red"><i class="fa fa-edit"></i> Edit Profile</button>
+              <button class="btn-outline-red"><i class="fa fa-key"></i> Change Password</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- end dash-sections -->
+  </div><!-- end dash-main -->
+</div><!-- end dash-layout -->
+
+<script src="scripts.js"></script>
+</body>
+</html>
