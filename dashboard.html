@@ -29,6 +29,7 @@
         <strong id="sb-fullname">Student</strong>
         <span id="sb-roll">Roll: –</span>
         <span id="sb-class">–</span>
+        <span id="sb-section" style="font-size:0.72rem;opacity:0.75;"></span>
       </div>
     </div>
 
@@ -40,7 +41,7 @@
       <a class="dsb-link" href="#" onclick="gotoSection('calendar', this)"><i class="fa fa-calendar-alt"></i> Calendar</a>
       <p class="dsb-nav-label">Account</p>
       <a class="dsb-link" href="#" onclick="gotoSection('profile', this)"><i class="fa fa-user-cog"></i> My Profile</a>
-      <a class="dsb-link dsb-logout" href="index.html"><i class="fa fa-sign-out-alt"></i> Logout</a>
+      <a class="dsb-link dsb-logout" href="login.html"><i class="fa fa-sign-out-alt"></i> Logout</a>
     </nav>
   </aside>
 
@@ -62,7 +63,6 @@
         <div class="dtb-user-chip">
           <div class="dtb-avatar"><i class="fa fa-user-graduate"></i></div>
           <span id="dtb-name">Aarav</span>
-          <i class="fa fa-caret-down"></i>
         </div>
       </div>
     </header>
@@ -149,15 +149,13 @@
       <section class="dsec" id="sec-calendar">
         <h2 class="sec-title">Monthly Calendar</h2>
         <div class="school-cal-wrap">
-          <div class="school-cal-tabs">
-            <button class="school-cal-tab active" onclick="schoolCalShowMonth('2026-05', this)">
-              <i class="fa fa-calendar-check"></i> May 2026
-            </button>
-            <button class="school-cal-tab" onclick="schoolCalShowMonth('2026-06', this)">
-              <i class="fa fa-calendar"></i> June 2026
-            </button>
+          <div class="school-cal-tabs" id="schoolCalTabs"></div>
+          <div id="schoolCalBody">
+            <iframe id="calPdfFrame" src="" style="display:none;width:100%;height:80vh;border:none;border-radius:10px;"></iframe>
+            <div id="calPdfMsg" class="school-cal-coming" style="display:none;">
+              <i class="fa fa-clock fa-2x"></i><p>No calendar available yet.</p>
+            </div>
           </div>
-          <div id="schoolCalBody"></div>
         </div>
       </section>
 
@@ -175,20 +173,25 @@
             </div>
           </div>
           <div class="pp-details">
-            <div class="pp-details-grid">
-              <div class="pp-field"><label>Full Name</label><p id="pp-fullname">–</p></div>
+            <div class="pp-details-grid" id="pp-details-grid">
+              <div class="pp-field pp-editable"><label>Full Name</label><p id="pp-fullname">–</p><input id="pp-fullname-input" class="pp-input" type="text" placeholder="Full name"/></div>
+              <div class="pp-field"><label>Login Username</label><p id="pp-username">–</p></div>
               <div class="pp-field"><label>Roll Number</label><p id="pp-roll">–</p></div>
               <div class="pp-field"><label>Programme</label><p id="pp-class">–</p></div>
+              <div class="pp-field"><label>Section</label><p id="pp-section">–</p></div>
               <div class="pp-field"><label>Gender</label><p id="pp-gender">–</p></div>
-              <div class="pp-field"><label>Father's Name</label><p id="pp-father">–</p></div>
-              <div class="pp-field"><label>Father's Mobile</label><p id="pp-fatherMob">–</p></div>
-              <div class="pp-field"><label>Mother's Name</label><p id="pp-mother">–</p></div>
-              <div class="pp-field"><label>Mother's Mobile</label><p id="pp-motherMob">–</p></div>
-              <div class="pp-field pp-full"><label>Email</label><p id="pp-email">–</p></div>
+              <div class="pp-field pp-editable"><label>Father's Name</label><p id="pp-father">–</p><input id="pp-father-input" class="pp-input" type="text" placeholder="Father's name"/></div>
+              <div class="pp-field pp-editable"><label>Father's Mobile</label><p id="pp-fatherMob">–</p><input id="pp-fatherMob-input" class="pp-input" type="tel" placeholder="Mobile number"/></div>
+              <div class="pp-field pp-editable"><label>Mother's Name</label><p id="pp-mother">–</p><input id="pp-mother-input" class="pp-input" type="text" placeholder="Mother's name"/></div>
+              <div class="pp-field pp-editable"><label>Mother's Mobile</label><p id="pp-motherMob">–</p><input id="pp-motherMob-input" class="pp-input" type="tel" placeholder="Mobile number"/></div>
+              <div class="pp-field pp-full pp-editable"><label>Email</label><p id="pp-email">–</p><input id="pp-email-input" class="pp-input" type="email" placeholder="Email address"/></div>
               <div class="pp-field"><label>Session</label><p id="pp-session">–</p></div>
             </div>
             <div class="section-actions">
-              <button class="btn-red"><i class="fa fa-edit"></i> Edit Profile</button>
+              <button class="btn-red" id="btn-edit-profile" onclick="openEditProfile()"><i class="fa fa-edit"></i> Edit Profile</button>
+              <button class="btn-red" id="btn-save-profile" onclick="saveProfile()" style="display:none"><i class="fa fa-check"></i> Save Changes</button>
+              <button class="btn-outline-red" id="btn-cancel-profile" onclick="cancelEditProfile()" style="display:none"><i class="fa fa-times"></i> Cancel</button>
+              <button class="btn-outline-red" onclick="openCuModal()"><i class="fa fa-user-edit"></i> Change Username</button>
               <button class="btn-outline-red" onclick="openCpwModal()"><i class="fa fa-key"></i> Change Password</button>
             </div>
           </div>
@@ -198,6 +201,35 @@
     </div><!-- end dash-sections -->
   </div><!-- end dash-main -->
 </div><!-- end dash-layout -->
+
+<!-- ═══ CHANGE USERNAME MODAL ═══ -->
+<div class="cpw-overlay" id="cuOverlay" onclick="closeCuModal()">
+  <div class="cpw-modal" onclick="event.stopPropagation()">
+    <div class="cpw-header">
+      <h3><i class="fa fa-user-edit"></i> Change Username</h3>
+      <button class="cpw-close" onclick="closeCuModal()"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="cpw-body">
+      <div class="lf-group">
+        <label><i class="fa fa-user"></i> New Username</label>
+        <input type="text" id="cu-new" placeholder="e.g. AgastyaAnand2026"/>
+      </div>
+      <div class="lf-group">
+        <label><i class="fa fa-lock"></i> Current Password <span style="font-size:0.75rem;font-weight:400;opacity:0.7">(to confirm it's you)</span></label>
+        <div class="pw-wrap">
+          <input type="password" id="cu-pass" placeholder="Enter your current password"/>
+          <button type="button" class="pw-toggle" onclick="togglePw('cu-pass','cu-eye')">
+            <i class="fa fa-eye" id="cu-eye"></i>
+          </button>
+        </div>
+      </div>
+      <p class="cpw-error" id="cuError"></p>
+      <button class="btn-red cpw-submit" id="cu-save-btn" onclick="submitChangeUsername()">
+        <i class="fa fa-check"></i> Update Username
+      </button>
+    </div>
+  </div>
+</div>
 
 <!-- ═══ CHANGE PASSWORD MODAL ═══ -->
 <div class="cpw-overlay" id="cpwOverlay" onclick="closeCpwModal()">
@@ -235,7 +267,7 @@
         </div>
       </div>
       <p class="cpw-error" id="cpwError"></p>
-      <button class="btn-red cpw-submit" onclick="submitChangePassword()">
+      <button class="btn-red cpw-submit" id="cpw-save-btn" onclick="submitChangePassword()">
         <i class="fa fa-check"></i> Update Password
       </button>
     </div>

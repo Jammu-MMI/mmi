@@ -58,8 +58,19 @@ const ATTENDANCE_MONTHS = [
 // class values: all  /  lkg  /  kg  /  ukg   (case-insensitive)
 // type  values: urgent  /  general  /  holiday
 //
-// Publish: File → Share → Publish to web → Notifications tab → CSV → Publish
+// No "publish to web" needed — uses gviz/tq like attendance (sheet must be shared "anyone with link can view")
 const NOTIFICATIONS_CSV_URL = `https://docs.google.com/spreadsheets/d/${_SID}/gviz/tq?tqx=out:csv&sheet=Notifications`;
+
+// ── CALENDAR CONFIG ──────────────────────────────────────
+// Same Google Sheet (_SID) — add a tab named exactly "Calendar".
+// Columns (row 1 headers, exact spelling):
+//   class  | date       | type     | description
+// class values : all / K / N / P
+//   all = all students · K = Kindergarten · N = Nursery · P = Pre-Nursery/Playgroup/Toddlers
+// date format  : YYYY-MM-DD for a single day · YYYY-MM for month-level rows (theme / note)
+// type values  : holiday | special | activity | montessori | karate | writing |
+//                craft | rhyme | dance | culture | story | outdoor | theme | note
+const CALENDAR_CSV_URL = `https://docs.google.com/spreadsheets/d/${_SID}/gviz/tq?tqx=out:csv&sheet=Calendar`;
 // ────────────────────────────────────────────────────────
 
 // ── GALLERY CONFIG ──────────────────────────────────────
@@ -87,6 +98,7 @@ const STUDENT_DB = {
     mother: 'Poonam Tyagi',
     motherMob: '962288777',
     email: 'arjun@nindiya.com',
+    section: 'bloomers',
   },
   'rigveditalanger': {
     username: 'RigveditaLanger',
@@ -101,6 +113,7 @@ const STUDENT_DB = {
     mother: 'Sonia Langer',
     motherMob: '7006057972',
     email: 'mrinallanger@gmail.com',
+    section: 'azalea',
   },
   'ayaanchopra': {
     username: 'AyaanChopra',
@@ -115,6 +128,7 @@ const STUDENT_DB = {
     mother: 'Mahima Chopra',
     motherMob: '962192999',
     email: '',
+    section: 'azalea',
   },
   'naitikmantoo': {
     username: 'NaitikMantoo',
@@ -129,6 +143,7 @@ const STUDENT_DB = {
     mother: 'Neha Mantoo',
     motherMob: '9622239550',
     email: 'sagar.mantoo3@gmail.com',
+    section: 'bloomers',
   },
   'anaizaagaarwal': {
     username: 'AnaizaAgaarwal',
@@ -143,6 +158,7 @@ const STUDENT_DB = {
     mother: 'Akanksh Kapahi',
     motherMob: '9596139999',
     email: 'aggarwalkshitiz@gmail.com',
+    section: 'bloomers',
   },
   'shivyamattoo': {
     username: 'ShivyaMattoo',
@@ -157,6 +173,7 @@ const STUDENT_DB = {
     mother: 'Mannat Kapoor Mantoo',
     motherMob: '8825069077',
     email: 'nakkulmattoo@gmail.com',
+    section: 'bloomers',
   },
   'vedikamahajan': {
     username: 'VedikaMahajan',
@@ -171,6 +188,7 @@ const STUDENT_DB = {
     mother: 'Surbhi Mahajan',
     motherMob: '9797424400',
     email: 'prinkle1212@gmail.com',
+    section: 'bloomers',
   },
   'shanvisharma': {
     username: 'ShanviSharma',
@@ -185,6 +203,7 @@ const STUDENT_DB = {
     mother: 'Reema Mahajan',
     motherMob: '9682309955',
     email: 'surajkumarsharma6052@gmail.com',
+    section: 'bloomers',
   },
   'sachiarsinghanand': {
     username: 'SachiarSinghAnand',
@@ -199,6 +218,7 @@ const STUDENT_DB = {
     mother: 'Guneet Kaur',
     motherMob: '9906086644',
     email: 'deepjotanand@gmail.com',
+    section: 'bloomers',
   },
   'nirbhaysharma': {
     username: 'NirbhaySharma',
@@ -213,6 +233,7 @@ const STUDENT_DB = {
     mother: 'Sheena Sahni',
     motherMob: '9419218495',
     email: 'cmdtvishalsharma@gmail.com',
+    section: 'bloomers',
   },
   'pehrmanhas': {
     username: 'PehrManhas',
@@ -227,6 +248,7 @@ const STUDENT_DB = {
     mother: 'Malvika Thakur',
     motherMob: '9882643286',
     email: '',
+    section: 'buttercup',
   },
   'zakariyanainsheikh': {
     username: 'ZakariyaNainsheikh',
@@ -241,6 +263,7 @@ const STUDENT_DB = {
     mother: 'Aiesha Tabassum Sheikh',
     motherMob: '7006133694',
     email: 'zulkernain.sheikh@gmail.com',
+    section: 'bloomers',
   },
   'shreenidhidubey': {
     username: 'ShreenidhiDubey',
@@ -255,6 +278,7 @@ const STUDENT_DB = {
     mother: 'Nagma Dubey',
     motherMob: '9858508969',
     email: 'nagmadubey@gmail.com',
+    section: 'bloomers',
   },
   'yaashvithakur': {
     username: 'YaashviThakur',
@@ -269,6 +293,7 @@ const STUDENT_DB = {
     mother: 'Dr. Arjni Singh',
     motherMob: '7780915147',
     email: 'ajthakur89@yahoo.com',
+    section: 'bloomers',
   },
   'adhiraajpratapsinghmanhas': {
     username: 'AdhiraajPratapSinghManhas',
@@ -283,6 +308,7 @@ const STUDENT_DB = {
     mother: 'Shipalli Thakur Manhas',
     motherMob: '9682586120',
     email: 'adiron.9@gmail.com',
+    section: 'bloomers',
   },
   'veehabamba': {
     username: 'VeehaBamba',
@@ -297,6 +323,7 @@ const STUDENT_DB = {
     mother: 'Esha Baluja Bamba',
     motherMob: '7006238116',
     email: 'amitbamba86@gmail.com',
+    section: 'bloomers',
   },
   'anahitakapahi': {
     username: 'AnahitaKapahi',
@@ -311,6 +338,7 @@ const STUDENT_DB = {
     mother: 'Mehak Kapahi',
     motherMob: '9070107003',
     email: 'ashwanikapahi@gmail.com',
+    section: 'bloomers',
   },
   'shivohamgupta': {
     username: 'ShivohamGupta',
@@ -325,6 +353,7 @@ const STUDENT_DB = {
     mother: 'Dr. Chandni Gupta',
     motherMob: '9086082545',
     email: 'guptashivang21@gmail.com',
+    section: 'bloomers',
   },
   'tarzkaur': {
     username: 'TarzKaur',
@@ -339,6 +368,7 @@ const STUDENT_DB = {
     mother: 'Shally Kour',
     motherMob: '8082911234',
     email: 's.harjot1313@gmail.com',
+    section: 'bloomers',
   },
   'nairakauroberoi': {
     username: 'NairaKaurOberoi',
@@ -353,6 +383,7 @@ const STUDENT_DB = {
     mother: 'Sanha Oberoi',
     motherMob: '9070594444',
     email: 'gags399@gmail.com',
+    section: 'azalea',
   },
   'mihanmahajan': {
     username: 'MihanMahajan',
@@ -367,6 +398,7 @@ const STUDENT_DB = {
     mother: 'Himani Mahajan',
     motherMob: '7889415321',
     email: 'ankit.mahajan024@gmail.com',
+    section: 'azalea',
   },
   'dhananjaymahajan': {
     username: 'DhananjayMahajan',
@@ -381,6 +413,7 @@ const STUDENT_DB = {
     mother: 'Rupanshi Gupta',
     motherMob: '9086600999',
     email: 'abhimanyuind90@gmail.com',
+    section: 'bloomers',
   },
   'mishkamahajan': {
     username: 'MishkaMahajan',
@@ -395,6 +428,7 @@ const STUDENT_DB = {
     mother: 'Dr. Manisha Kakkar',
     motherMob: '9419258843',
     email: 'nikhilmahajan0802@gmail.com',
+    section: 'bloomers',
   },
   'ayaanamalhotra': {
     username: 'AyaanaMalhotra',
@@ -409,6 +443,7 @@ const STUDENT_DB = {
     mother: 'Sonia Dhiman',
     motherMob: '9419224607',
     email: 'pranav2024@gmail.com',
+    section: 'bloomers',
   },
   'aarvikasawhney': {
     username: 'AarvikaSawhney',
@@ -423,6 +458,7 @@ const STUDENT_DB = {
     mother: 'Sonam Sawhney',
     motherMob: '9419249470',
     email: 'amitsawh@gmail.com',
+    section: 'azalea',
   },
   'dravinachandan': {
     username: 'DravinaChandan',
@@ -437,6 +473,7 @@ const STUDENT_DB = {
     mother: 'Divya Sharma',
     motherMob: '9906022111',
     email: 'chandanmba@gmail.com',
+    section: 'bloomers',
   },
   'kanishkagupta': {
     username: 'KanishkaGupta',
@@ -451,6 +488,7 @@ const STUDENT_DB = {
     mother: 'Akshika Gupta',
     motherMob: '9018262626',
     email: 'kanav500@gmail.com',
+    section: 'azalea',
   },
   'abhirajsinghdua': {
     username: 'AbhirajSinghDua',
@@ -465,6 +503,7 @@ const STUDENT_DB = {
     mother: 'Ishmeet Dua',
     motherMob: '9419233741',
     email: 'jaidua2004@gmail.com',
+    section: 'azalea',
   },
   'sahirakaur': {
     username: 'SahiraKaur',
@@ -479,6 +518,7 @@ const STUDENT_DB = {
     mother: 'Disha Behl',
     motherMob: '9419202209',
     email: 'mankirataval@gmail.com',
+    section: 'azalea',
   },
   'shivanshikakotwal': {
     username: 'ShivanshikaKotwal',
@@ -493,6 +533,7 @@ const STUDENT_DB = {
     mother: 'Chaman Deep Kaur',
     motherMob: '7889699943',
     email: 'chamandeep78@gmail.com',
+    section: 'azalea',
   },
   'shlokgupta': {
     username: 'ShlokGupta',
@@ -507,6 +548,7 @@ const STUDENT_DB = {
     mother: 'Ritika Gupta',
     motherMob: '9622368648',
     email: 'jandyaltrading@gmail.com',
+    section: 'buttercup',
   },
   'kanvikmahajan': {
     username: 'KanvikMahajan',
@@ -521,6 +563,7 @@ const STUDENT_DB = {
     mother: 'Kanika Gupta',
     motherMob: '9596624460',
     email: 'kanavmahajan1901@gamil.com',
+    section: 'buttercup',
   },
   'aaryasharma': {
     username: 'AaryaSharma',
@@ -535,6 +578,7 @@ const STUDENT_DB = {
     mother: 'Dr.Neha Sharma',
     motherMob: '9419103177',
     email: 'sarthaksharma10@gmail.com',
+    section: 'buttercup',
   },
   'hitakshimantoo': {
     username: 'HitakshiMantoo',
@@ -549,6 +593,7 @@ const STUDENT_DB = {
     mother: 'Neha Mantoo',
     motherMob: '9622239550',
     email: 'sagar.mantoo3@gmail.com',
+    section: 'buttercup',
   },
   'pavithsingh': {
     username: 'PavithSingh',
@@ -563,6 +608,7 @@ const STUDENT_DB = {
     mother: 'Jasleen Kaur',
     motherMob: '9906780888',
     email: 'singhpreetrai@gmail.com',
+    section: 'buttercup',
   },
   'kiarajain': {
     username: 'KiaraJain',
@@ -577,6 +623,7 @@ const STUDENT_DB = {
     mother: 'Mini Jain',
     motherMob: '9906091887',
     email: 'vikrant_jkb@yahoo.com',
+    section: 'azalea',
   },
   'shubhkarmansinghsoin': {
     username: 'ShubhkarmanSinghSoin',
@@ -591,6 +638,7 @@ const STUDENT_DB = {
     mother: 'Jableen Kour',
     motherMob: '9596731270',
     email: 'abhineet.soin@gmail.com',
+    section: 'buttercup',
   },
   'riddhiverma': {
     username: 'RiddhiVerma',
@@ -605,6 +653,7 @@ const STUDENT_DB = {
     mother: 'Anku Verma',
     motherMob: '7889858112',
     email: 'vsumit40@gmail.com',
+    section: 'azalea',
   },
   'radhyaverma': {
     username: 'RadhyaVerma',
@@ -619,6 +668,7 @@ const STUDENT_DB = {
     mother: 'Anku Verma',
     motherMob: '7889858112',
     email: 'vsumit40@gmail.com',
+    section: 'buttercup',
   },
   'abhirajsingh': {
     username: 'AbhirajSingh',
@@ -633,6 +683,7 @@ const STUDENT_DB = {
     mother: 'Shafali Bhalwal',
     motherMob: '',
     email: 'gouravgas@yahoo.co.in',
+    section: 'azalea',
   },
   'krishivgupta': {
     username: 'KrishivGupta',
@@ -647,6 +698,7 @@ const STUDENT_DB = {
     mother: 'Anam Gupta',
     motherMob: '7889729477',
     email: 'manav9858094702@gmail.com',
+    section: 'buttercup',
   },
   'enairatukra': {
     username: 'EnairaTukra',
@@ -661,6 +713,7 @@ const STUDENT_DB = {
     mother: 'Deeksha Arora',
     motherMob: '6005355384',
     email: 'info@assianassociates.in',
+    section: 'bloomers',
   },
   'yashikadogra': {
     username: 'YashikaDogra',
@@ -675,6 +728,7 @@ const STUDENT_DB = {
     mother: 'Sumrati Badhan',
     motherMob: '7006432520',
     email: 'kiranelectricalworks@gmail.com',
+    section: 'bloomers',
   },
   'sharylchopra': {
     username: 'SharylChopra',
@@ -689,6 +743,7 @@ const STUDENT_DB = {
     mother: 'Malvika Chopra',
     motherMob: '8492817349',
     email: 'sunnydaksh2506@gmail.com',
+    section: 'azalea',
   },
   'mehatabsingh': {
     username: 'MehatabSingh',
@@ -703,6 +758,7 @@ const STUDENT_DB = {
     mother: 'Dr. Sunjam Kour Khajuria',
     motherMob: '7006616494',
     email: '',
+    section: 'bloomers',
   },
   'tamannachabra': {
     username: 'TamannaChabra',
@@ -717,6 +773,7 @@ const STUDENT_DB = {
     mother: 'Shifau Khanna',
     motherMob: '9796615950',
     email: 'kanwar-chhabra@yahooco.in',
+    section: 'azalea',
   },
   'gursheenchopra': {
     username: 'GursheenChopra',
@@ -731,6 +788,7 @@ const STUDENT_DB = {
     mother: 'AmanPreet Kaur',
     motherMob: '',
     email: 'r.kc@powergrid.in',
+    section: 'bloomers',
   },
   'tejasgupta': {
     username: 'TejasGupta',
@@ -745,6 +803,7 @@ const STUDENT_DB = {
     mother: 'Shivani Gupta',
     motherMob: '8717003888',
     email: 'ankitfeb18@gmail.com',
+    section: 'azalea',
   },
   'arnazkaur': {
     username: 'ArnazKaur',
@@ -759,6 +818,7 @@ const STUDENT_DB = {
     mother: 'Pardeep Kour',
     motherMob: '7889855140',
     email: 'balisatinder1909@gmail.com',
+    section: 'azalea',
   },
   'dikshitasingh': {
     username: 'DikshitaSingh',
@@ -773,6 +833,7 @@ const STUDENT_DB = {
     mother: 'Poonam Singh',
     motherMob: '96409980011',
     email: 'aksj@live.in',
+    section: 'bloomers',
   },
   'anhaslahu': {
     username: 'AnhaSlahu',
@@ -787,6 +848,7 @@ const STUDENT_DB = {
     mother: 'Dr. Lubna Aslam',
     motherMob: '9797550123',
     email: 'slahu.ahmed@gmail.com',
+    section: 'azalea',
   },
   'nuriyahmahajan': {
     username: 'NuriyahMahajan',
@@ -801,6 +863,7 @@ const STUDENT_DB = {
     mother: 'Nikita Mahajan',
     motherMob: '9419900999',
     email: 'varunmahajan08@gmail.com',
+    section: 'azalea',
   },
   'kairahans': {
     username: 'KairaHans',
@@ -815,6 +878,7 @@ const STUDENT_DB = {
     mother: 'Ridhima Gupta',
     motherMob: '9419393861',
     email: 'comewithabhi308@gmail.com',
+    section: 'azalea',
   },
   'ashvikagandotra': {
     username: 'AshvikaGandotra',
@@ -829,6 +893,7 @@ const STUDENT_DB = {
     mother: 'Radhika Gandotra',
     motherMob: '7006798707',
     email: '',
+    section: 'buttercup',
   },
   'avyuktmahajan': {
     username: 'AvyuktMahajan',
@@ -843,6 +908,7 @@ const STUDENT_DB = {
     mother: 'Mridu Gupta',
     motherMob: '8825097053',
     email: 'amrit2mahajan@gmail.com',
+    section: 'azalea',
   },
   'samarth': {
     username: 'Samarth',
@@ -857,6 +923,7 @@ const STUDENT_DB = {
     mother: 'Mehak Gupta',
     motherMob: '9419786061',
     email: 'abhirolgupta@gmail.com',
+    section: 'buttercup',
   },
   'sehrajsinghpuri': {
     username: 'SehrajSinghpuri',
@@ -871,6 +938,7 @@ const STUDENT_DB = {
     mother: 'Dr. Eshmeet Kour',
     motherMob: '8899989000',
     email: 'simran390@gmail.com',
+    section: 'azalea',
   },
   'pavikasharma': {
     username: 'PavikaSharma',
@@ -885,6 +953,7 @@ const STUDENT_DB = {
     mother: 'Priyanka Kalia',
     motherMob: '9555072113',
     email: 'narindersharma327@gmail.com',
+    section: 'buttercup',
   },
   'tanayshakapoor': {
     username: 'TanayshaKapoor',
@@ -899,6 +968,7 @@ const STUDENT_DB = {
     mother: 'Latasha Choudhary Kapoor',
     motherMob: '9796659282',
     email: '',
+    section: 'azalea',
   },
   'arnajthakur': {
     username: 'ArnajThakur',
@@ -913,6 +983,7 @@ const STUDENT_DB = {
     mother: 'Dr. Arjni Singh',
     motherMob: '7780915147',
     email: 'ajaythakur89@yahoo.com',
+    section: 'azalea',
   },
   'rajvanshkapahi': {
     username: 'RajvanshKapahi',
@@ -927,6 +998,7 @@ const STUDENT_DB = {
     mother: '',
     motherMob: '',
     email: '',
+    section: 'bloomers',
   },
   'sahaayasharma': {
     username: 'SahaayaSharma',
@@ -941,6 +1013,7 @@ const STUDENT_DB = {
     mother: 'Sukriti Sharma',
     motherMob: '9086684999',
     email: 'anubhav_2687@yahoo.co.in',
+    section: 'azalea',
   },
   'hardeetsingh': {
     username: 'HardeetSingh',
@@ -955,6 +1028,7 @@ const STUDENT_DB = {
     mother: 'Dr. GaganDeep Kour',
     motherMob: '9419384373',
     email: 'thesingh7@gmail.com',
+    section: 'azalea',
   },
   'vikramadityabatra': {
     username: 'VikramadityaBatra',
@@ -969,6 +1043,7 @@ const STUDENT_DB = {
     mother: 'Himani Batra',
     motherMob: '',
     email: '',
+    section: 'azalea',
   },
   'daniyalbasitkeng': {
     username: 'DaniyalBasitKeng',
@@ -983,6 +1058,7 @@ const STUDENT_DB = {
     mother: 'Fiza Arshad',
     motherMob: '6005181318',
     email: 'basitm.keng@gmail.com',
+    section: 'azalea',
   },
   'cymahgupta': {
     username: 'CymahGupta',
@@ -997,6 +1073,7 @@ const STUDENT_DB = {
     mother: 'Tania Mahajan',
     motherMob: '9419102006',
     email: 'rahilgupta7007@gmail.com',
+    section: 'azalea',
   },
   'ameyaachowdhary': {
     username: 'AmeyaaChowdhary',
@@ -1011,6 +1088,7 @@ const STUDENT_DB = {
     mother: 'Richa Chowdhary',
     motherMob: '8899967788',
     email: 'arjunchowdhary1985@gmail.com',
+    section: 'azalea',
   },
   'aadyasharma': {
     username: 'AadyaSharma',
@@ -1025,6 +1103,7 @@ const STUDENT_DB = {
     mother: 'Rashi Sharma',
     motherMob: '9650110984',
     email: '22rashisharma@gmail.com',
+    section: 'azalea',
   },
   'nooraggrawal': {
     username: 'NoorAggrawal',
@@ -1039,6 +1118,7 @@ const STUDENT_DB = {
     mother: 'Mishty Aggarwal',
     motherMob: '9356333334',
     email: 'kanav1144@gmail.com',
+    section: 'azalea',
   },
   'adhirajchoudhary': {
     username: 'AdhirajChoudhary',
@@ -1053,6 +1133,7 @@ const STUDENT_DB = {
     mother: 'Himani Choudhary',
     motherMob: '8716013333',
     email: 'choudharysahlesh003@gmail.com',
+    section: 'buttercup',
   },
   'advikamahajan': {
     username: 'AdvikaMahajan',
@@ -1067,6 +1148,7 @@ const STUDENT_DB = {
     mother: 'Ayushi Mahajan',
     motherMob: '9622409966',
     email: 'asga.jmu@gmail.com',
+    section: 'azalea',
   },
   'agastyamahajan': {
     username: 'AgastyaMahajan',
@@ -1081,6 +1163,7 @@ const STUDENT_DB = {
     mother: 'Ayushi Mahajan',
     motherMob: '9622409966',
     email: 'asga.jmu@gmail.com',
+    section: 'buttercup',
   },
   'arsalanqasim': {
     username: 'ARSALAnqasim',
@@ -1095,6 +1178,7 @@ const STUDENT_DB = {
     mother: 'Ameera Kohli',
     motherMob: '7006605314',
     email: '',
+    section: 'azalea',
   },
   'saanchgupta': {
     username: 'SaanchGupta',
@@ -1109,6 +1193,7 @@ const STUDENT_DB = {
     mother: 'Diksha Gupta',
     motherMob: '9796663322',
     email: 'ratikgupta@gmail.com',
+    section: 'azalea',
   },
   'dhitigupta': {
     username: 'DhitiGupta',
@@ -1123,6 +1208,7 @@ const STUDENT_DB = {
     mother: 'Sunnia Gupta',
     motherMob: '9596831440',
     email: 'contactanmolgupta@gmail.com',
+    section: 'camellia',
   },
   'kimayabatra': {
     username: 'KimayaBatra',
@@ -1137,6 +1223,7 @@ const STUDENT_DB = {
     mother: 'Sona Batra',
     motherMob: '9070377777',
     email: 'bhishambatra@yahoo.co.in',
+    section: 'buttercup',
   },
   'saurishsinghdadwal': {
     username: 'SaurishSinghDadwal',
@@ -1151,6 +1238,7 @@ const STUDENT_DB = {
     mother: 'Nidhi Thakur',
     motherMob: '7889623936',
     email: 'vishavdadwal@gmail.com',
+    section: 'camellia',
   },
   'gurnaazkaur': {
     username: 'GurnaazKaur',
@@ -1165,6 +1253,7 @@ const STUDENT_DB = {
     mother: 'Jasbir Kour',
     motherMob: '9906672006',
     email: 'simransodhi007@gmail.com',
+    section: 'bloomers',
   },
   'gauriaryanpratap': {
     username: 'GauriAryanPratap',
@@ -1179,6 +1268,7 @@ const STUDENT_DB = {
     mother: 'Vidushi Singh',
     motherMob: '9899954766',
     email: 'aryanpartap1312@gmail.com',
+    section: 'buttercup',
   },
   'gurniwazsingh': {
     username: 'GurniwazSingh',
@@ -1193,6 +1283,7 @@ const STUDENT_DB = {
     mother: 'Tarundeep Kour',
     motherMob: '7298116494',
     email: 'darshpreetsandhu@gmail.com',
+    section: 'camellia',
   },
   'gursaanjkour': {
     username: 'GursaanjKour',
@@ -1207,6 +1298,7 @@ const STUDENT_DB = {
     mother: 'Navneet Kour',
     motherMob: '9596814898',
     email: 'mandeep2586@gmail.com',
+    section: 'camellia',
   },
   'abhyudayagupta': {
     username: 'AbhyudayaGupta',
@@ -1221,6 +1313,7 @@ const STUDENT_DB = {
     mother: 'Urvashi Mahajan',
     motherMob: '8717060024',
     email: '',
+    section: 'buttercup',
   },
   'kabirgupta': {
     username: 'KabirGupta',
@@ -1235,6 +1328,7 @@ const STUDENT_DB = {
     mother: 'Aparna Manhas',
     motherMob: '8800170018',
     email: 'guptakaran2189@gmail.com',
+    section: 'azalea',
   },
   'sanchimahajan': {
     username: 'SanchiMahajan',
@@ -1249,6 +1343,7 @@ const STUDENT_DB = {
     mother: 'Surbhi Mahajan',
     motherMob: '9797424400',
     email: 'prinkle1212@gmail.com',
+    section: 'buttercup',
   },
   'viromgupta': {
     username: 'ViromGupta',
@@ -1263,6 +1358,7 @@ const STUDENT_DB = {
     mother: 'Garima Gupta',
     motherMob: '7006980044',
     email: 'mohit_gkin@yahoo.co.in',
+    section: 'buttercup',
   },
   'ariketsharma': {
     username: 'AriketSharma',
@@ -1277,6 +1373,7 @@ const STUDENT_DB = {
     mother: 'Richa Sharma',
     motherMob: '',
     email: 'caakhil16@gmail.com',
+    section: 'buttercup',
   },
   'sifatgupta': {
     username: 'SifatGupta',
@@ -1291,6 +1388,7 @@ const STUDENT_DB = {
     mother: 'Neha Gandotra',
     motherMob: '9419183575',
     email: 'abhishekvgupta@gmail.com',
+    section: 'azalea',
   },
   'mayahgupta': {
     username: 'MayahGupta',
@@ -1305,6 +1403,7 @@ const STUDENT_DB = {
     mother: 'Neha Gandotra',
     motherMob: '9419183575',
     email: 'abhishekvgupta@gmail.com',
+    section: 'buttercup',
   },
   'zuhaannaseerkhanday': {
     username: 'ZuhaanNaseerKhanday',
@@ -1319,6 +1418,7 @@ const STUDENT_DB = {
     mother: 'Dr.Anam Khurshid',
     motherMob: '7006656099',
     email: 'irfankhanday56@gmail.com',
+    section: 'camellia',
   },
   'ayramahajan': {
     username: 'AyraMahajan',
@@ -1333,6 +1433,7 @@ const STUDENT_DB = {
     mother: 'Aditi Gupta',
     motherMob: '9796291011',
     email: 'careersuccessjammu@gmail.com',
+    section: 'azalea',
   },
   'aahirmahajan': {
     username: 'AahirMahajan',
@@ -1347,6 +1448,7 @@ const STUDENT_DB = {
     mother: 'Priyanka Mahajan',
     motherMob: '7006886659',
     email: '',
+    section: 'azalea',
   },
   'harshitvipulgulati': {
     username: 'HarshitVipulGulati',
@@ -1361,6 +1463,7 @@ const STUDENT_DB = {
     mother: 'Dr.Smridhi Gulati',
     motherMob: '9419399999',
     email: '',
+    section: 'buttercup',
   },
   'aadritigupta': {
     username: 'AadritiGupta',
@@ -1375,6 +1478,7 @@ const STUDENT_DB = {
     mother: 'Nidhi Anand',
     motherMob: '9906060897',
     email: 'ankushgupta135@gmail.com',
+    section: 'bloomers',
   },
   'viaanshrampal': {
     username: 'ViaanshRampal',
@@ -1389,6 +1493,7 @@ const STUDENT_DB = {
     mother: 'Karishma Mani',
     motherMob: '9419144928',
     email: 'rahulrampal.unisa@gmail.com',
+    section: 'azalea',
   },
   'dharvikkesarwani': {
     username: 'DharvikKesarwani',
@@ -1403,6 +1508,7 @@ const STUDENT_DB = {
     mother: 'Avantika Kesarwani',
     motherMob: '8950600777',
     email: 'amitarya1986@gmail.com',
+    section: 'buttercup',
   },
   'shahnoorfatima': {
     username: 'Shahnoorfatima',
@@ -1417,6 +1523,7 @@ const STUDENT_DB = {
     mother: 'Dr. Ishrat Fatima',
     motherMob: '7889453528',
     email: 'usman2266@gmail.com',
+    section: 'bloomers',
   },
   'viraajhans': {
     username: 'ViraajHans',
@@ -1431,6 +1538,7 @@ const STUDENT_DB = {
     mother: 'Nisha Bharti',
     motherMob: '8899168340',
     email: 'shashi444kumar@gmail.com',
+    section: 'buttercup',
   },
   'hirvijaysingh': {
     username: 'HirvijaySingh',
@@ -1445,6 +1553,7 @@ const STUDENT_DB = {
     mother: 'Dr.Pallvi Thakur',
     motherMob: '8899100567',
     email: '',
+    section: 'azalea',
   },
   'aviramahajan': {
     username: 'AviraMahajan',
@@ -1459,6 +1568,7 @@ const STUDENT_DB = {
     mother: 'Hemani Badyal',
     motherMob: '8769602044',
     email: 'adstudiojammu@gmail.com',
+    section: 'buttercup',
   },
   'miraqabrarsheikh': {
     username: 'MiraqAbrarSheikh',
@@ -1473,6 +1583,7 @@ const STUDENT_DB = {
     mother: 'Rakshanda Waheed',
     motherMob: '7889744643',
     email: 'abrar.sheikh2121@gmail.com',
+    section: 'buttercup',
   },
   'deerghajamwal': {
     username: 'DeerghaJamwal',
@@ -1487,6 +1598,7 @@ const STUDENT_DB = {
     mother: 'Deeksha Sharma',
     motherMob: '7006783291',
     email: '',
+    section: 'buttercup',
   },
   'siyaangupta': {
     username: 'SiyaanGupta',
@@ -1501,6 +1613,7 @@ const STUDENT_DB = {
     mother: 'Saania Gupta',
     motherMob: '9858503033',
     email: 'madhurgupta1919@gmail.com',
+    section: 'camellia',
   },
   'gianagupta': {
     username: 'GianaGupta',
@@ -1515,6 +1628,7 @@ const STUDENT_DB = {
     mother: 'Shreya Mahajan',
     motherMob: '705159997',
     email: 'shreyshivam0824@gmail.com',
+    section: 'buttercup',
   },
   'maheemmengi': {
     username: 'MaheemMengi',
@@ -1529,6 +1643,7 @@ const STUDENT_DB = {
     mother: 'Richa Bakshi',
     motherMob: '9419278309',
     email: 'akshatmengi@gmail.com',
+    section: 'buttercup',
   },
   'rudragupta': {
     username: 'RudraGupta',
@@ -1543,6 +1658,7 @@ const STUDENT_DB = {
     mother: 'Akriti Saini',
     motherMob: '7889972738',
     email: 'abhaynite5@gmail.com',
+    section: 'buttercup',
   },
   'avyannakai': {
     username: 'AvyannaKai',
@@ -1557,6 +1673,7 @@ const STUDENT_DB = {
     mother: 'Reema Thapa',
     motherMob: '7006127256',
     email: 'rahulrai5556@gmail.com',
+    section: 'azalea',
   },
   'virenpartap': {
     username: 'VirenPartap',
@@ -1571,6 +1688,7 @@ const STUDENT_DB = {
     mother: 'Pooja Vij',
     motherMob: '8825026334',
     email: 'guptasourabh2016@gmail.com',
+    section: 'azalea',
   },
   'kiaan': {
     username: 'Kiaan',
@@ -1585,6 +1703,7 @@ const STUDENT_DB = {
     mother: 'Jayshree Kundal',
     motherMob: '',
     email: 'vikaskun123@gmail.com',
+    section: 'bloomers',
   },
   'abhinnrajvanshchauhan': {
     username: 'AbhinnRajvanshChauhan',
@@ -1599,6 +1718,7 @@ const STUDENT_DB = {
     mother: 'Avika chauhan',
     motherMob: '8171143322',
     email: 'aatashraj.chauhan@gmail.com',
+    section: 'azalea',
   },
   'trishaanmahajan': {
     username: 'TrishaanMahajan',
@@ -1613,6 +1733,7 @@ const STUDENT_DB = {
     mother: 'Ayushi Mahajan',
     motherMob: '9797205500',
     email: 'abhimahajan5555@gmail.com',
+    section: 'camellia',
   },
   'viaanmahajan': {
     username: 'ViaanMahajan',
@@ -1627,6 +1748,7 @@ const STUDENT_DB = {
     mother: 'Pallavi Mahajan',
     motherMob: '8716025456',
     email: 'ankitmahajan11292@gmail.com',
+    section: 'camellia',
   },
   'anaishamagotra': {
     username: 'AnaishaMagotra',
@@ -1641,6 +1763,7 @@ const STUDENT_DB = {
     mother: 'Prachi Magotra',
     motherMob: '7889945981',
     email: 'magotra.ankur@gmail.com',
+    section: 'camellia',
   },
   'shanayapuri': {
     username: 'ShanayaPuri',
@@ -1655,6 +1778,7 @@ const STUDENT_DB = {
     mother: 'Shifali Gupta',
     motherMob: '6006068133',
     email: '',
+    section: 'camellia',
   },
   'aviyaansharma': {
     username: 'AviyaanSharma',
@@ -1669,6 +1793,7 @@ const STUDENT_DB = {
     mother: 'Anupama Sharma',
     motherMob: '9419106378',
     email: 'anupamasharma.vph@gmail.com',
+    section: 'buttercup',
   },
   'muhmmadshehriyarkichloo': {
     username: 'MuhmmadShehriyarKichloo',
@@ -1683,6 +1808,7 @@ const STUDENT_DB = {
     mother: 'Afshan Hamal',
     motherMob: '8492937360',
     email: 'shehriyar.n,k@gmail.com',
+    section: 'buttercup',
   },
   'maahikasharma': {
     username: 'MaahikaSharma',
@@ -1697,6 +1823,7 @@ const STUDENT_DB = {
     mother: 'Megha Khajuria',
     motherMob: '9858778089',
     email: 'charliesharma74758@gmail.com',
+    section: 'buttercup',
   },
   'shaaravkhajuria': {
     username: 'ShaaravKhajuria',
@@ -1711,6 +1838,7 @@ const STUDENT_DB = {
     mother: 'Asheema Khajuria',
     motherMob: '8825097540',
     email: 'mannukhajuriaa@gmail.com',
+    section: 'buttercup',
   },
   'arayamahajan': {
     username: 'ArayaMahajan',
@@ -1725,6 +1853,7 @@ const STUDENT_DB = {
     mother: 'Tania Mahajan',
     motherMob: '9419284546',
     email: 'arjun4dic@gmail.com',
+    section: 'azalea',
   },
   'lakshkhajuria': {
     username: 'LakshKhajuria',
@@ -1739,6 +1868,7 @@ const STUDENT_DB = {
     mother: 'Dr. Surbhi Kudyar',
     motherMob: '9419209022',
     email: 'amitkhajuria71@gmail.com',
+    section: 'azalea',
   },
   'kianshslathia': {
     username: 'KianshSlathia',
@@ -1753,6 +1883,7 @@ const STUDENT_DB = {
     mother: 'Ambika Sambyal',
     motherMob: '7780865533',
     email: 'hiteshslathia23@gmail.com',
+    section: 'buttercup',
   },
   'sahaanamahajan': {
     username: 'SahaanaMahajan',
@@ -1767,6 +1898,7 @@ const STUDENT_DB = {
     mother: 'Himani Mahajan',
     motherMob: '7889415321',
     email: 'ankitmahajan024@gmail.com',
+    section: 'azalea',
   },
   'vaayupuri': {
     username: 'VaayuPuri',
@@ -1781,6 +1913,7 @@ const STUDENT_DB = {
     mother: 'Himika Puri',
     motherMob: '9797514777',
     email: 'adityapuri007@gmail.com',
+    section: 'azalea',
   },
   'avirajgupta': {
     username: 'AvirajGupta',
@@ -1795,6 +1928,7 @@ const STUDENT_DB = {
     mother: 'Bhavna Gupta',
     motherMob: '7006736563',
     email: 'guptamahajan@gmail.com',
+    section: 'buttercup',
   },
   'inaayagupta': {
     username: 'InaayaGupta',
@@ -1809,6 +1943,7 @@ const STUDENT_DB = {
     mother: 'Shruti Gupta',
     motherMob: '7889667293',
     email: 'spaceera@gmail.com',
+    section: 'azalea',
   },
   'kaashvigupta': {
     username: 'KaashviGupta',
@@ -1823,6 +1958,7 @@ const STUDENT_DB = {
     mother: 'Sunidhi Mahajan',
     motherMob: '7780995676',
     email: 'rahul7724@gmail.com',
+    section: 'buttercup',
   },
   'adhirajsinghmanhas': {
     username: 'AdhirajSinghManhas',
@@ -1837,6 +1973,7 @@ const STUDENT_DB = {
     mother: 'Manmeen Kaur',
     motherMob: '9711349755',
     email: 'raghvendra3333@gmail.com',
+    section: 'azalea',
   },
   'ayraamahajan': {
     username: 'AyraaMahajan',
@@ -1851,6 +1988,7 @@ const STUDENT_DB = {
     mother: 'Bhawna Sharma',
     motherMob: '9419240383',
     email: 'sourabhj89@gmail.com',
+    section: 'buttercup',
   },
   'shreyanshrajput': {
     username: 'ShreyanshRajput',
@@ -1865,6 +2003,7 @@ const STUDENT_DB = {
     mother: 'Manju Bala',
     motherMob: '7006718805',
     email: 'swarnsingh8646@gmail.com',
+    section: 'camellia',
   },
   'kaveermallick': {
     username: 'KaveerMallick',
@@ -1879,6 +2018,7 @@ const STUDENT_DB = {
     mother: 'Nishca Mallick',
     motherMob: '9899766011',
     email: 'gauravmallick84@gmail.com',
+    section: 'buttercup',
   },
   'ashveenkaur': {
     username: 'AshveenKaur',
@@ -1893,6 +2033,7 @@ const STUDENT_DB = {
     mother: 'Ramanpreet Kour Raina',
     motherMob: '6005713016',
     email: 'jatan.reen@gmail.com',
+    section: 'azalea',
   },
   'nitarakapahi': {
     username: 'NitaraKapahi',
@@ -1907,6 +2048,7 @@ const STUDENT_DB = {
     mother: 'Nitika Mehta',
     motherMob: '',
     email: 'nitikamehta22@gmail.com',
+    section: 'buttercup',
   },
   'aahiraguptabatta': {
     username: 'AahiraGuptaBatta',
@@ -1921,6 +2063,7 @@ const STUDENT_DB = {
     mother: 'Surbhi Gupta',
     motherMob: '9103037514',
     email: 'batta.sahil@gmail.com',
+    section: 'buttercup',
   },
   'khyatichoudhary': {
     username: 'KhyatiChoudhary',
@@ -1949,6 +2092,7 @@ const STUDENT_DB = {
     mother: 'Dr Gurleen Kaur',
     motherMob: '9796444683',
     email: 'dr.paramvir18.ps@gmail.com',
+    section: 'buttercup',
   },
   'aadyasinghchib': {
     username: 'AadyaSinghChib',
@@ -1963,6 +2107,7 @@ const STUDENT_DB = {
     mother: 'Kaife Slathia Chib',
     motherMob: '9906072020',
     email: 'chibkaife@gmail.com',
+    section: 'azalea',
   },
   'shahzaenqurashi': {
     username: 'ShahzaenQurashi',
@@ -1977,6 +2122,7 @@ const STUDENT_DB = {
     mother: 'Farha Nishal',
     motherMob: '9672515585',
     email: '',
+    section: 'azalea',
   },
   'zuhaibmushtaqmahir': {
     username: 'ZuhaibMushtaqMahir',
@@ -1991,6 +2137,7 @@ const STUDENT_DB = {
     mother: 'Mubeen Rashid',
     motherMob: '7006286345',
     email: 'ahmedmahir1398@gmail.com',
+    section: 'azalea',
   },
   'savreenkhorana': {
     username: 'SavreenKhorana',
@@ -2019,6 +2166,7 @@ const STUDENT_DB = {
     mother: 'Dr. Gurpreet Kour',
     motherMob: '7006287502',
     email: '',
+    section: 'buttercup',
   },
   'rudranshisingh': {
     username: 'RudranshiSingh',
@@ -2033,6 +2181,7 @@ const STUDENT_DB = {
     mother: 'Chhoti Kumari',
     motherMob: '6006332344',
     email: 'nitin.kumar493@gmail.com',
+    section: 'buttercup',
   },
   'avirajgupta526': {
     username: 'AvirajGupta526',
@@ -2047,6 +2196,7 @@ const STUDENT_DB = {
     mother: 'Shagun Gupta',
     motherMob: '8082951360',
     email: '',
+    section: 'buttercup',
   },
   'nairagupta': {
     username: 'NairaGupta',
@@ -2061,6 +2211,7 @@ const STUDENT_DB = {
     mother: 'Akashika Aggarwal',
     motherMob: '7780806497',
     email: 'namangupta19916@gmail.com',
+    section: 'azalea',
   },
   'adhyayadhav': {
     username: 'AdhyaYadhav',
@@ -2075,6 +2226,7 @@ const STUDENT_DB = {
     mother: 'Sunaina Sharma',
     motherMob: '9086296322',
     email: 'devanshyadav007@gmail.com',
+    section: 'camellia',
   },
   'aveersingharora': {
     username: 'AveerSinghArora',
@@ -2089,6 +2241,7 @@ const STUDENT_DB = {
     mother: 'Shivangi Choudhary',
     motherMob: '8713005555',
     email: 'akshat.arora19@gmail.com',
+    section: 'azalea',
   },
   'samasanchitbatta': {
     username: 'SamaSanchitBatta',
@@ -2117,6 +2270,7 @@ const STUDENT_DB = {
     mother: 'Priyanka Sharma',
     motherMob: '9419109913',
     email: 'rahul.aries21@gmail.com',
+    section: 'buttercup',
   },
   'ridhavgupta': {
     username: 'RidhavGupta',
@@ -2131,6 +2285,7 @@ const STUDENT_DB = {
     mother: 'Urvashi Gupta',
     motherMob: '9796220727',
     email: 'raghav_gupta05@yahoo.com',
+    section: 'buttercup',
   },
   'kriyanshgupta': {
     username: 'KriyanshGupta',
@@ -2145,6 +2300,7 @@ const STUDENT_DB = {
     mother: 'Pooja Saini',
     motherMob: '9086025776',
     email: 'vikrantgupta41797@gmail.com',
+    section: 'camellia',
   },
   'devishakundan': {
     username: 'DevishaKundan',
@@ -2159,6 +2315,7 @@ const STUDENT_DB = {
     mother: 'Barkha',
     motherMob: '9682153546',
     email: 'neerajkundaninc@gmail.com',
+    section: 'buttercup',
   },
   'gunvirsingh': {
     username: 'GunvirSingh',
@@ -2173,6 +2330,7 @@ const STUDENT_DB = {
     mother: 'Ganganpreet kaur',
     motherMob: '7837619608',
     email: 'aman.tiet@gmail.com',
+    section: 'azalea',
   },
   'gourangigupta': {
     username: 'GourangiGupta',
@@ -2187,6 +2345,7 @@ const STUDENT_DB = {
     mother: 'Anayana Gupta',
     motherMob: '9070090659',
     email: 'mukul.manifested@gmail.com',
+    section: 'buttercup',
   },
   'kiaaragupta': {
     username: 'KiaaraGupta',
@@ -2201,6 +2360,7 @@ const STUDENT_DB = {
     mother: 'Shivani Gupta',
     motherMob: '9797029292',
     email: 'rohitlegno@gmail.com',
+    section: 'azalea',
   },
   'viaanvinod': {
     username: 'ViaanVinod',
@@ -2215,6 +2375,7 @@ const STUDENT_DB = {
     mother: 'Dr. Shaveta',
     motherMob: '6005849327',
     email: 'vinodlalotra50@gmail.com',
+    section: 'buttercup',
   },
   'nitaragupta': {
     username: 'NitaraGupta',
@@ -2229,6 +2390,7 @@ const STUDENT_DB = {
     mother: 'Ridhima Sharma',
     motherMob: '9796068774',
     email: 'abhimanyugupta07@gmail.com',
+    section: 'azalea',
   },
   'ritanyamahajan': {
     username: 'RitanyaMahajan',
@@ -2243,6 +2405,7 @@ const STUDENT_DB = {
     mother: 'Ridhima',
     motherMob: '7889841042',
     email: 'sanyam.mech@hotmail.com',
+    section: 'buttercup',
   },
   'atharvjain': {
     username: 'AtharvJain',
@@ -2257,6 +2420,7 @@ const STUDENT_DB = {
     mother: 'Ridhima Jain',
     motherMob: '9467707336',
     email: '',
+    section: 'azalea',
   },
   'jasrajsingh': {
     username: 'JasrajSingh',
@@ -2271,6 +2435,7 @@ const STUDENT_DB = {
     mother: 'Gurpreet Kaur',
     motherMob: '7340732713',
     email: 'kanwar1469@gmail.com',
+    section: 'buttercup',
   },
   'cyragupta': {
     username: 'CyraGupta',
@@ -2285,6 +2450,7 @@ const STUDENT_DB = {
     mother: 'Aditi Vaid',
     motherMob: '7006146110',
     email: 'aditigupta666@gmail.com',
+    section: 'buttercup',
   },
   'vidharthyograina': {
     username: 'VidharthYogRaina',
@@ -2299,6 +2465,7 @@ const STUDENT_DB = {
     mother: 'Nishtha Nayyar',
     motherMob: '7780858505',
     email: 'gvraina@gmail.com',
+    section: 'azalea',
   },
   'sagarikachalotra': {
     username: 'SagarikaChalotra',
@@ -2313,6 +2480,7 @@ const STUDENT_DB = {
     mother: 'Bhawana Badyal',
     motherMob: '9419109384',
     email: 'dr.parvesh9@gmail.com',
+    section: 'buttercup',
   },
   'ridahtahir': {
     username: 'RidahTahir',
@@ -2327,6 +2495,7 @@ const STUDENT_DB = {
     mother: 'Tahniyat noon',
     motherMob: '9797461185',
     email: '',
+    section: 'buttercup',
   },
   'aarivabrol': {
     username: 'AarivAbrol',
@@ -2341,6 +2510,7 @@ const STUDENT_DB = {
     mother: 'Rupali Abrol',
     motherMob: '9796423311',
     email: 'abhinav.abrol87@gmail.com',
+    section: 'buttercup',
   },
   'rahakhajuria': {
     username: 'RahaKhajuria',
@@ -2369,6 +2539,7 @@ const STUDENT_DB = {
     mother: 'Dr. Snover Choudhary',
     motherMob: '7006277491',
     email: 'moinajaz@gmail.com',
+    section: 'buttercup',
   },
   'mohd.ibsambanday': {
     username: 'Mohd.IbsamBanday',
@@ -2383,6 +2554,7 @@ const STUDENT_DB = {
     mother: 'Dr. Snover Choudhary',
     motherMob: '7006277491',
     email: 'moinajaz@gmail.com',
+    section: 'azalea',
   },
   'aymansyed': {
     username: 'AymanSyed',
@@ -2397,6 +2569,7 @@ const STUDENT_DB = {
     mother: 'Ayesha Niaz',
     motherMob: '6005981374',
     email: 'syed.abdullah88@gmail.com',
+    section: 'buttercup',
   },
   'aliomar': {
     username: 'AliOmar',
@@ -2411,6 +2584,7 @@ const STUDENT_DB = {
     mother: 'Farkhanda Waheed',
     motherMob: '7889901163',
     email: '',
+    section: 'buttercup',
   },
   'sehajpreetsingh': {
     username: 'SehajpreetSingh',
@@ -2425,6 +2599,7 @@ const STUDENT_DB = {
     mother: 'Manpreet Kour',
     motherMob: '9149925543',
     email: 'manpreetkourbali@gmail.com',
+    section: 'buttercup',
   },
   'saad': {
     username: 'Saad',
@@ -2453,6 +2628,7 @@ const STUDENT_DB = {
     mother: 'palak Gupta',
     motherMob: '9419151942',
     email: '',
+    section: 'buttercup',
   },
   'shriyaanmahajan': {
     username: 'ShriyaanMahajan',
@@ -2467,6 +2643,7 @@ const STUDENT_DB = {
     mother: 'sakshi mahajann',
     motherMob: '9018535553',
     email: '',
+    section: 'azalea',
   },
   'avyahluthra': {
     username: 'AvyahLuthra',
@@ -2481,6 +2658,7 @@ const STUDENT_DB = {
     mother: 'Avni Luthra',
     motherMob: '9103005000',
     email: '',
+    section: 'buttercup',
   },
   'avyanluthra': {
     username: 'Avyanluthra',
@@ -2495,6 +2673,7 @@ const STUDENT_DB = {
     mother: 'Aastha Kakkar',
     motherMob: '9419104969',
     email: '',
+    section: 'camellia',
   },
   'riyanshsingh': {
     username: 'RiyanshSingh',
@@ -2509,6 +2688,7 @@ const STUDENT_DB = {
     mother: 'Parvinder kour',
     motherMob: '9796085832',
     email: '',
+    section: 'buttercup',
   },
 };
 
@@ -2637,7 +2817,7 @@ function switchLoginTab(name, btn) {
 /* ─────────────────────────────────────────
    LOGIN FORM
 ───────────────────────────────────────── */
-function doLogin(e, role) {
+async function doLogin(e, role) {
   e.preventDefault();
   const userEl = document.getElementById('st-user');
   const passEl = document.getElementById('st-pass');
@@ -2651,26 +2831,73 @@ function doLogin(e, role) {
       return;
     }
 
-    const dbKey     = u.replace(/\s+/g, '').toLowerCase();
-    const account   = STUDENT_DB[dbKey];
-    const customPw  = localStorage.getItem('mmi_pw_' + dbKey);
-    const validPass = customPw || (account ? account.pass : '');
-    if (account && p === validPass && account.role === 'student') {
-      localStorage.setItem('mmi_user',       u);
-      localStorage.setItem('mmi_name',       account.name);
-      localStorage.setItem('mmi_roll',       account.roll);
-      localStorage.setItem('mmi_class',      account.class);
-      localStorage.setItem('mmi_gender',     account.gender   || '');
-      localStorage.setItem('mmi_father',     account.father   || '');
-      localStorage.setItem('mmi_fatherMob',  account.fatherMob|| '');
-      localStorage.setItem('mmi_mother',     account.mother   || '');
-      localStorage.setItem('mmi_motherMob',  account.motherMob|| '');
-      localStorage.setItem('mmi_email',      account.email    || '');
-      showToast('Login successful! Loading your portal…', 'green');
-      setTimeout(() => window.location.href = 'dashboard.html', 1200);
-    } else {
-      showToast('Incorrect username or password.', 'red');
+    const submitBtn = document.querySelector('#st-login-form button[type="submit"], .login-submit-btn');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Signing in…'; }
+
+    // ── Step 1: resolve account ──────────────────────────
+    let dbKey  = u.replace(/\s+/g, '').toLowerCase();
+    let account = STUDENT_DB[dbKey];
+
+    // Not found locally → could be a custom username set via the sheet
+    if (!account && APPS_SCRIPT_URL) {
+      try {
+        const r = await fetch(APPS_SCRIPT_URL + '?type=finduser&username=' + encodeURIComponent(dbKey));
+        const d = await r.json();
+        if (d.found && d.key && STUDENT_DB[d.key]) {
+          dbKey   = d.key;
+          account = STUDENT_DB[dbKey];
+        }
+      } catch (_) { /* network error — continue */ }
     }
+
+    if (!account || account.role !== 'student') {
+      showToast('Incorrect username or password.', 'red');
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Sign In'; }
+      return;
+    }
+
+    // ── Step 2: determine valid password ─────────────────
+    // Fast path: try the school-assigned default first (no network)
+    const localPw   = localStorage.getItem('mmi_pw_' + dbKey);
+    const defaultPw = account.pass;
+    let   validPass = localPw || defaultPw;
+
+    if (p !== validPass && APPS_SCRIPT_URL) {
+      // Default / local didn't match → fetch latest from sheet
+      try {
+        const r = await fetch(APPS_SCRIPT_URL + '?type=getcreds&key=' + encodeURIComponent(dbKey));
+        const d = await r.json();
+        if (d.found && d.password) {
+          validPass = d.password;
+          // Cache locally so next login is instant
+          localStorage.setItem('mmi_pw_' + dbKey, d.password);
+        }
+      } catch (_) { /* network error — fall through */ }
+    }
+
+    // ── Step 3: validate ─────────────────────────────────
+    if (p !== validPass) {
+      showToast('Incorrect username or password.', 'red');
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Sign In'; }
+      return;
+    }
+
+    // ── Step 4: store session and redirect ───────────────
+    localStorage.setItem('mmi_user',      u);
+    localStorage.setItem('mmi_dbkey',     dbKey);
+    localStorage.setItem('mmi_name',      account.name);
+    localStorage.setItem('mmi_roll',      account.roll);
+    localStorage.setItem('mmi_class',     account.class);
+    localStorage.setItem('mmi_gender',    account.gender    || '');
+    localStorage.setItem('mmi_father',    account.father    || '');
+    localStorage.setItem('mmi_fatherMob', account.fatherMob || '');
+    localStorage.setItem('mmi_mother',    account.mother    || '');
+    localStorage.setItem('mmi_motherMob', account.motherMob || '');
+    localStorage.setItem('mmi_email',     account.email     || '');
+    localStorage.setItem('mmi_section',   account.section   || '');
+    showToast('Login successful! Loading your portal…', 'green');
+    setTimeout(() => window.location.href = 'dashboard.html', 1200);
+
   } else {
     // Parent / Staff — placeholder redirect
     showToast('Login successful! Redirecting…', 'green');
@@ -2810,10 +3037,10 @@ function normalizeDate(raw) {
     const [, y, m, d] = gviz;
     return `${y}-${String(Number(m) + 1).padStart(2, '0')}-${d.padStart(2, '0')}`;
   }
-  // M/D/YYYY or MM/DD/YYYY
+  // DD/MM/YYYY (used in notification/attendance CSVs)
   const slash = s.split('/');
   if (slash.length === 3) {
-    const [m, d, y] = slash;
+    const [d, m, y] = slash;
     return `${y.padStart(4, '0')}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
   }
   return s;
@@ -2948,15 +3175,22 @@ function initDashboard() {
     });
   }
 
-  const name      = localStorage.getItem('mmi_name')      || 'Student';
-  const roll      = localStorage.getItem('mmi_roll')      || '';
-  const cls       = localStorage.getItem('mmi_class')     || '';
-  const gender    = localStorage.getItem('mmi_gender')    || '';
-  const father    = localStorage.getItem('mmi_father')    || '';
-  const fatherMob = localStorage.getItem('mmi_fatherMob') || '';
-  const mother    = localStorage.getItem('mmi_mother')    || '';
-  const motherMob = localStorage.getItem('mmi_motherMob') || '';
-  const email     = localStorage.getItem('mmi_email')     || '';
+  // Prefer user-edited custom values; fall back to login-set values
+  const _pf = (key) => {
+    const custom = localStorage.getItem('mmi_custom_' + key);
+    return (custom !== null) ? custom : (localStorage.getItem('mmi_' + key) || '');
+  };
+  const name      = _pf('name')      || 'Student';
+  const username  = _pf('username')  || localStorage.getItem('mmi_user') || '';
+  const roll      = localStorage.getItem('mmi_roll')    || '';
+  const cls       = localStorage.getItem('mmi_class')   || '';
+  const section   = localStorage.getItem('mmi_section') || '';
+  const gender    = localStorage.getItem('mmi_gender')  || '';
+  const father    = _pf('father');
+  const fatherMob = _pf('fatherMob');
+  const mother    = _pf('mother');
+  const motherMob = _pf('motherMob');
+  const email     = _pf('email');
 
   // Sidebar / topbar name
   ['wbName', 'dtb-name', 'sb-fullname'].forEach(id => {
@@ -2970,12 +3204,16 @@ function initDashboard() {
   const clsEl = document.getElementById('sb-class');
   if (clsEl) clsEl.textContent = cls;
 
+  const secEl = document.getElementById('sb-section');
+  if (secEl) secEl.textContent = section ? section.charAt(0).toUpperCase() + section.slice(1) : '';
+
   // Profile page fields
   function setField(id, val) {
     const el = document.getElementById(id);
     if (el) el.textContent = val || '–';
   }
   setField('pp-fullname',   name);
+  setField('pp-username',   username || '–');
   setField('pp-roll',       roll ? 'MMI-' + roll : '–');
   setField('pp-class',      cls);
   setField('pp-gender',     gender);
@@ -2984,6 +3222,7 @@ function initDashboard() {
   setField('pp-mother',     mother);
   setField('pp-motherMob',  motherMob ? '+91-' + motherMob : '–');
   setField('pp-email',      email);
+  setField('pp-section',    section ? section.charAt(0).toUpperCase() + section.slice(1) : '–');
   setField('pp-session',    '2026 – 27');
 
   // ID badge
@@ -3061,15 +3300,37 @@ function initFadeIn() {
    objects using the first row as keys.
 ───────────────────────────────────────── */
 function parseCSV(text) {
+  // RFC 4180-compliant parser: handles quoted fields containing commas/newlines
+  function splitCSVLine(line) {
+    const fields = [];
+    let cur = '', inQuote = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (inQuote) {
+        if (ch === '"') {
+          if (line[i + 1] === '"') { cur += '"'; i++; }  // escaped quote
+          else inQuote = false;
+        } else {
+          cur += ch;
+        }
+      } else {
+        if (ch === '"') { inQuote = true; }
+        else if (ch === ',') { fields.push(cur.trim()); cur = ''; }
+        else { cur += ch; }
+      }
+    }
+    fields.push(cur.trim());
+    return fields;
+  }
+
   const lines = text.trim().split('\n').filter(l => l.trim());
   if (lines.length < 2) return [];
-  const headers = lines[0].split(',').map((h, i) => {
-    const clean = h.trim().replace(/^"|"$/g, '').toLowerCase();
-    // If first column header is blank, treat it as "date"
+  const headers = splitCSVLine(lines[0]).map((h, i) => {
+    const clean = h.toLowerCase();
     return clean || (i === 0 ? 'date' : `col${i}`);
   });
   return lines.slice(1).map(line => {
-    const cols = line.split(',').map(c => c.trim().replace(/^"|"$/g, ''));
+    const cols = splitCSVLine(line);
     const obj  = {};
     headers.forEach((h, i) => { obj[h] = cols[i] || ''; });
     return obj;
@@ -3120,9 +3381,9 @@ async function loadDriveGallery() {
 // Map the stored class name → sheet keyword
 function classToNotifKey(cls) {
   const c = (cls || '').toLowerCase().trim();
-  if (c === 'kindergarten')  return 'k';
-  if (c === 'nursery')       return 'n';
-  // Pre-Nursery, Playgroup, Toddlers all map to P
+  if (c === 'kindergarten' || c === 'k' || c === 'kg') return 'k';
+  if (c === 'nursery'      || c === 'n' || c === 'nr') return 'n';
+  // Pre-Nursery, Playgroup, Toddlers, PN, P, T all map to p
   return 'p';
 }
 
@@ -3130,63 +3391,173 @@ async function loadNotifications() {
   const list = document.getElementById('notifList');
   if (!list) return;
 
-  const storedClass  = localStorage.getItem('mmi_class') || '';
-  const studentKey   = classToNotifKey(storedClass);   // 'k' | 'n' | 'p'
+  const storedClass = localStorage.getItem('mmi_class') || '';
+  const studentKey  = classToNotifKey(storedClass);   // 'k' | 'n' | 'p'
 
-  try {
-    const res  = await fetch(NOTIFICATIONS_CSV_URL);
-    const text = await res.text();
-    const rows = parseCSV(text);
+  // Fetch with up to 3 attempts; reject HTML error pages returned by Google's CDN
+  let text = '';
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(NOTIFICATIONS_CSV_URL + '&_=' + Date.now());
+      if (!res.ok) { await new Promise(r => setTimeout(r, 600)); continue; }
+      const t = await res.text();
+      if (t.trim().startsWith('<')) { await new Promise(r => setTimeout(r, 600)); continue; }
+      text = t;
+      break;
+    } catch (e) {
+      if (attempt < 2) { await new Promise(r => setTimeout(r, 600)); continue; }
+    }
+  }
 
-    // Filter: show rows where class matches student key or is "all"
-    const filtered = rows.filter(r => {
-      const cls = (r.class || '').toLowerCase().trim();
-      return cls === 'all' || cls === studentKey;
-    });
+  if (!text) {
+    list.innerHTML = '<p style="font-size:0.84rem;color:#aaa;text-align:center;padding:18px 0;">Could not load notifications.</p>';
+    return;
+  }
 
+  // Parse CSV; if the sheet omits the header row, inject it
+  const lines = text.trim().split('\n').filter(l => l.trim());
+  const firstCol = (lines[0] || '').split(',')[0].replace(/^"|"$/g, '').trim().toLowerCase();
+  const hasHeader = firstCol === 'date';
+  const csvToParse = hasHeader ? text : 'date,type,class,message\n' + text;
+  const rows = parseCSV(csvToParse);
 
-    if (!filtered.length) {
-      list.innerHTML = '<p style="font-size:0.84rem;color:#aaa;text-align:center;padding:18px 0;">No notifications at this time.</p>';
-      return;
+  // Filter: show rows where class matches student key or is "all"
+  const filtered = rows.filter(r => {
+    const cls = (r.class || '').toLowerCase().trim();
+    return cls === 'all' || cls === studentKey;
+  });
+
+  if (!filtered.length) {
+    list.innerHTML = '<p style="font-size:0.84rem;color:#aaa;text-align:center;padding:18px 0;">No notifications at this time.</p>';
+    return;
+  }
+
+  // Sort newest first
+  filtered.sort((a, b) => {
+    const da = new Date(normalizeDate(a.date) || a.date);
+    const db = new Date(normalizeDate(b.date) || b.date);
+    return db - da;
+  });
+
+  list.innerHTML = filtered.map(r => {
+    const type    = (r.type || 'general').toLowerCase().trim();
+    const message = r.message || r.text || '';
+    const date    = r.date || '';
+
+    let itemClass = 'ns-item';
+    let tagClass  = 'ns-type';
+    let tagLabel  = 'General';
+
+    if (type === 'urgent') {
+      itemClass += ' urgent';
+      tagClass  += ' urgent-type';
+      tagLabel   = 'Urgent';
+    } else if (type === 'holiday') {
+      tagClass += ' holiday-type';
+      tagLabel  = 'Holiday';
     }
 
-    // Sort newest first (by date string — works for DD/MM/YYYY or YYYY-MM-DD)
-    filtered.sort((a, b) => {
-      const da = new Date(normalizeDate(a.date) || a.date);
-      const db = new Date(normalizeDate(b.date) || b.date);
-      return db - da;
-    });
+    return `
+      <div class="${itemClass}">
+        <span class="${tagClass}">${tagLabel}</span>
+        <p>${message}</p>
+        <span class="ns-time">${date}</span>
+      </div>`;
+  }).join('');
+}
 
-    list.innerHTML = filtered.map(r => {
-      const type    = (r.type || 'general').toLowerCase().trim();
-      const message = r.message || r.text || '';
-      const date    = r.date || '';
+/* ─────────────────────────────────────────
+   SCHOOL CALENDAR LOADER
+   Fetches the "Calendar" tab from the same
+   Google Sheet. Filters by student class.
 
-      let itemClass = 'ns-item';
-      let tagClass  = 'ns-type';
-      let tagLabel  = 'General';
+   Sheet columns (row 1 headers, exact spelling):
+     class | date | type | description
+   class  : all / K / N / P
+   date   : YYYY-MM-DD for day events
+            YYYY-MM   for month-level theme/note rows
+───────────────────────────────────────── */
 
-      if (type === 'urgent') {
-        itemClass += ' urgent';
-        tagClass  += ' urgent-type';
-        tagLabel   = 'Urgent';
-      } else if (type === 'holiday') {
-        tagClass += ' holiday-type';
-        tagLabel  = 'Holiday';
-      }
+function _buildGradeLabel() {
+  const cls = localStorage.getItem('mmi_class') || '';
+  const sec = localStorage.getItem('mmi_section') || '';
+  if (!cls) return 'Student';
+  const secLabel = sec ? ' – ' + sec.charAt(0).toUpperCase() + sec.slice(1).toLowerCase() : '';
+  return cls + secLabel;
+}
 
-      return `
-        <div class="${itemClass}">
-          <span class="${tagClass}">${tagLabel}</span>
-          <p>${message}</p>
-          <span class="ns-time">${date}</span>
-        </div>`;
-    }).join('');
+// _calPdfs: { month: { id, label } }
+let _calPdfs = {};
 
-  } catch (err) {
-    console.error('Notifications load error:', err);
-    list.innerHTML = '<p style="font-size:0.84rem;color:#aaa;text-align:center;padding:18px 0;">Could not load notifications.</p>';
+function _showCalPdf(month) {
+  const tabsEl = document.getElementById('schoolCalTabs');
+  const frame  = document.getElementById('calPdfFrame');
+  const msg    = document.getElementById('calPdfMsg');
+  if (!frame) return;
+
+  // Update active tab
+  if (tabsEl) tabsEl.querySelectorAll('.school-cal-tab').forEach(b => {
+    b.classList.toggle('active', b.dataset.month === month);
+  });
+
+  const pdf = _calPdfs[month];
+  if (pdf) {
+    frame.src = 'https://drive.google.com/file/d/' + pdf.id + '/preview';
+    frame.style.display = 'block';
+    if (msg) msg.style.display = 'none';
   }
+}
+
+async function loadSchoolCalendar() {
+  const storedClass = localStorage.getItem('mmi_class') || '';
+  const studentKey  = classToNotifKey(storedClass);
+  const tabsEl      = document.getElementById('schoolCalTabs');
+  const frame       = document.getElementById('calPdfFrame');
+  const msg         = document.getElementById('calPdfMsg');
+
+  const MONTH_NAMES = ['January','February','March','April','May','June',
+                       'July','August','September','October','November','December'];
+
+  let data = null;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(APPS_SCRIPT_URL + '?type=calpdfs&class=' + studentKey + '&_=' + Date.now());
+      if (!res.ok) { await new Promise(r => setTimeout(r, 600)); continue; }
+      const j = await res.json();
+      if (j && j.pdfs) { data = j; break; }
+    } catch (e) {
+      if (attempt < 2) await new Promise(r => setTimeout(r, 600));
+    }
+  }
+
+  const pdfs = (data && data.pdfs) || [];
+
+  if (!pdfs.length) {
+    if (tabsEl) tabsEl.innerHTML = '';
+    if (frame)  frame.style.display = 'none';
+    if (msg)    msg.style.display = '';
+    return;
+  }
+
+  // Build lookup and tabs
+  _calPdfs = {};
+  pdfs.forEach(p => {
+    const [y, m] = p.month.split('-').map(Number);
+    _calPdfs[p.month] = { id: p.id, label: MONTH_NAMES[m - 1] + ' ' + y };
+  });
+
+  const months = pdfs.map(p => p.month).sort();
+  if (tabsEl) {
+    tabsEl.innerHTML = months.map((mo, i) => {
+      const icon   = i === 0 ? 'fa-calendar-check' : 'fa-calendar';
+      const active = i === 0 ? ' active' : '';
+      return `<button class="school-cal-tab${active}" data-month="${mo}" onclick="_showCalPdf('${mo}')">
+        <i class="fa ${icon}"></i> ${_calPdfs[mo].label}
+      </button>`;
+    }).join('');
+  }
+
+  _showCalPdf(months[0]);
 }
 
 /* ─────────────────────────────────────────
@@ -3200,7 +3571,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadDriveGallery();
   loadAllAttendance();
   loadNotifications();
-  renderSchoolCalendar('2026-05');
+  loadSchoolCalendar();
 });
 
 window.addEventListener('resize', () => { scRender(false); });
@@ -3267,6 +3638,162 @@ function lbNav(dir, e) {
    doLogin checks this key first before the
    default STUDENT_DB password.
 ───────────────────────────────────────── */
+/* ─────────────────────────────────────────
+   EDIT PROFILE
+───────────────────────────────────────── */
+function openEditProfile() {
+  const grid = document.getElementById('pp-details-grid');
+  if (!grid) return;
+
+  // Pre-fill inputs with current values
+  const map = {
+    'pp-fullname-input':  'mmi_name',
+    'pp-father-input':    'mmi_father',
+    'pp-fatherMob-input': 'mmi_fatherMob',
+    'pp-mother-input':    'mmi_mother',
+    'pp-motherMob-input': 'mmi_motherMob',
+    'pp-email-input':     'mmi_email',
+  };
+  Object.entries(map).forEach(([inputId, key]) => {
+    const el = document.getElementById(inputId);
+    if (el) {
+      const custom = localStorage.getItem('mmi_custom_' + key.replace('mmi_', ''));
+      el.value = (custom !== null ? custom : localStorage.getItem(key)) || '';
+    }
+  });
+
+  grid.classList.add('editing');
+  document.getElementById('btn-edit-profile').style.display  = 'none';
+  document.getElementById('btn-save-profile').style.display  = '';
+  document.getElementById('btn-cancel-profile').style.display = '';
+
+  // Focus first input
+  const first = document.getElementById('pp-fullname-input');
+  if (first) first.focus();
+}
+
+function saveProfile() {
+  const grid = document.getElementById('pp-details-grid');
+  if (!grid) return;
+
+  const name      = document.getElementById('pp-fullname-input').value.trim();
+  const father    = document.getElementById('pp-father-input').value.trim();
+  const fatherMob = document.getElementById('pp-fatherMob-input').value.trim();
+  const mother    = document.getElementById('pp-mother-input').value.trim();
+  const motherMob = document.getElementById('pp-motherMob-input').value.trim();
+  const email     = document.getElementById('pp-email-input').value.trim();
+
+  if (!name) { showToast('Full name cannot be empty.', 'red'); return; }
+
+  const saves = { mmi_name: name, mmi_father: father, mmi_fatherMob: fatherMob,
+                  mmi_mother: mother, mmi_motherMob: motherMob, mmi_email: email };
+  Object.entries(saves).forEach(([k, v]) => {
+    localStorage.setItem(k, v);
+    localStorage.setItem('mmi_custom_' + k.replace('mmi_', ''), v);
+  });
+
+  const setText = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val || '–'; };
+  setText('pp-fullname',  name);
+  setText('pp-father',    father);
+  setText('pp-fatherMob', fatherMob ? '+91-' + fatherMob : '–');
+  setText('pp-mother',    mother);
+  setText('pp-motherMob', motherMob ? '+91-' + motherMob : '–');
+  setText('pp-email',     email);
+
+  ['wbName', 'dtb-name', 'sb-fullname'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.textContent = name;
+  });
+
+  grid.classList.remove('editing');
+  document.getElementById('btn-edit-profile').style.display   = '';
+  document.getElementById('btn-save-profile').style.display   = 'none';
+  document.getElementById('btn-cancel-profile').style.display = 'none';
+  showToast('Profile updated successfully!', 'green');
+}
+
+function cancelEditProfile() {
+  const grid = document.getElementById('pp-details-grid');
+  if (grid) grid.classList.remove('editing');
+  document.getElementById('btn-edit-profile').style.display   = '';
+  document.getElementById('btn-save-profile').style.display   = 'none';
+  document.getElementById('btn-cancel-profile').style.display = 'none';
+}
+
+/* ─────────────────────────────────────────
+   CHANGE USERNAME MODAL
+───────────────────────────────────────── */
+function openCuModal() {
+  const overlay = document.getElementById('cuOverlay');
+  if (!overlay) return;
+  document.getElementById('cu-new').value  = '';
+  document.getElementById('cu-pass').value = '';
+  document.getElementById('cuError').textContent = '';
+  overlay.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('cu-new').focus();
+}
+
+function closeCuModal() {
+  const overlay = document.getElementById('cuOverlay');
+  if (overlay) overlay.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+async function submitChangeUsername() {
+  const newUser  = (document.getElementById('cu-new').value  || '').trim();
+  const password = (document.getElementById('cu-pass').value || '').trim();
+  const errorEl  = document.getElementById('cuError');
+  const saveBtn  = document.getElementById('cu-save-btn');
+
+  errorEl.textContent = '';
+
+  const dbKey     = localStorage.getItem('mmi_dbkey') || (localStorage.getItem('mmi_user') || '').replace(/\s+/g,'').toLowerCase();
+  const defaultPass = STUDENT_DB[dbKey] ? STUDENT_DB[dbKey].pass : '';
+  const localPass   = localStorage.getItem('mmi_pw_' + dbKey);
+  const activePass  = localPass || defaultPass;
+
+  if (!newUser)   { errorEl.textContent = 'Please enter a new username.'; return; }
+  if (!password)  { errorEl.textContent = 'Please enter your current password.'; return; }
+  if (password !== activePass) { errorEl.textContent = 'Current password is incorrect.'; return; }
+  if (newUser.toLowerCase().replace(/\s+/g,'') === (localStorage.getItem('mmi_user') || '').toLowerCase().replace(/\s+/g,'')) {
+    errorEl.textContent = 'New username must be different from the current one.'; return;
+  }
+
+  if (saveBtn) { saveBtn.disabled = true; saveBtn.textContent = 'Saving…'; }
+
+  let sheetOk = false;
+  if (APPS_SCRIPT_URL) {
+    try {
+      const res  = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST', redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({ type: 'updatecreds', key: dbKey, currentPass: password, defaultPass, newUsername: newUser })
+      });
+      const data = await res.json();
+      if (data.success) {
+        sheetOk = true;
+      } else {
+        errorEl.textContent = data.error || 'Could not save. Try again.';
+      }
+    } catch (_) {
+      errorEl.textContent = 'Network error. Try again.';
+    }
+  }
+
+  if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = 'Update Username'; }
+
+  if (!sheetOk && APPS_SCRIPT_URL) return;
+
+  // Update localStorage and displayed value
+  localStorage.setItem('mmi_user', newUser);
+  localStorage.setItem('mmi_custom_username', newUser);
+  const el = document.getElementById('pp-username');
+  if (el) el.textContent = newUser;
+
+  closeCuModal();
+  showToast('Username updated on all devices!', 'green');
+}
+
 function openCpwModal() {
   const overlay = document.getElementById('cpwOverlay');
   if (!overlay) return;
@@ -3284,11 +3811,12 @@ function closeCpwModal() {
   document.body.style.overflow = '';
 }
 
-function submitChangePassword() {
-  const currentInput  = document.getElementById('cpw-current');
-  const newInput      = document.getElementById('cpw-new');
-  const confirmInput  = document.getElementById('cpw-confirm');
-  const errorEl       = document.getElementById('cpwError');
+async function submitChangePassword() {
+  const currentInput = document.getElementById('cpw-current');
+  const newInput     = document.getElementById('cpw-new');
+  const confirmInput = document.getElementById('cpw-confirm');
+  const errorEl      = document.getElementById('cpwError');
+  const saveBtn      = document.getElementById('cpw-save-btn');
 
   const currentVal = currentInput  ? currentInput.value.trim()  : '';
   const newVal     = newInput      ? newInput.value.trim()      : '';
@@ -3296,89 +3824,56 @@ function submitChangePassword() {
 
   errorEl.textContent = '';
 
-  const username = localStorage.getItem('mmi_user') || '';
-  if (!username) {
-    errorEl.textContent = 'Session expired. Please log in again.';
-    return;
-  }
-
-  const dbKey       = username.replace(/\s+/g, '').toLowerCase();
-  const storedKey   = 'mmi_pw_' + dbKey;
-  const customPass  = localStorage.getItem(storedKey);
+  const dbKey       = (localStorage.getItem('mmi_dbkey') || (localStorage.getItem('mmi_user') || '').replace(/\s+/g,'').toLowerCase());
   const defaultPass = STUDENT_DB[dbKey] ? STUDENT_DB[dbKey].pass : '';
-  const activePass  = customPass || defaultPass;
+  const localPass   = localStorage.getItem('mmi_pw_' + dbKey);
+  const activePass  = localPass || defaultPass;
 
-  if (!currentVal) {
-    errorEl.textContent = 'Please enter your current password.';
-    return;
-  }
-  if (currentVal !== activePass) {
-    errorEl.textContent = 'Current password is incorrect.';
-    return;
-  }
-  if (newVal.length < 6) {
-    errorEl.textContent = 'New password must be at least 6 characters.';
-    return;
-  }
-  if (newVal !== confirmVal) {
-    errorEl.textContent = 'New passwords do not match.';
-    return;
-  }
-  if (newVal === activePass) {
-    errorEl.textContent = 'New password must be different from the current one.';
-    return;
+  if (!dbKey)               { errorEl.textContent = 'Session expired. Please log in again.'; return; }
+  if (!currentVal)          { errorEl.textContent = 'Please enter your current password.'; return; }
+  if (currentVal !== activePass) { errorEl.textContent = 'Current password is incorrect.'; return; }
+  if (newVal.length < 6)    { errorEl.textContent = 'New password must be at least 6 characters.'; return; }
+  if (newVal !== confirmVal){ errorEl.textContent = 'Passwords do not match.'; return; }
+  if (newVal === activePass){ errorEl.textContent = 'New password must be different from the current one.'; return; }
+
+  if (saveBtn) { saveBtn.disabled = true; saveBtn.textContent = 'Saving…'; }
+
+  // POST to Apps Script → syncs across all devices
+  let sheetOk = false;
+  if (APPS_SCRIPT_URL) {
+    try {
+      const res  = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST', redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({ type: 'updatecreds', key: dbKey, currentPass: currentVal, defaultPass, newPassword: newVal })
+      });
+      const data = await res.json();
+      if (data.success) sheetOk = true;
+      else errorEl.textContent = data.error || 'Could not save. Try again.';
+    } catch (_) {
+      errorEl.textContent = 'Network error — password saved locally only.';
+    }
   }
 
-  localStorage.setItem(storedKey, newVal);
-  closeCpwModal();
-  showToast('Password updated successfully!', 'green');
+  // Always update localStorage cache (works offline / as fallback)
+  localStorage.setItem('mmi_pw_' + dbKey, newVal);
+
+  if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = 'Save'; }
+
+  if (sheetOk || !APPS_SCRIPT_URL) {
+    closeCpwModal();
+    showToast(sheetOk ? 'Password updated on all devices!' : 'Password updated locally.', 'green');
+  }
 }
 
 /* ═══════════════════════════════════════════════════
-   SCHOOL CALENDAR
-   Data extracted from monthly PDF calendars.
+   SCHOOL CALENDAR  (populated dynamically from Google Sheets)
    Each day entry: [type, description]
    Types: holiday | special | activity | montessori |
           karate | writing | craft | rhyme | dance |
           culture | story | outdoor
 ═══════════════════════════════════════════════════ */
-const SCHOOL_CALENDAR = {
-  '2026-05': {
-    title:  'May 2026',
-    grade:  'Playgroup – Azalea',
-    theme:  'Our Helping Heroes (Community Helpers)',
-    notes: [
-      'Kids to dress up as their favourite Community Helper on 15th May 2026.',
-      'Children to come in Party dress on 29th May 2026 for the Fun Party.'
-    ],
-    days: {
-      1:  [['holiday','Labor Day'],['holiday','Buddha Purnima Holiday']],
-      4:  [['special','Labor Day Celebration'],['activity','Circle time · Theme Board: Community Helper'],['montessori','Transferring Beans (bowl to bowl)'],['rhyme','Rhyme Book: The Mulberry (p.12)'],['dance','Dance time']],
-      5:  [['activity','Circle time · Theme Board: Community Helper'],['writing','Pre-writing (p.2–3)'],['craft','Art & Craft: Scribbling'],['karate','Karate Class']],
-      6:  [['activity','Circle time · Community Helpers (Policeman)'],['writing','Worksheet: Matching pictures'],['montessori','Transferring Beans (Reinforcement)'],['rhyme','Rhyme Book: The Mulberry (p.12)'],['dance','Dance time']],
-      7:  [['activity','Circle time · Things used by Policeman'],['writing','Pre-writing (p.4–5)'],['montessori','Sand Paper tracing (a, b)'],['karate','Karate Class']],
-      8:  [['activity','Circle time · Importance of Mom'],['craft','Craft: Mother\'s Day Card'],['outdoor','Craft Outdoor · Play / Slides']],
-      9:  [['special','Mother\'s Day Celebration']],
-      10: [['special','Mother\'s Day']],
-      11: [['activity','Circle time · Community Helpers (Doctor)'],['montessori','Pouring Beans into different containers'],['rhyme','Rhyme Book: Strawberry (p.14)'],['dance','Dance time']],
-      12: [['activity','Circle time · Things used by Doctor'],['special','Doctor visits the School'],['rhyme','Rhyme Book: Strawberry (p.14)'],['karate','Karate Class']],
-      13: [['activity','Circle time · Community Helpers (Teacher)'],['montessori','Pouring Beans (Reinforcement)'],['writing','Pre-writing Workbook (p.6–7)'],['rhyme','Rhyme Book: Strawberry (p.14)'],['dance','Dance time']],
-      14: [['activity','Thematic Activity: Thank You Walk'],['montessori','Knobbed Cylinder I'],['story','Story Time: Be Kind & Say Thank You'],['rhyme','Rhyme Book: Strawberry (p.14)'],['karate','Karate Class']],
-      15: [['special','Role Play Day (Dress as a Community Helper)'],['craft','Scribbling'],['rhyme','Rhyme Book: Strawberry (p.14)']],
-      18: [['activity','Circle time · Introduction to Summer Season'],['culture','Culture Workbook (p.4–5)'],['montessori','Transferring Pom Pom balls with spoon'],['rhyme','Hindi Rhyme (p.18)'],['dance','Dance time']],
-      19: [['activity','Circle time · Summer Fruit Flash Cards'],['culture','Culture Workbook (p.6–7)'],['montessori','Broad Stairs'],['rhyme','Hindi Rhyme (p.18)'],['karate','Karate Class']],
-      20: [['activity','Summer Fruit & Flash Cards (Reinforcement)'],['culture','Culture Workbook (p.8–9)'],['rhyme','Hindi Rhyme (p.18)'],['dance','Dance time']],
-      21: [['activity','Summer Vegetables Flash Cards'],['writing','Pre-Writing Workbook (p.8–9)'],['culture','Culture Workbook (p.10)'],['rhyme','Hindi Rhyme (p.18)'],['karate','Karate Class']],
-      22: [['special','Mango Day Celebration'],['culture','Culture Workbook (p.11–12)'],['craft','Art & Craft: Colouring the Mango'],['rhyme','Hindi Rhyme (p.18)']],
-      25: [['activity','Summer Vegetables (Reinforcement)'],['montessori','Sand Paper tracing (Reinforcement)'],['rhyme','Rhyme (p.19)'],['dance','Dance time']],
-      26: [['activity','Reinforcement of Fruits & Vegetables'],['writing','Pre-Writing Workbook (p.10–11)'],['rhyme','Rhyme (p.19)'],['karate','Karate Class']],
-      27: [['holiday','Eid-ul-Azha Holiday']],
-      28: [['holiday','Eid-ul-Azha Holiday']],
-      29: [['special','Fun Party'],['special','Eid Celebration (Come in Party Dress)']],
-    }
-  },
-  '2026-06': null   // Coming soon — will be added when calendar is provided
-};
+let SCHOOL_CALENDAR = {};
 
 /* ─────────────────────────────────────────
    SCHOOL CALENDAR STATE
@@ -3505,19 +4000,9 @@ function renderSchoolCalendar(key) {
       <ul>${data.notes.map(n => `<li>${n}</li>`).join('')}</ul>
     </div>` : '';
 
-  // ── Legend
-  const legendTypes = [
-    ['holiday','Holiday'],['special','Special Event'],['activity','Activity'],
-    ['montessori','Montessori'],['karate','Karate'],['writing','Workbook'],
-    ['craft','Art & Craft'],['rhyme','Rhyme / Dance'],['culture','Culture']
-  ];
-  const legendHtml = `<div class="school-legend">
-    ${legendTypes.map(([t,l]) => `<span class="school-leg-item"><span class="school-dot school-dot-${t}"></span>${l}</span>`).join('')}
-  </div>`;
-
   container.innerHTML = banner
     + `<div class="school-cal-grid">${headHtml}${bodyHtml}</div>`
-    + detail + legendHtml + notesHtml;
+    + detail + notesHtml;
 
   if (schoolCalDay) schoolCalSelectDay(schoolCalDay, key);
 }
@@ -3554,7 +4039,6 @@ function schoolCalSelectDay(day, key) {
 
   const items = events.map(([type, text]) => `
     <div class="school-ev-row">
-      <span class="school-ev-tag school-etag-${type}">${SC_TAG_LABELS[type] || type}</span>
       <span class="school-ev-text">${text}</span>
     </div>`).join('');
 

@@ -634,6 +634,10 @@ body.dash-body { background: #f4f6f9; min-height: 100vh; }
 .pp-full { grid-column: 1 / -1; }
 .pp-field label { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 3px; }
 .pp-field p { font-size: 0.9rem; color: #1a1a1a; font-weight: 500; }
+.pp-input { display: none; width: 100%; border: 1.5px solid var(--border); border-radius: 6px; padding: 8px 11px; font-size: 0.9rem; font-family: inherit; color: #1a1a1a; background: #fafafa; transition: border-color 0.2s, box-shadow 0.2s; box-sizing: border-box; }
+.pp-input:focus { outline: none; border-color: var(--red); background: #fff; box-shadow: 0 0 0 3px rgba(196,30,58,0.08); }
+.pp-details-grid.editing .pp-editable > p { display: none; }
+.pp-details-grid.editing .pp-editable .pp-input { display: block; }
 .section-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
 .tbl-link { color: var(--green); font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; }
 
