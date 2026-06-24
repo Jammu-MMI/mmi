@@ -19,6 +19,8 @@ const CLASS_FOLDERS = {
   'nursery':      '1CrOUF4WDjUYOrRG9FY8rXUCLsbIwcz_x',
   'pre-nursery':  '17XWjwg1z98d5Nr_FTAhGtHT6-XCzomeu'
 };
+// Images placed here are visible to ALL students regardless of class.
+const SHARED_GALLERY_FOLDER_ID = '1FfmMbigOAScA1naLmjUeFSb4VlTXQ6iI';
 const ATTENDANCE_SHEET_ID  = '1_QJnpEm1x5AYdLO_btG5iXKmzZKTRG4fvSMICUX5tEw';
 
 // Main "MMI Calendar PDFs" Drive folder — contains one subfolder per class.
@@ -127,11 +129,13 @@ function getCalendarPDFs(cls, section) {
   }
 }
 
-// Maps folder class code → frontend key used by the portal (k / n / p)
+// Maps folder class code → frontend key used by the portal (k / n / p / pg / t)
 function _classFolderKey(code) {
-  if (code === 'K')                      return 'k';
-  if (code === 'N')                      return 'n';
-  return 'p'; // PN, P, T → p
+  if (code === 'K')  return 'k';
+  if (code === 'N')  return 'n';
+  if (code === 'P')  return 'pg';
+  if (code === 'T')  return 't';
+  return 'p'; // PN → Pre-Nursery
 }
 
 // Detects class from subfolder name (case-insensitive)
@@ -250,12 +254,6 @@ function updateCredentials(key, currentPass, defaultPass, newUsername, newPasswo
 // Images inside a subfolder named after the student's username → that student only.
 function getGalleryImages(cls, student) {
   try {
-    const normalised = (cls === 'playgroup' || cls === 'toddlers') ? 'pre-nursery' : cls;
-    const folderId   = CLASS_FOLDERS[normalised];
-    if (!folderId || folderId.startsWith('PASTE_')) {
-      return { images: [], error: 'No folder configured for class: ' + cls };
-    }
-    const folder = DriveApp.getFolderById(folderId);
     const images = [];
 
     function collectImages(f) {
@@ -273,13 +271,41 @@ function getGalleryImages(cls, student) {
       }
     }
 
-    // Class-wide images (root of class folder)
-    collectImages(folder);
+    // Helper: find a subfolder by name (case-insensitive)
+    function _subfolderByName(parent, name) {
+      const target = name.toLowerCase();
+      const it = parent.getFolders();
+      while (it.hasNext()) {
+        const f = it.next();
+        if (f.getName().toLowerCase() === target) return f;
+      }
+      return null;
+    }
+
+    // Shared images visible to all students (root of main gallery folder)
+    const sharedFolder = SHARED_GALLERY_FOLDER_ID ? DriveApp.getFolderById(SHARED_GALLERY_FOLDER_ID) : null;
+    if (sharedFolder) {
+      try { collectImages(sharedFolder); } catch (_) {}
+    }
+
+    // Resolve the class-specific gallery folder
+    let classFolder = null;
+    if (CLASS_FOLDERS[cls] && !CLASS_FOLDERS[cls].startsWith('PASTE_')) {
+      classFolder = DriveApp.getFolderById(CLASS_FOLDERS[cls]);
+    } else if (sharedFolder && (cls === 'playgroup' || cls === 'toddlers')) {
+      // Playgroup / Toddlers live as subfolders inside the shared gallery folder
+      classFolder = _subfolderByName(sharedFolder, cls);
+    }
+
+    if (!classFolder) return { images: images }; // only shared images
+
+    // Class-wide images
+    collectImages(classFolder);
 
     // Student-specific images (subfolder named after username)
     if (student) {
-      const subs = folder.getFoldersByName(student);
-      if (subs.hasNext()) collectImages(subs.next());
+      const sub = _subfolderByName(classFolder, student);
+      if (sub) collectImages(sub);
     }
 
     images.sort((a, b) => a.name.localeCompare(b.name));

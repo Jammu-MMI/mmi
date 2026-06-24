@@ -2702,9 +2702,13 @@ const STUDENT_DB = {
   'testpg1': { username: 'testpg1', pass: 'TESTpg001', name: 'Test Playgroup One',  role: 'student', roll: '910', class: 'Playgroup',     gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'azalea'    },
   'testpg2': { username: 'testpg2', pass: 'TESTpg002', name: 'Test Playgroup Two',  role: 'student', roll: '911', class: 'Playgroup',     gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'buttercup' },
   'testpg3': { username: 'testpg3', pass: 'TESTpg003', name: 'Test Playgroup Three',role: 'student', roll: '912', class: 'Playgroup',     gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'azalea'    },
-  'testt1':  { username: 'testt1',  pass: 'TESTt001',  name: 'Test Toddlers One',   role: 'student', roll: '913', class: 'Toddlers',      gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: ''           },
-  'testt2':  { username: 'testt2',  pass: 'TESTt002',  name: 'Test Toddlers Two',   role: 'student', roll: '914', class: 'Toddlers',      gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: ''           },
-  'testt3':  { username: 'testt3',  pass: 'TESTt003',  name: 'Test Toddlers Three', role: 'student', roll: '915', class: 'Toddlers',      gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: ''           },
+  'testt1':  { username: 'testt1',  pass: 'TESTt001',  name: 'Test Toddlers One',    role: 'student', roll: '913', class: 'Toddlers',  gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
+  'testt2':  { username: 'testt2',  pass: 'TESTt002',  name: 'Test Toddlers Two',    role: 'student', roll: '914', class: 'Toddlers',  gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
+  'testt3':  { username: 'testt3',  pass: 'TESTt003',  name: 'Test Toddlers Three',  role: 'student', roll: '915', class: 'Toddlers',  gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
+  'testpg4': { username: 'testpg4', pass: 'TESTpg004', name: 'Test Playgroup Four',  role: 'student', roll: '916', class: 'Playgroup', gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
+  'testpg5': { username: 'testpg5', pass: 'TESTpg005', name: 'Test Playgroup Five',  role: 'student', roll: '917', class: 'Playgroup', gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
+  'testt4':  { username: 'testt4',  pass: 'TESTt004',  name: 'Test Toddlers Four',   role: 'student', roll: '918', class: 'Toddlers',  gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
+  'testt5':  { username: 'testt5',  pass: 'TESTt005',  name: 'Test Toddlers Five',   role: 'student', roll: '919', class: 'Toddlers',  gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
 };
 
 
@@ -3401,8 +3405,9 @@ function classToNotifKey(cls) {
   const c = (cls || '').toLowerCase().trim();
   if (c === 'kindergarten' || c === 'k' || c === 'kg') return 'k';
   if (c === 'nursery'      || c === 'n' || c === 'nr') return 'n';
-  // Pre-Nursery, Playgroup, Toddlers, PN, P, T all map to p
-  return 'p';
+  if (c === 'playgroup'    || c === 'pg')               return 'pg';
+  if (c === 'toddlers'     || c === 't')                return 't';
+  return 'p'; // Pre-Nursery / PN
 }
 
 async function loadNotifications() {
@@ -3443,7 +3448,9 @@ async function loadNotifications() {
   const username = (localStorage.getItem('mmi_user') || '').toLowerCase().replace(/\s+/g, '');
   const filtered = rows.filter(r => {
     const cls = (r.class || '').toLowerCase().trim();
-    return cls === 'all' || cls === studentKey || cls === username;
+    // 'p' in the sheet covers all pre-nursery-group classes (pre-nursery, playgroup, toddlers)
+    const isPGroup = cls === 'p' && ['p', 'pg', 't'].includes(studentKey);
+    return cls === 'all' || cls === studentKey || cls === username || isPGroup;
   });
 
   if (!filtered.length) {
@@ -3730,8 +3737,9 @@ function cancelEditProfile() {
 function openCuModal() {
   const overlay = document.getElementById('cuOverlay');
   if (!overlay) return;
-  document.getElementById('cu-new').value  = '';
-  document.getElementById('cu-pass').value = '';
+  document.getElementById('cu-new').value   = '';
+  document.getElementById('cu-admin').value = '';
+  document.getElementById('cu-pass').value  = '';
   document.getElementById('cuError').textContent = '';
   overlay.style.display = 'flex';
   document.body.style.overflow = 'hidden';
@@ -3745,10 +3753,11 @@ function closeCuModal() {
 }
 
 async function submitChangeUsername() {
-  const newUser  = (document.getElementById('cu-new').value  || '').trim();
-  const password = (document.getElementById('cu-pass').value || '').trim();
-  const errorEl  = document.getElementById('cuError');
-  const saveBtn  = document.getElementById('cu-save-btn');
+  const newUser    = (document.getElementById('cu-new').value   || '').trim();
+  const adminPass  = (document.getElementById('cu-admin').value || '').trim();
+  const password   = (document.getElementById('cu-pass').value  || '').trim();
+  const errorEl    = document.getElementById('cuError');
+  const saveBtn    = document.getElementById('cu-save-btn');
 
   errorEl.textContent = '';
 
@@ -3757,8 +3766,10 @@ async function submitChangeUsername() {
   const localPass   = localStorage.getItem('mmi_pw_' + dbKey);
   const activePass  = localPass || defaultPass;
 
-  if (!newUser)   { errorEl.textContent = 'Please enter a new username.'; return; }
-  if (!password)  { errorEl.textContent = 'Please enter your current password.'; return; }
+  if (!newUser)              { errorEl.textContent = 'Please enter a new username.'; return; }
+  if (!adminPass)            { errorEl.textContent = 'Please enter the admin password.'; return; }
+  if (adminPass !== 'mmi@2018') { errorEl.textContent = 'Admin password is incorrect.'; return; }
+  if (!password)             { errorEl.textContent = 'Please enter your current password.'; return; }
   if (password !== activePass) { errorEl.textContent = 'Current password is incorrect.'; return; }
   if (newUser.toLowerCase().replace(/\s+/g,'') === (localStorage.getItem('mmi_user') || '').toLowerCase().replace(/\s+/g,'')) {
     errorEl.textContent = 'New username must be different from the current one.'; return;
