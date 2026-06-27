@@ -23,27 +23,29 @@
 const _SID     = '1_QJnpEm1x5AYdLO_btG5iXKmzZKTRG4fvSMICUX5tEw'; // Notifications sheet
 const _SID_KG  = '1BKuvYCIWO0xyzuBI9hBNGlAr5JriDa6VLVjyfww2rmI'; // Kindergarten attendance
 const _SID_N   = '1YOglB9jn9KikFuODpHhXZVYTQyCPsz4gWfmxwRmrslI'; // Nursery attendance
-const _SID_PN  = '16SN8wDhv412Q52hIMJbVXxE2RKjYNh2opOKeUAH6l3U'; // Pre-Nursery/Playgroup/Toddlers attendance
+const _SID_PN  = '16SN8wDhv412Q52hIMJbVXxE2RKjYNh2opOKeUAH6l3U'; // Pre-Nursery attendance
+const _SID_PG  = '1Wn-qWlL2mzvmBSnQHCt4wBo--HRor9fKwy6PstZDSGs'; // Playgroup attendance
+const _SID_T   = '1nHQtFqqytQKDwb0vyLy3289BDlbGEdjt0O5neFLsYSw'; // Toddlers attendance
 
 function _attUrl(sid, sheet) {
   return `https://docs.google.com/spreadsheets/d/${sid}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheet)}&_=${Date.now()}`;
 }
 
 const ATTENDANCE_MONTHS = [
-  { label: 'May 2026',       year: 2026, month:  4, urlKG: _attUrl(_SID_KG,'May 2026'),       urlN: _attUrl(_SID_N,'May 2026'),       urlPN: _attUrl(_SID_PN,'May 2026')       },
-  { label: 'June 2026',      year: 2026, month:  5, urlKG: _attUrl(_SID_KG,'June 2026'),      urlN: _attUrl(_SID_N,'June 2026'),      urlPN: _attUrl(_SID_PN,'June 2026')      },
-  { label: 'July 2026',      year: 2026, month:  6, urlKG: _attUrl(_SID_KG,'July 2026'),      urlN: _attUrl(_SID_N,'July 2026'),      urlPN: _attUrl(_SID_PN,'July 2026')      },
-  { label: 'August 2026',    year: 2026, month:  7, urlKG: _attUrl(_SID_KG,'August 2026'),    urlN: _attUrl(_SID_N,'August 2026'),    urlPN: _attUrl(_SID_PN,'August 2026')    },
-  { label: 'September 2026', year: 2026, month:  8, urlKG: _attUrl(_SID_KG,'September 2026'), urlN: _attUrl(_SID_N,'September 2026'), urlPN: _attUrl(_SID_PN,'September 2026') },
-  { label: 'October 2026',   year: 2026, month:  9, urlKG: _attUrl(_SID_KG,'October 2026'),   urlN: _attUrl(_SID_N,'October 2026'),   urlPN: _attUrl(_SID_PN,'October 2026')   },
-  { label: 'November 2026',  year: 2026, month: 10, urlKG: _attUrl(_SID_KG,'November 2026'),  urlN: _attUrl(_SID_N,'November 2026'),  urlPN: _attUrl(_SID_PN,'November 2026')  },
-  { label: 'December 2026',  year: 2026, month: 11, urlKG: _attUrl(_SID_KG,'December 2026'),  urlN: _attUrl(_SID_N,'December 2026'),  urlPN: _attUrl(_SID_PN,'December 2026')  },
-  { label: 'January 2027',   year: 2027, month:  0, urlKG: _attUrl(_SID_KG,'January 2027'),   urlN: _attUrl(_SID_N,'January 2027'),   urlPN: _attUrl(_SID_PN,'January 2027')   },
-  { label: 'February 2027',  year: 2027, month:  1, urlKG: _attUrl(_SID_KG,'February 2027'),  urlN: _attUrl(_SID_N,'February 2027'),  urlPN: _attUrl(_SID_PN,'February 2027')  },
-  { label: 'March 2027',     year: 2027, month:  2, urlKG: _attUrl(_SID_KG,'March 2027'),     urlN: _attUrl(_SID_N,'March 2027'),     urlPN: _attUrl(_SID_PN,'March 2027')     },
-  { label: 'April 2027',     year: 2027, month:  3, urlKG: _attUrl(_SID_KG,'April 2027'),     urlN: _attUrl(_SID_N,'April 2027'),     urlPN: _attUrl(_SID_PN,'April 2027')     },
-  { label: 'May 2027',       year: 2027, month:  4, urlKG: _attUrl(_SID_KG,'May 2027'),       urlN: _attUrl(_SID_N,'May 2027'),       urlPN: _attUrl(_SID_PN,'May 2027')       },
-  { label: 'June 2027',      year: 2027, month:  5, urlKG: _attUrl(_SID_KG,'June 2027'),      urlN: _attUrl(_SID_N,'June 2027'),      urlPN: _attUrl(_SID_PN,'June 2027')      },
+  { label: 'May 2026',       year: 2026, month:  4, urlKG: _attUrl(_SID_KG,'May 2026'),       urlN: _attUrl(_SID_N,'May 2026'),       urlPN: _attUrl(_SID_PN,'May 2026'),       urlPG: _attUrl(_SID_PG,'May 2026'), urlT: _attUrl(_SID_T,'May 2026') },
+  { label: 'June 2026',      year: 2026, month:  5, urlKG: _attUrl(_SID_KG,'June 2026'),      urlN: _attUrl(_SID_N,'June 2026'),      urlPN: _attUrl(_SID_PN,'June 2026'),      urlPG: _attUrl(_SID_PG,'June 2026'), urlT: _attUrl(_SID_T,'June 2026') },
+  { label: 'July 2026',      year: 2026, month:  6, urlKG: _attUrl(_SID_KG,'July 2026'),      urlN: _attUrl(_SID_N,'July 2026'),      urlPN: _attUrl(_SID_PN,'July 2026'),      urlPG: _attUrl(_SID_PG,'July 2026'), urlT: _attUrl(_SID_T,'July 2026') },
+  { label: 'August 2026',    year: 2026, month:  7, urlKG: _attUrl(_SID_KG,'August 2026'),    urlN: _attUrl(_SID_N,'August 2026'),    urlPN: _attUrl(_SID_PN,'August 2026'),    urlPG: _attUrl(_SID_PG,'August 2026'), urlT: _attUrl(_SID_T,'August 2026') },
+  { label: 'September 2026', year: 2026, month:  8, urlKG: _attUrl(_SID_KG,'September 2026'), urlN: _attUrl(_SID_N,'September 2026'), urlPN: _attUrl(_SID_PN,'September 2026'), urlPG: _attUrl(_SID_PG,'September 2026'), urlT: _attUrl(_SID_T,'September 2026') },
+  { label: 'October 2026',   year: 2026, month:  9, urlKG: _attUrl(_SID_KG,'October 2026'),   urlN: _attUrl(_SID_N,'October 2026'),   urlPN: _attUrl(_SID_PN,'October 2026'),   urlPG: _attUrl(_SID_PG,'October 2026'), urlT: _attUrl(_SID_T,'October 2026') },
+  { label: 'November 2026',  year: 2026, month: 10, urlKG: _attUrl(_SID_KG,'November 2026'),  urlN: _attUrl(_SID_N,'November 2026'),  urlPN: _attUrl(_SID_PN,'November 2026'),  urlPG: _attUrl(_SID_PG,'November 2026'), urlT: _attUrl(_SID_T,'November 2026') },
+  { label: 'December 2026',  year: 2026, month: 11, urlKG: _attUrl(_SID_KG,'December 2026'),  urlN: _attUrl(_SID_N,'December 2026'),  urlPN: _attUrl(_SID_PN,'December 2026'),  urlPG: _attUrl(_SID_PG,'December 2026'), urlT: _attUrl(_SID_T,'December 2026') },
+  { label: 'January 2027',   year: 2027, month:  0, urlKG: _attUrl(_SID_KG,'January 2027'),   urlN: _attUrl(_SID_N,'January 2027'),   urlPN: _attUrl(_SID_PN,'January 2027'),   urlPG: _attUrl(_SID_PG,'January 2027'), urlT: _attUrl(_SID_T,'January 2027') },
+  { label: 'February 2027',  year: 2027, month:  1, urlKG: _attUrl(_SID_KG,'February 2027'),  urlN: _attUrl(_SID_N,'February 2027'),  urlPN: _attUrl(_SID_PN,'February 2027'),  urlPG: _attUrl(_SID_PG,'February 2027'), urlT: _attUrl(_SID_T,'February 2027') },
+  { label: 'March 2027',     year: 2027, month:  2, urlKG: _attUrl(_SID_KG,'March 2027'),     urlN: _attUrl(_SID_N,'March 2027'),     urlPN: _attUrl(_SID_PN,'March 2027'),     urlPG: _attUrl(_SID_PG,'March 2027'), urlT: _attUrl(_SID_T,'March 2027') },
+  { label: 'April 2027',     year: 2027, month:  3, urlKG: _attUrl(_SID_KG,'April 2027'),     urlN: _attUrl(_SID_N,'April 2027'),     urlPN: _attUrl(_SID_PN,'April 2027'),     urlPG: _attUrl(_SID_PG,'April 2027'), urlT: _attUrl(_SID_T,'April 2027') },
+  { label: 'May 2027',       year: 2027, month:  4, urlKG: _attUrl(_SID_KG,'May 2027'),       urlN: _attUrl(_SID_N,'May 2027'),       urlPN: _attUrl(_SID_PN,'May 2027'),       urlPG: _attUrl(_SID_PG,'May 2027'), urlT: _attUrl(_SID_T,'May 2027') },
+  { label: 'June 2027',      year: 2027, month:  5, urlKG: _attUrl(_SID_KG,'June 2027'),      urlN: _attUrl(_SID_N,'June 2027'),      urlPN: _attUrl(_SID_PN,'June 2027'),      urlPG: _attUrl(_SID_PG,'June 2027'), urlT: _attUrl(_SID_T,'June 2027') },
 ];
 // ────────────────────────────────────────────────────────
 
@@ -3069,7 +3071,9 @@ function _getAttUrlForClass(m) {
   const cls = (localStorage.getItem('mmi_class') || '').toLowerCase().trim();
   if (cls === 'kindergarten') return m.urlKG;
   if (cls === 'nursery')      return m.urlN;
-  return m.urlPN; // Pre-Nursery, Playgroup, Toddlers
+  if (cls === 'playgroup')    return m.urlPG;
+  if (cls === 'toddlers')     return m.urlT;
+  return m.urlPN; // Pre-Nursery
 }
 
 async function loadAllAttendance() {
