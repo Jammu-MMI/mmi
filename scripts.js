@@ -3397,11 +3397,13 @@ async function loadDriveGallery() {
    Reads the "Notifications" tab from the same
    Google Sheet. Filters by student class or "all".
 
-   Sheet class keywords:
+   Sheet class keywords (each class separate):
      all  → every student
      K    → Kindergarten
      N    → Nursery
-     P    → Pre-Nursery / Playgroup / Toddlers
+     P    → Pre-Nursery
+     PG   → Playgroup
+     T    → Toddlers
 ───────────────────────────────────────── */
 
 // Map the stored class name → sheet keyword
@@ -3419,7 +3421,7 @@ async function loadNotifications() {
   if (!list) return;
 
   const storedClass = localStorage.getItem('mmi_class') || '';
-  const studentKey  = classToNotifKey(storedClass);   // 'k' | 'n' | 'p'
+  const studentKey  = classToNotifKey(storedClass);   // 'k' | 'n' | 'p' | 'pg' | 't'
 
   // Fetch with up to 3 attempts; reject HTML error pages returned by Google's CDN
   let text = '';
@@ -3452,9 +3454,8 @@ async function loadNotifications() {
   const username = (localStorage.getItem('mmi_user') || '').toLowerCase().replace(/\s+/g, '');
   const filtered = rows.filter(r => {
     const cls = (r.class || '').toLowerCase().trim();
-    // 'p' in the sheet covers all pre-nursery-group classes (pre-nursery, playgroup, toddlers)
-    const isPGroup = cls === 'p' && ['p', 'pg', 't'].includes(studentKey);
-    return cls === 'all' || cls === studentKey || cls === username || isPGroup;
+    // Each class is targeted separately: p = Pre-Nursery, pg = Playgroup, t = Toddlers
+    return cls === 'all' || cls === studentKey || cls === username;
   });
 
   if (!filtered.length) {
