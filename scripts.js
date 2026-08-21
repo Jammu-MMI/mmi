@@ -3463,12 +3463,22 @@ async function loadNotifications() {
     return;
   }
 
-  // Sort newest first
-  filtered.sort((a, b) => {
-    const da = new Date(normalizeDate(a.date) || a.date);
-    const db = new Date(normalizeDate(b.date) || b.date);
-    return db - da;
-  });
+  // Parse notification dates (MM/DD/YY or MM/DD/YYYY format)
+  const parseNotifDate = (raw) => {
+    if (!raw) return new Date(0);
+    const s = raw.toString().trim().split('T')[0];
+    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return new Date(s);
+    const parts = s.split('/');
+    if (parts.length === 3) {
+      let [m, d, y] = parts.map(p => p.trim());
+      if (y.length <= 2) y = '20' + y.padStart(2, '0');
+      return new Date(`${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`);
+    }
+    return new Date(s);
+  };
+
+  // Sort all notifications newest first
+  filtered.sort((a, b) => parseNotifDate(b.date) - parseNotifDate(a.date));
 
   list.innerHTML = filtered.map(r => {
     const message = r.message || r.text || '';
