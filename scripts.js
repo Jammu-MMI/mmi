@@ -20,32 +20,166 @@
 // e.g. "June 2026", "July 2026", … "June 2027"
 // Import the corresponding CSV → File → Share → Publish to web
 // → select the tab → CSV → Publish → copy the URL into the url field.
-const _SID     = '1_QJnpEm1x5AYdLO_btG5iXKmzZKTRG4fvSMICUX5tEw'; // Notifications sheet
-const _SID_KG  = '1BKuvYCIWO0xyzuBI9hBNGlAr5JriDa6VLVjyfww2rmI'; // Kindergarten attendance
-const _SID_N   = '1YOglB9jn9KikFuODpHhXZVYTQyCPsz4gWfmxwRmrslI'; // Nursery attendance
-const _SID_PN  = '16SN8wDhv412Q52hIMJbVXxE2RKjYNh2opOKeUAH6l3U'; // Pre-Nursery attendance
-const _SID_PG  = '1Wn-qWlL2mzvmBSnQHCt4wBo--HRor9fKwy6PstZDSGs'; // Playgroup attendance
-const _SID_T   = '1nHQtFqqytQKDwb0vyLy3289BDlbGEdjt0O5neFLsYSw'; // Toddlers attendance
+const _SID =
+    '1_QJnpEm1x5AYdLO_btG5iXKmzZKTRG4fvSMICUX5tEw';  // Notifications sheet
+const _SID_KG =
+    '1BKuvYCIWO0xyzuBI9hBNGlAr5JriDa6VLVjyfww2rmI';  // Kindergarten attendance
+const _SID_N =
+    '1YOglB9jn9KikFuODpHhXZVYTQyCPsz4gWfmxwRmrslI';  // Nursery attendance
+const _SID_PN =
+    '16SN8wDhv412Q52hIMJbVXxE2RKjYNh2opOKeUAH6l3U';  // Pre-Nursery attendance
+const _SID_PG =
+    '1Wn-qWlL2mzvmBSnQHCt4wBo--HRor9fKwy6PstZDSGs';  // Playgroup attendance
+const _SID_T =
+    '1nHQtFqqytQKDwb0vyLy3289BDlbGEdjt0O5neFLsYSw';  // Toddlers attendance
 
 function _attUrl(sid, sheet) {
-  return `https://docs.google.com/spreadsheets/d/${sid}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheet)}&_=${Date.now()}`;
+  return `https://docs.google.com/spreadsheets/d/${
+      sid}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheet)}&_=${
+      Date.now()}`;
 }
 
 const ATTENDANCE_MONTHS = [
-  { label: 'May 2026',       year: 2026, month:  4, urlKG: _attUrl(_SID_KG,'May 2026'),       urlN: _attUrl(_SID_N,'May 2026'),       urlPN: _attUrl(_SID_PN,'May 2026'),       urlPG: _attUrl(_SID_PG,'May 2026'), urlT: _attUrl(_SID_T,'May 2026') },
-  { label: 'June 2026',      year: 2026, month:  5, urlKG: _attUrl(_SID_KG,'June 2026'),      urlN: _attUrl(_SID_N,'June 2026'),      urlPN: _attUrl(_SID_PN,'June 2026'),      urlPG: _attUrl(_SID_PG,'June 2026'), urlT: _attUrl(_SID_T,'June 2026') },
-  { label: 'July 2026',      year: 2026, month:  6, urlKG: _attUrl(_SID_KG,'July 2026'),      urlN: _attUrl(_SID_N,'July 2026'),      urlPN: _attUrl(_SID_PN,'July 2026'),      urlPG: _attUrl(_SID_PG,'July 2026'), urlT: _attUrl(_SID_T,'July 2026') },
-  { label: 'August 2026',    year: 2026, month:  7, urlKG: _attUrl(_SID_KG,'August 2026'),    urlN: _attUrl(_SID_N,'August 2026'),    urlPN: _attUrl(_SID_PN,'August 2026'),    urlPG: _attUrl(_SID_PG,'August 2026'), urlT: _attUrl(_SID_T,'August 2026') },
-  { label: 'September 2026', year: 2026, month:  8, urlKG: _attUrl(_SID_KG,'September 2026'), urlN: _attUrl(_SID_N,'September 2026'), urlPN: _attUrl(_SID_PN,'September 2026'), urlPG: _attUrl(_SID_PG,'September 2026'), urlT: _attUrl(_SID_T,'September 2026') },
-  { label: 'October 2026',   year: 2026, month:  9, urlKG: _attUrl(_SID_KG,'October 2026'),   urlN: _attUrl(_SID_N,'October 2026'),   urlPN: _attUrl(_SID_PN,'October 2026'),   urlPG: _attUrl(_SID_PG,'October 2026'), urlT: _attUrl(_SID_T,'October 2026') },
-  { label: 'November 2026',  year: 2026, month: 10, urlKG: _attUrl(_SID_KG,'November 2026'),  urlN: _attUrl(_SID_N,'November 2026'),  urlPN: _attUrl(_SID_PN,'November 2026'),  urlPG: _attUrl(_SID_PG,'November 2026'), urlT: _attUrl(_SID_T,'November 2026') },
-  { label: 'December 2026',  year: 2026, month: 11, urlKG: _attUrl(_SID_KG,'December 2026'),  urlN: _attUrl(_SID_N,'December 2026'),  urlPN: _attUrl(_SID_PN,'December 2026'),  urlPG: _attUrl(_SID_PG,'December 2026'), urlT: _attUrl(_SID_T,'December 2026') },
-  { label: 'January 2027',   year: 2027, month:  0, urlKG: _attUrl(_SID_KG,'January 2027'),   urlN: _attUrl(_SID_N,'January 2027'),   urlPN: _attUrl(_SID_PN,'January 2027'),   urlPG: _attUrl(_SID_PG,'January 2027'), urlT: _attUrl(_SID_T,'January 2027') },
-  { label: 'February 2027',  year: 2027, month:  1, urlKG: _attUrl(_SID_KG,'February 2027'),  urlN: _attUrl(_SID_N,'February 2027'),  urlPN: _attUrl(_SID_PN,'February 2027'),  urlPG: _attUrl(_SID_PG,'February 2027'), urlT: _attUrl(_SID_T,'February 2027') },
-  { label: 'March 2027',     year: 2027, month:  2, urlKG: _attUrl(_SID_KG,'March 2027'),     urlN: _attUrl(_SID_N,'March 2027'),     urlPN: _attUrl(_SID_PN,'March 2027'),     urlPG: _attUrl(_SID_PG,'March 2027'), urlT: _attUrl(_SID_T,'March 2027') },
-  { label: 'April 2027',     year: 2027, month:  3, urlKG: _attUrl(_SID_KG,'April 2027'),     urlN: _attUrl(_SID_N,'April 2027'),     urlPN: _attUrl(_SID_PN,'April 2027'),     urlPG: _attUrl(_SID_PG,'April 2027'), urlT: _attUrl(_SID_T,'April 2027') },
-  { label: 'May 2027',       year: 2027, month:  4, urlKG: _attUrl(_SID_KG,'May 2027'),       urlN: _attUrl(_SID_N,'May 2027'),       urlPN: _attUrl(_SID_PN,'May 2027'),       urlPG: _attUrl(_SID_PG,'May 2027'), urlT: _attUrl(_SID_T,'May 2027') },
-  { label: 'June 2027',      year: 2027, month:  5, urlKG: _attUrl(_SID_KG,'June 2027'),      urlN: _attUrl(_SID_N,'June 2027'),      urlPN: _attUrl(_SID_PN,'June 2027'),      urlPG: _attUrl(_SID_PG,'June 2027'), urlT: _attUrl(_SID_T,'June 2027') },
+  {
+    label: 'May 2026',
+    year: 2026,
+    month: 4,
+    urlKG: _attUrl(_SID_KG, 'May 2026'),
+    urlN: _attUrl(_SID_N, 'May 2026'),
+    urlPN: _attUrl(_SID_PN, 'May 2026'),
+    urlPG: _attUrl(_SID_PG, 'May 2026'),
+    urlT: _attUrl(_SID_T, 'May 2026')
+  },
+  {
+    label: 'June 2026',
+    year: 2026,
+    month: 5,
+    urlKG: _attUrl(_SID_KG, 'June 2026'),
+    urlN: _attUrl(_SID_N, 'June 2026'),
+    urlPN: _attUrl(_SID_PN, 'June 2026'),
+    urlPG: _attUrl(_SID_PG, 'June 2026'),
+    urlT: _attUrl(_SID_T, 'June 2026')
+  },
+  {
+    label: 'July 2026',
+    year: 2026,
+    month: 6,
+    urlKG: _attUrl(_SID_KG, 'July 2026'),
+    urlN: _attUrl(_SID_N, 'July 2026'),
+    urlPN: _attUrl(_SID_PN, 'July 2026'),
+    urlPG: _attUrl(_SID_PG, 'July 2026'),
+    urlT: _attUrl(_SID_T, 'July 2026')
+  },
+  {
+    label: 'August 2026',
+    year: 2026,
+    month: 7,
+    urlKG: _attUrl(_SID_KG, 'August 2026'),
+    urlN: _attUrl(_SID_N, 'August 2026'),
+    urlPN: _attUrl(_SID_PN, 'August 2026'),
+    urlPG: _attUrl(_SID_PG, 'August 2026'),
+    urlT: _attUrl(_SID_T, 'August 2026')
+  },
+  {
+    label: 'September 2026',
+    year: 2026,
+    month: 8,
+    urlKG: _attUrl(_SID_KG, 'September 2026'),
+    urlN: _attUrl(_SID_N, 'September 2026'),
+    urlPN: _attUrl(_SID_PN, 'September 2026'),
+    urlPG: _attUrl(_SID_PG, 'September 2026'),
+    urlT: _attUrl(_SID_T, 'September 2026')
+  },
+  {
+    label: 'October 2026',
+    year: 2026,
+    month: 9,
+    urlKG: _attUrl(_SID_KG, 'October 2026'),
+    urlN: _attUrl(_SID_N, 'October 2026'),
+    urlPN: _attUrl(_SID_PN, 'October 2026'),
+    urlPG: _attUrl(_SID_PG, 'October 2026'),
+    urlT: _attUrl(_SID_T, 'October 2026')
+  },
+  {
+    label: 'November 2026',
+    year: 2026,
+    month: 10,
+    urlKG: _attUrl(_SID_KG, 'November 2026'),
+    urlN: _attUrl(_SID_N, 'November 2026'),
+    urlPN: _attUrl(_SID_PN, 'November 2026'),
+    urlPG: _attUrl(_SID_PG, 'November 2026'),
+    urlT: _attUrl(_SID_T, 'November 2026')
+  },
+  {
+    label: 'December 2026',
+    year: 2026,
+    month: 11,
+    urlKG: _attUrl(_SID_KG, 'December 2026'),
+    urlN: _attUrl(_SID_N, 'December 2026'),
+    urlPN: _attUrl(_SID_PN, 'December 2026'),
+    urlPG: _attUrl(_SID_PG, 'December 2026'),
+    urlT: _attUrl(_SID_T, 'December 2026')
+  },
+  {
+    label: 'January 2027',
+    year: 2027,
+    month: 0,
+    urlKG: _attUrl(_SID_KG, 'January 2027'),
+    urlN: _attUrl(_SID_N, 'January 2027'),
+    urlPN: _attUrl(_SID_PN, 'January 2027'),
+    urlPG: _attUrl(_SID_PG, 'January 2027'),
+    urlT: _attUrl(_SID_T, 'January 2027')
+  },
+  {
+    label: 'February 2027',
+    year: 2027,
+    month: 1,
+    urlKG: _attUrl(_SID_KG, 'February 2027'),
+    urlN: _attUrl(_SID_N, 'February 2027'),
+    urlPN: _attUrl(_SID_PN, 'February 2027'),
+    urlPG: _attUrl(_SID_PG, 'February 2027'),
+    urlT: _attUrl(_SID_T, 'February 2027')
+  },
+  {
+    label: 'March 2027',
+    year: 2027,
+    month: 2,
+    urlKG: _attUrl(_SID_KG, 'March 2027'),
+    urlN: _attUrl(_SID_N, 'March 2027'),
+    urlPN: _attUrl(_SID_PN, 'March 2027'),
+    urlPG: _attUrl(_SID_PG, 'March 2027'),
+    urlT: _attUrl(_SID_T, 'March 2027')
+  },
+  {
+    label: 'April 2027',
+    year: 2027,
+    month: 3,
+    urlKG: _attUrl(_SID_KG, 'April 2027'),
+    urlN: _attUrl(_SID_N, 'April 2027'),
+    urlPN: _attUrl(_SID_PN, 'April 2027'),
+    urlPG: _attUrl(_SID_PG, 'April 2027'),
+    urlT: _attUrl(_SID_T, 'April 2027')
+  },
+  {
+    label: 'May 2027',
+    year: 2027,
+    month: 4,
+    urlKG: _attUrl(_SID_KG, 'May 2027'),
+    urlN: _attUrl(_SID_N, 'May 2027'),
+    urlPN: _attUrl(_SID_PN, 'May 2027'),
+    urlPG: _attUrl(_SID_PG, 'May 2027'),
+    urlT: _attUrl(_SID_T, 'May 2027')
+  },
+  {
+    label: 'June 2027',
+    year: 2027,
+    month: 5,
+    urlKG: _attUrl(_SID_KG, 'June 2027'),
+    urlN: _attUrl(_SID_N, 'June 2027'),
+    urlPN: _attUrl(_SID_PN, 'June 2027'),
+    urlPG: _attUrl(_SID_PG, 'June 2027'),
+    urlT: _attUrl(_SID_T, 'June 2027')
+  },
 ];
 // ────────────────────────────────────────────────────────
 
@@ -60,25 +194,32 @@ const ATTENDANCE_MONTHS = [
 // class values: all  /  lkg  /  kg  /  ukg   (case-insensitive)
 // type  values: urgent  /  general  /  holiday
 //
-// No "publish to web" needed — uses gviz/tq like attendance (sheet must be shared "anyone with link can view")
-const NOTIFICATIONS_CSV_URL = `https://docs.google.com/spreadsheets/d/${_SID}/gviz/tq?tqx=out:csv&sheet=Notifications`;
+// No "publish to web" needed — uses gviz/tq like attendance (sheet must be
+// shared "anyone with link can view")
+const NOTIFICATIONS_CSV_URL = `https://docs.google.com/spreadsheets/d/${
+    _SID}/gviz/tq?tqx=out:csv&sheet=Notifications`;
 
 // ── CALENDAR CONFIG ──────────────────────────────────────
 // Same Google Sheet (_SID) — add a tab named exactly "Calendar".
 // Columns (row 1 headers, exact spelling):
 //   class  | date       | type     | description
 // class values : all / K / N / P
-//   all = all students · K = Kindergarten · N = Nursery · P = Pre-Nursery/Playgroup/Toddlers
-// date format  : YYYY-MM-DD for a single day · YYYY-MM for month-level rows (theme / note)
-// type values  : holiday | special | activity | montessori | karate | writing |
-//                craft | rhyme | dance | culture | story | outdoor | theme | note
-const CALENDAR_CSV_URL = `https://docs.google.com/spreadsheets/d/${_SID}/gviz/tq?tqx=out:csv&sheet=Calendar`;
+//   all = all students · K = Kindergarten · N = Nursery · P =
+//   Pre-Nursery/Playgroup/Toddlers
+// date format  : YYYY-MM-DD for a single day · YYYY-MM for month-level rows
+// (theme / note) type values  : holiday | special | activity | montessori |
+// karate | writing |
+//                craft | rhyme | dance | culture | story | outdoor | theme |
+//                note
+const CALENDAR_CSV_URL = `https://docs.google.com/spreadsheets/d/${
+    _SID}/gviz/tq?tqx=out:csv&sheet=Calendar`;
 // ────────────────────────────────────────────────────────
 
 // ── GALLERY CONFIG ──────────────────────────────────────
 // Apps Script Web App — auto-loads all images from the Drive folder.
 // Upload a photo to the Drive folder → appears on next page load.
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxO-RRHvilWHXjcMZjqV1OjujBLh5Ty6gRY0YZC7QylWsbwy17G7zTU-ReLFUKLBag/exec';
+const APPS_SCRIPT_URL =
+    'https://script.google.com/macros/s/AKfycbxO-RRHvilWHXjcMZjqV1OjujBLh5Ty6gRY0YZC7QylWsbwy17G7zTU-ReLFUKLBag/exec';
 
 /* ─────────────────────────────────────────
    STUDENT ACCOUNTS  (auto-generated from MMI-Data.xlsx)
@@ -2692,40 +2833,307 @@ const STUDENT_DB = {
     email: '',
     section: 'buttercup',
   },
-  'testkg1': { username: 'testkg1', pass: 'TESTkg001', name: 'Test KG One',         role: 'student', roll: '901', class: 'Kindergarten', gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'bloomers'  },
-  'testkg2': { username: 'testkg2', pass: 'TESTkg002', name: 'Test KG Two',         role: 'student', roll: '902', class: 'Kindergarten', gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'azalea'    },
-  'testkg3': { username: 'testkg3', pass: 'TESTkg003', name: 'Test KG Three',       role: 'student', roll: '903', class: 'Kindergarten', gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'bloomers'  },
-  'testn1':  { username: 'testn1',  pass: 'TESTn001',  name: 'Test Nursery One',    role: 'student', roll: '904', class: 'Nursery',       gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'azalea'    },
-  'testn2':  { username: 'testn2',  pass: 'TESTn002',  name: 'Test Nursery Two',    role: 'student', roll: '905', class: 'Nursery',       gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'buttercup' },
-  'testn3':  { username: 'testn3',  pass: 'TESTn003',  name: 'Test Nursery Three',  role: 'student', roll: '906', class: 'Nursery',       gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'azalea'    },
-  'testpn1': { username: 'testpn1', pass: 'TESTpn001', name: 'Test PN One',         role: 'student', roll: '907', class: 'Pre-Nursery',   gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'azalea'    },
-  'testpn2': { username: 'testpn2', pass: 'TESTpn002', name: 'Test PN Two',         role: 'student', roll: '908', class: 'Pre-Nursery',   gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'buttercup' },
-  'testpn3': { username: 'testpn3', pass: 'TESTpn003', name: 'Test PN Three',       role: 'student', roll: '909', class: 'Pre-Nursery',   gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'camellia'  },
-  'testpg1': { username: 'testpg1', pass: 'TESTpg001', name: 'Test Playgroup One',  role: 'student', roll: '910', class: 'Playgroup',     gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'azalea'    },
-  'testpg2': { username: 'testpg2', pass: 'TESTpg002', name: 'Test Playgroup Two',  role: 'student', roll: '911', class: 'Playgroup',     gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'buttercup' },
-  'testpg3': { username: 'testpg3', pass: 'TESTpg003', name: 'Test Playgroup Three',role: 'student', roll: '912', class: 'Playgroup',     gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: 'azalea'    },
-  'testt1':  { username: 'testt1',  pass: 'TESTt001',  name: 'Test Toddlers One',    role: 'student', roll: '913', class: 'Toddlers',  gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
-  'testt2':  { username: 'testt2',  pass: 'TESTt002',  name: 'Test Toddlers Two',    role: 'student', roll: '914', class: 'Toddlers',  gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
-  'testt3':  { username: 'testt3',  pass: 'TESTt003',  name: 'Test Toddlers Three',  role: 'student', roll: '915', class: 'Toddlers',  gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
-  'testpg4': { username: 'testpg4', pass: 'TESTpg004', name: 'Test Playgroup Four',  role: 'student', roll: '916', class: 'Playgroup', gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
-  'testpg5': { username: 'testpg5', pass: 'TESTpg005', name: 'Test Playgroup Five',  role: 'student', roll: '917', class: 'Playgroup', gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
-  'testt4':  { username: 'testt4',  pass: 'TESTt004',  name: 'Test Toddlers Four',   role: 'student', roll: '918', class: 'Toddlers',  gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
-  'testt5':  { username: 'testt5',  pass: 'TESTt005',  name: 'Test Toddlers Five',   role: 'student', roll: '919', class: 'Toddlers',  gender: '', father: '', fatherMob: '', mother: '', motherMob: '', email: '', section: '' },
+  'testkg1': {
+    username: 'testkg1',
+    pass: 'TESTkg001',
+    name: 'Test KG One',
+    role: 'student',
+    roll: '901',
+    class: 'Kindergarten',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'bloomers'
+  },
+  'testkg2': {
+    username: 'testkg2',
+    pass: 'TESTkg002',
+    name: 'Test KG Two',
+    role: 'student',
+    roll: '902',
+    class: 'Kindergarten',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'azalea'
+  },
+  'testkg3': {
+    username: 'testkg3',
+    pass: 'TESTkg003',
+    name: 'Test KG Three',
+    role: 'student',
+    roll: '903',
+    class: 'Kindergarten',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'bloomers'
+  },
+  'testn1': {
+    username: 'testn1',
+    pass: 'TESTn001',
+    name: 'Test Nursery One',
+    role: 'student',
+    roll: '904',
+    class: 'Nursery',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'azalea'
+  },
+  'testn2': {
+    username: 'testn2',
+    pass: 'TESTn002',
+    name: 'Test Nursery Two',
+    role: 'student',
+    roll: '905',
+    class: 'Nursery',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'buttercup'
+  },
+  'testn3': {
+    username: 'testn3',
+    pass: 'TESTn003',
+    name: 'Test Nursery Three',
+    role: 'student',
+    roll: '906',
+    class: 'Nursery',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'azalea'
+  },
+  'testpn1': {
+    username: 'testpn1',
+    pass: 'TESTpn001',
+    name: 'Test PN One',
+    role: 'student',
+    roll: '907',
+    class: 'Pre-Nursery',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'azalea'
+  },
+  'testpn2': {
+    username: 'testpn2',
+    pass: 'TESTpn002',
+    name: 'Test PN Two',
+    role: 'student',
+    roll: '908',
+    class: 'Pre-Nursery',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'buttercup'
+  },
+  'testpn3': {
+    username: 'testpn3',
+    pass: 'TESTpn003',
+    name: 'Test PN Three',
+    role: 'student',
+    roll: '909',
+    class: 'Pre-Nursery',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'camellia'
+  },
+  'testpg1': {
+    username: 'testpg1',
+    pass: 'TESTpg001',
+    name: 'Test Playgroup One',
+    role: 'student',
+    roll: '910',
+    class: 'Playgroup',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'azalea'
+  },
+  'testpg2': {
+    username: 'testpg2',
+    pass: 'TESTpg002',
+    name: 'Test Playgroup Two',
+    role: 'student',
+    roll: '911',
+    class: 'Playgroup',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'azalea'
+  },
+  'testpg3': {
+    username: 'testpg3',
+    pass: 'TESTpg003',
+    name: 'Test Playgroup Three',
+    role: 'student',
+    roll: '912',
+    class: 'Playgroup',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'azalea'
+  },
+  'testt1': {
+    username: 'testt1',
+    pass: 'TESTt001',
+    name: 'Test Toddlers One',
+    role: 'student',
+    roll: '913',
+    class: 'Toddlers',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: ''
+  },
+  'testt2': {
+    username: 'testt2',
+    pass: 'TESTt002',
+    name: 'Test Toddlers Two',
+    role: 'student',
+    roll: '914',
+    class: 'Toddlers',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: ''
+  },
+  'testt3': {
+    username: 'testt3',
+    pass: 'TESTt003',
+    name: 'Test Toddlers Three',
+    role: 'student',
+    roll: '915',
+    class: 'Toddlers',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: ''
+  },
+  'testpg4': {
+    username: 'testpg4',
+    pass: 'TESTpg004',
+    name: 'Test Playgroup Four',
+    role: 'student',
+    roll: '916',
+    class: 'Playgroup',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'buttercup'
+  },
+  'testpg5': {
+    username: 'testpg5',
+    pass: 'TESTpg005',
+    name: 'Test Playgroup Five',
+    role: 'student',
+    roll: '917',
+    class: 'Playgroup',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'buttercup'
+  },
+  'testt4': {
+    username: 'testt4',
+    pass: 'TESTt004',
+    name: 'Test Toddlers Four',
+    role: 'student',
+    roll: '918',
+    class: 'Toddlers',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: ''
+  },
+  'testt5': {
+    username: 'testt5',
+    pass: 'TESTt005',
+    name: 'Test Toddlers Five',
+    role: 'student',
+    roll: '919',
+    class: 'Toddlers',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: ''
+  },
 };
 
 
 /* ─────────────────────────────────────────
    MOBILE NAV TOGGLE
 ───────────────────────────────────────── */
-const navToggle  = document.getElementById('navToggle');
+const navToggle = document.getElementById('navToggle');
 const primaryNav = document.getElementById('primaryNav');
 if (navToggle && primaryNav) {
   navToggle.addEventListener('click', () => {
     primaryNav.classList.toggle('open');
   });
-  primaryNav.querySelectorAll('a:not(.has-sub > a)').forEach(l =>
-    l.addEventListener('click', () => primaryNav.classList.remove('open'))
-  );
+  primaryNav.querySelectorAll('a:not(.has-sub > a)')
+      .forEach(
+          l => l.addEventListener(
+              'click', () => primaryNav.classList.remove('open')));
 }
 
 /* ─────────────────────────────────────────
@@ -2733,9 +3141,9 @@ if (navToggle && primaryNav) {
 ───────────────────────────────────────── */
 window.addEventListener('scroll', () => {
   const h = document.getElementById('siteHeader');
-  if (h) h.style.boxShadow = window.scrollY > 10
-    ? '0 3px 14px rgba(0,0,0,0.12)'
-    : '0 1px 6px rgba(0,0,0,0.07)';
+  if (h)
+    h.style.boxShadow = window.scrollY > 10 ? '0 3px 14px rgba(0,0,0,0.12)' :
+                                              '0 1px 6px rgba(0,0,0,0.07)';
 });
 
 /* ─────────────────────────────────────────
@@ -2745,7 +3153,7 @@ function initSlider(containerId, prevId, nextId) {
   const container = document.getElementById(containerId);
   if (!container) return;
   const slides = container.querySelectorAll('.hero-slide');
-  const lines  = container.querySelectorAll('.slide-line');
+  const lines = container.querySelectorAll('.slide-line');
   if (!slides.length) return;
   let cur = 0, timer;
 
@@ -2756,26 +3164,42 @@ function initSlider(containerId, prevId, nextId) {
     slides[cur].classList.add('active');
     lines[cur] && lines[cur].classList.add('active');
   }
-  function startAuto() { timer = setInterval(() => goTo(cur + 1), 4500); }
-  function resetAuto()  { clearInterval(timer); startAuto(); }
+  function startAuto() {
+    timer = setInterval(() => goTo(cur + 1), 4500);
+  }
+  function resetAuto() {
+    clearInterval(timer);
+    startAuto();
+  }
 
   const p = document.getElementById(prevId);
   const n = document.getElementById(nextId);
-  if (p) p.addEventListener('click', () => { goTo(cur - 1); resetAuto(); });
-  if (n) n.addEventListener('click', () => { goTo(cur + 1); resetAuto(); });
-  lines.forEach(l => l.addEventListener('click', () => { goTo(parseInt(l.dataset.index)); resetAuto(); }));
+  if (p)
+    p.addEventListener('click', () => {
+      goTo(cur - 1);
+      resetAuto();
+    });
+  if (n)
+    n.addEventListener('click', () => {
+      goTo(cur + 1);
+      resetAuto();
+    });
+  lines.forEach(l => l.addEventListener('click', () => {
+    goTo(parseInt(l.dataset.index));
+    resetAuto();
+  }));
   startAuto();
 }
 
-initSlider('heroSlider',  'heroPrev',   'heroNext');
-initSlider('loginSlider', 'loginPrev',  'loginNext');
+initSlider('heroSlider', 'heroPrev', 'heroNext');
+initSlider('loginSlider', 'loginPrev', 'loginNext');
 
 /* ─────────────────────────────────────────
    TESTIMONIALS SLIDER
 ───────────────────────────────────────── */
 (function initTestiSlider() {
   const slides = document.querySelectorAll('.testi-slide');
-  const dots   = document.querySelectorAll('.testi-dot');
+  const dots = document.querySelectorAll('.testi-dot');
   if (!slides.length) return;
   let cur = 0, timer;
 
@@ -2786,12 +3210,28 @@ initSlider('loginSlider', 'loginPrev',  'loginNext');
     slides[cur].classList.add('active');
     dots[cur] && dots[cur].classList.add('active');
   }
-  function startAuto() { timer = setInterval(() => goTo(cur + 1), 5500); }
-  function resetAuto() { clearInterval(timer); startAuto(); }
+  function startAuto() {
+    timer = setInterval(() => goTo(cur + 1), 5500);
+  }
+  function resetAuto() {
+    clearInterval(timer);
+    startAuto();
+  }
 
-  document.getElementById('testiPrev') && document.getElementById('testiPrev').addEventListener('click', () => { goTo(cur - 1); resetAuto(); });
-  document.getElementById('testiNext') && document.getElementById('testiNext').addEventListener('click', () => { goTo(cur + 1); resetAuto(); });
-  dots.forEach(d => d.addEventListener('click', () => { goTo(parseInt(d.dataset.index)); resetAuto(); }));
+  document.getElementById('testiPrev') &&
+      document.getElementById('testiPrev').addEventListener('click', () => {
+        goTo(cur - 1);
+        resetAuto();
+      });
+  document.getElementById('testiNext') &&
+      document.getElementById('testiNext').addEventListener('click', () => {
+        goTo(cur + 1);
+        resetAuto();
+      });
+  dots.forEach(d => d.addEventListener('click', () => {
+    goTo(parseInt(d.dataset.index));
+    resetAuto();
+  }));
 
   startAuto();
 })();
@@ -2808,14 +3248,22 @@ function closePopup() {
   if (p) p.classList.remove('open');
 }
 
-['admissionBtn','admissionStripBtn','stickyAdmission','ttEnrolBtn'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) el.addEventListener('click', e => { e.preventDefault(); openPopup(); });
-});
+['admissionBtn', 'admissionStripBtn', 'stickyAdmission', 'ttEnrolBtn'].forEach(
+    id => {
+      const el = document.getElementById(id);
+      if (el)
+        el.addEventListener('click', e => {
+          e.preventDefault();
+          openPopup();
+        });
+    });
 const popupClose = document.getElementById('popupClose');
 if (popupClose) popupClose.addEventListener('click', closePopup);
 const admPop = document.getElementById('admissionPopup');
-if (admPop) admPop.addEventListener('click', e => { if (e.target === admPop) closePopup(); });
+if (admPop)
+  admPop.addEventListener('click', e => {
+    if (e.target === admPop) closePopup();
+  });
 
 function handleEnquiry(e) {
   e.preventDefault();
@@ -2828,11 +3276,12 @@ function handleEnquiry(e) {
    LOGIN PAGE TABS
 ───────────────────────────────────────── */
 function switchLoginTab(name, btn) {
-  document.querySelectorAll('.login-tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.login-tab-pane')
+      .forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.ltab').forEach(b => b.classList.remove('active'));
   const pane = document.getElementById('ltab-' + name);
   if (pane) pane.classList.add('active');
-  if (btn)  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
 /* ─────────────────────────────────────────
@@ -2852,70 +3301,86 @@ async function doLogin(e, role) {
       return;
     }
 
-    const submitBtn = document.querySelector('#st-login-form button[type="submit"], .login-submit-btn');
-    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Signing in…'; }
+    const submitBtn = document.querySelector(
+        '#st-login-form button[type="submit"], .login-submit-btn');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Signing in…';
+    }
 
     // ── Step 1: resolve account ──────────────────────────
-    let dbKey  = u.replace(/\s+/g, '').toLowerCase();
+    let dbKey = u.replace(/\s+/g, '').toLowerCase();
     let account = STUDENT_DB[dbKey];
 
     // Not found locally → could be a custom username set via the sheet
     if (!account && APPS_SCRIPT_URL) {
       try {
-        const r = await fetch(APPS_SCRIPT_URL + '?type=finduser&username=' + encodeURIComponent(dbKey));
+        const r = await fetch(
+            APPS_SCRIPT_URL +
+            '?type=finduser&username=' + encodeURIComponent(dbKey));
         const d = await r.json();
         if (d.found && d.key && STUDENT_DB[d.key]) {
-          dbKey   = d.key;
+          dbKey = d.key;
           account = STUDENT_DB[dbKey];
         }
-      } catch (_) { /* network error — continue */ }
+      } catch (_) { /* network error — continue */
+      }
     }
 
     if (!account || account.role !== 'student') {
       showToast('Incorrect username or password.', 'red');
-      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Sign In'; }
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign In';
+      }
       return;
     }
 
     // ── Step 2: determine valid password ─────────────────
     // Fast path: try the school-assigned default first (no network)
-    const localPw   = localStorage.getItem('mmi_pw_' + dbKey);
+    const localPw = localStorage.getItem('mmi_pw_' + dbKey);
     const defaultPw = account.pass;
-    let   validPass = localPw || defaultPw;
+    let validPass = localPw || defaultPw;
 
     if (p !== validPass && APPS_SCRIPT_URL) {
       // Default / local didn't match → fetch latest from sheet
       try {
-        const r = await fetch(APPS_SCRIPT_URL + '?type=getcreds&key=' + encodeURIComponent(dbKey));
+        const r = await fetch(
+            APPS_SCRIPT_URL +
+            '?type=getcreds&key=' + encodeURIComponent(dbKey));
         const d = await r.json();
         if (d.found && d.password) {
           validPass = d.password;
           // Cache locally so next login is instant
           localStorage.setItem('mmi_pw_' + dbKey, d.password);
         }
-      } catch (_) { /* network error — fall through */ }
+      } catch (_) { /* network error — fall through */
+      }
     }
 
     // ── Step 3: validate ─────────────────────────────────
     if (p !== validPass) {
       showToast('Incorrect username or password.', 'red');
-      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Sign In'; }
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign In';
+      }
       return;
     }
 
     // ── Step 4: store session and redirect ───────────────
-    localStorage.setItem('mmi_user',      u);
-    localStorage.setItem('mmi_dbkey',     dbKey);
-    localStorage.setItem('mmi_name',      account.name);
-    localStorage.setItem('mmi_roll',      account.roll);
-    localStorage.setItem('mmi_class',     account.class);
-    localStorage.setItem('mmi_gender',    account.gender    || '');
-    localStorage.setItem('mmi_father',    account.father    || '');
+    localStorage.setItem('mmi_user', u);
+    localStorage.setItem('mmi_dbkey', dbKey);
+    localStorage.setItem('mmi_name', account.name);
+    localStorage.setItem('mmi_roll', account.roll);
+    localStorage.setItem('mmi_class', account.class);
+    localStorage.setItem('mmi_gender', account.gender || '');
+    localStorage.setItem('mmi_father', account.father || '');
     localStorage.setItem('mmi_fatherMob', account.fatherMob || '');
-    localStorage.setItem('mmi_mother',    account.mother    || '');
+    localStorage.setItem('mmi_mother', account.mother || '');
     localStorage.setItem('mmi_motherMob', account.motherMob || '');
-    localStorage.setItem('mmi_email',     account.email     || '');
-    localStorage.setItem('mmi_section',   account.section   || '');
+    localStorage.setItem('mmi_email', account.email || '');
+    localStorage.setItem('mmi_section', account.section || '');
     showToast('Login successful! Loading your portal…', 'green');
     setTimeout(() => window.location.href = 'dashboard.html', 1200);
 
@@ -2930,31 +3395,37 @@ async function doLogin(e, role) {
    PASSWORD TOGGLE
 ───────────────────────────────────────── */
 function togglePw(inputId, iconId) {
-  const inp  = document.getElementById(inputId);
+  const inp = document.getElementById(inputId);
   const icon = document.getElementById(iconId);
   if (!inp) return;
   inp.type = inp.type === 'password' ? 'text' : 'password';
-  if (icon) icon.className = inp.type === 'password' ? 'fa fa-eye' : 'fa fa-eye-slash';
+  if (icon)
+    icon.className = inp.type === 'password' ? 'fa fa-eye' : 'fa fa-eye-slash';
 }
 
 /* ─────────────────────────────────────────
    DASHBOARD NAV
 ───────────────────────────────────────── */
 const SECTION_TITLES = {
-  home: 'Dashboard', profile: 'My Profile', calendar: 'Monthly Calendar'
+  home: 'Dashboard',
+  profile: 'My Profile',
+  calendar: 'Monthly Calendar'
 };
 
 function switchCalTab(month, btn) {
-  document.querySelectorAll('.cal-doc-pane').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.cal-doc-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.cal-doc-pane')
+      .forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.cal-doc-tab')
+      .forEach(b => b.classList.remove('active'));
   const pane = document.getElementById('caldoc-' + month);
   if (pane) pane.classList.add('active');
-  if (btn)  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
 function gotoSection(name, linkEl) {
   document.querySelectorAll('.dsec').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.dsb-link').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.dsb-link')
+      .forEach(l => l.classList.remove('active'));
 
   const sec = document.getElementById('sec-' + name);
   if (sec) sec.classList.add('active');
@@ -2974,13 +3445,19 @@ function gotoSection(name, linkEl) {
 ───────────────────────────────────────── */
 const dsbSidebar = document.getElementById('dashSidebar');
 const dsbOverlay = document.getElementById('dsbOverlay');
-const dsbToggle  = document.getElementById('dsbToggle');
-const dsbClose   = document.getElementById('dsbClose');
+const dsbToggle = document.getElementById('dsbToggle');
+const dsbClose = document.getElementById('dsbClose');
 
-function openDsbSidebar()  { dsbSidebar && dsbSidebar.classList.add('open'); dsbOverlay && dsbOverlay.classList.add('on'); }
-function closeDsbSidebar() { dsbSidebar && dsbSidebar.classList.remove('open'); dsbOverlay && dsbOverlay.classList.remove('on'); }
-if (dsbToggle)  dsbToggle.addEventListener('click', openDsbSidebar);
-if (dsbClose)   dsbClose.addEventListener('click', closeDsbSidebar);
+function openDsbSidebar() {
+  dsbSidebar && dsbSidebar.classList.add('open');
+  dsbOverlay && dsbOverlay.classList.add('on');
+}
+function closeDsbSidebar() {
+  dsbSidebar && dsbSidebar.classList.remove('open');
+  dsbOverlay && dsbOverlay.classList.remove('on');
+}
+if (dsbToggle) dsbToggle.addEventListener('click', openDsbSidebar);
+if (dsbClose) dsbClose.addEventListener('click', closeDsbSidebar);
 if (dsbOverlay) dsbOverlay.addEventListener('click', closeDsbSidebar);
 
 /* ─────────────────────────────────────────
@@ -3032,7 +3509,9 @@ function scRender(animate) {
   if (!animate) track.style.transition = 'none';
   track.style.transform = 'translateX(-' + (scIdx * slideW) + 'px)';
   if (!animate) {
-    requestAnimationFrame(() => { track.style.transition = ''; });
+    requestAnimationFrame(() => {
+      track.style.transition = '';
+    });
   }
 
   document.querySelectorAll('.sc-dot').forEach((d, i) => {
@@ -3043,8 +3522,8 @@ function scRender(animate) {
 /* ─────────────────────────────────────────
    ATTENDANCE CALENDAR
 ───────────────────────────────────────── */
-let calData     = {};  // 'YYYY-MM-DD' → 'P' or 'A'
-let calMonthIdx = 0;   // index into ATTENDANCE_MONTHS
+let calData = {};     // 'YYYY-MM-DD' → 'P' or 'A'
+let calMonthIdx = 0;  // index into ATTENDANCE_MONTHS
 
 // Normalises any date string to YYYY-MM-DD.
 // Handles: "2026-05-01", "5/1/2026", "01/05/2026", "Date(2026,4,1)" (gviz)
@@ -3056,7 +3535,8 @@ function normalizeDate(raw) {
   const gviz = s.match(/^Date\((\d+),(\d+),(\d+)\)$/);
   if (gviz) {
     const [, y, m, d] = gviz;
-    return `${y}-${String(Number(m) + 1).padStart(2, '0')}-${d.padStart(2, '0')}`;
+    return `${y}-${String(Number(m) + 1).padStart(2, '0')}-${
+        d.padStart(2, '0')}`;
   }
   // DD/MM/YYYY (used in notification/attendance CSVs)
   const slash = s.split('/');
@@ -3070,10 +3550,10 @@ function normalizeDate(raw) {
 function _getAttUrlForClass(m) {
   const cls = (localStorage.getItem('mmi_class') || '').toLowerCase().trim();
   if (cls === 'kindergarten') return m.urlKG;
-  if (cls === 'nursery')      return m.urlN;
-  if (cls === 'playgroup')    return m.urlPG;
-  if (cls === 'toddlers')     return m.urlT;
-  return m.urlPN; // Pre-Nursery
+  if (cls === 'nursery') return m.urlN;
+  if (cls === 'playgroup') return m.urlPG;
+  if (cls === 'toddlers') return m.urlT;
+  return m.urlPN;  // Pre-Nursery
 }
 
 async function loadAllAttendance() {
@@ -3082,7 +3562,8 @@ async function loadAllAttendance() {
 
   // Show the calendar immediately with the correct month (no data yet)
   const now = new Date();
-  const idx = ATTENDANCE_MONTHS.findIndex(m => m.year === now.getFullYear() && m.month === now.getMonth());
+  const idx = ATTENDANCE_MONTHS.findIndex(
+      m => m.year === now.getFullYear() && m.month === now.getMonth());
   calMonthIdx = idx >= 0 ? idx : 0;
   renderCalendar();
 
@@ -3091,17 +3572,21 @@ async function loadAllAttendance() {
     const url = _getAttUrlForClass(m);
     if (!url) return;
     try {
-      const res  = await fetch(url, { cache: 'no-store' });
+      const res = await fetch(url, {cache: 'no-store'});
       const text = await res.text();
       parseCSV(text)
-        .filter(r => (r.student || '').toLowerCase().trim() === student.toLowerCase())
-        .forEach(r => {
-          const date   = normalizeDate(r.date);
-          const status = (r.status || '').toString().toUpperCase().trim();
-          if (date && (status === 'P' || status === 'A')) calData[date] = status;
-        });
-      renderCalendar(); // update as each month's data arrives
-    } catch (_) {}
+          .filter(
+              r => (r.student || '').toLowerCase().trim() ===
+                  student.toLowerCase())
+          .forEach(r => {
+            const date = normalizeDate(r.date);
+            const status = (r.status || '').toString().toUpperCase().trim();
+            if (date && (status === 'P' || status === 'A'))
+              calData[date] = status;
+          });
+      renderCalendar();  // update as each month's data arrives
+    } catch (_) {
+    }
   }));
 }
 
@@ -3113,8 +3598,8 @@ function calNav(dir) {
 }
 
 function renderCalendar() {
-  const m       = ATTENDANCE_MONTHS[calMonthIdx];
-  const grid    = document.getElementById('calGrid');
+  const m = ATTENDANCE_MONTHS[calMonthIdx];
+  const grid = document.getElementById('calGrid');
   const titleEl = document.getElementById('calMonthTitle');
   if (!grid || !titleEl) return;
 
@@ -3126,65 +3611,77 @@ function renderCalendar() {
   if (prevBtn) prevBtn.disabled = calMonthIdx === 0;
   if (nextBtn) nextBtn.disabled = calMonthIdx === ATTENDANCE_MONTHS.length - 1;
 
-  const today        = new Date(); today.setHours(0, 0, 0, 0);
-  const daysInMonth  = new Date(m.year, m.month + 1, 0).getDate();
-  const firstDow     = new Date(m.year, m.month, 1).getDay(); // 0=Sun
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const daysInMonth = new Date(m.year, m.month + 1, 0).getDate();
+  const firstDow = new Date(m.year, m.month, 1).getDay();  // 0=Sun
   // Convert to Mon-based offset (Mon=0 … Sun=6)
-  const startOffset  = firstDow === 0 ? 6 : firstDow - 1;
+  const startOffset = firstDow === 0 ? 6 : firstDow - 1;
 
   let html = '';
   let present = 0, absent = 0;
 
   // Empty cells before the 1st
-  for (let i = 0; i < startOffset; i++) html += '<div class="cal-cell empty"></div>';
+  for (let i = 0; i < startOffset; i++)
+    html += '<div class="cal-cell empty"></div>';
 
   for (let d = 1; d <= daysInMonth; d++) {
-    const date    = new Date(m.year, m.month, d);
-    const dow     = date.getDay(); // 0=Sun
-    const dateStr = `${m.year}-${String(m.month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-    const status  = calData[dateStr];
+    const date = new Date(m.year, m.month, d);
+    const dow = date.getDay();  // 0=Sun
+    const dateStr = `${m.year}-${String(m.month + 1).padStart(2, '0')}-${
+        String(d).padStart(2, '0')}`;
+    const status = calData[dateStr];
     let cls = 'cal-cell';
 
     if (dow === 0) {
-      cls += ' no-school';           // Sunday
+      cls += ' no-school';  // Sunday
     } else if (date > today) {
-      cls += ' future';              // Not yet
+      cls += ' future';  // Not yet
     } else if (status === 'P') {
-      cls += ' present'; present++;
+      cls += ' present';
+      present++;
     } else if (status === 'A') {
-      cls += ' absent';  absent++;
+      cls += ' absent';
+      absent++;
     } else {
-      cls += ' no-data';             // Past school day, no record
+      cls += ' no-data';  // Past school day, no record
     }
 
     // Highlight today
     if (date.getTime() === today.getTime()) cls += ' today';
 
-    const badge = status === 'P' ? '<span class="cal-badge cal-p">P</span>'
-                : status === 'A' ? '<span class="cal-badge cal-a">A</span>'
-                : '';
-    html += `<div class="${cls}"><span class="cal-day-num">${d}</span>${badge}</div>`;
+    const badge = status === 'P' ? '<span class="cal-badge cal-p">P</span>' :
+        status === 'A'           ? '<span class="cal-badge cal-a">A</span>' :
+                                   '';
+    html += `<div class="${cls}"><span class="cal-day-num">${d}</span>${
+        badge}</div>`;
   }
 
   grid.innerHTML = html;
 
   // Update stats ring
-  const total  = present + absent;
-  const numEl  = document.querySelector('.week-pct-num');
-  const ring   = document.querySelector('.week-pct-circle circle:last-child');
-  const items  = document.querySelectorAll('.was-item');
-  const circ   = 238.76;
+  const total = present + absent;
+  const numEl = document.querySelector('.week-pct-num');
+  const ring = document.querySelector('.week-pct-circle circle:last-child');
+  const items = document.querySelectorAll('.was-item');
+  const circ = 238.76;
 
   if (total > 0) {
     const pct = Math.round((present / total) * 100);
     if (numEl) numEl.textContent = pct + '%';
-    if (ring)  ring.setAttribute('stroke-dashoffset', (circ * (1 - pct / 100)).toFixed(1));
+    if (ring)
+      ring.setAttribute(
+          'stroke-dashoffset', (circ * (1 - pct / 100)).toFixed(1));
   } else {
     if (numEl) numEl.textContent = '–%';
-    if (ring)  ring.setAttribute('stroke-dashoffset', circ.toFixed(2));
+    if (ring) ring.setAttribute('stroke-dashoffset', circ.toFixed(2));
   }
-  if (items[0]) items[0].innerHTML = `<span class="was-dot was-green"></span>${present} Present`;
-  if (items[1]) items[1].innerHTML = `<span class="was-dot was-red"></span>${absent} Absent`;
+  if (items[0])
+    items[0].innerHTML =
+        `<span class="was-dot was-green"></span>${present} Present`;
+  if (items[1])
+    items[1].innerHTML =
+        `<span class="was-dot was-red"></span>${absent} Absent`;
 }
 
 /* ─────────────────────────────────────────
@@ -3193,27 +3690,28 @@ function renderCalendar() {
 function initDashboard() {
   const dateEl = document.getElementById('dtbDate');
   if (dateEl) {
-    dateEl.textContent = new Date().toLocaleDateString('en-IN', {
-      weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
-    });
+    dateEl.textContent = new Date().toLocaleDateString(
+        'en-IN',
+        {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
   }
 
   // Prefer user-edited custom values; fall back to login-set values
   const _pf = (key) => {
     const custom = localStorage.getItem('mmi_custom_' + key);
-    return (custom !== null) ? custom : (localStorage.getItem('mmi_' + key) || '');
+    return (custom !== null) ? custom :
+                               (localStorage.getItem('mmi_' + key) || '');
   };
-  const name      = _pf('name')      || 'Student';
-  const username  = _pf('username')  || localStorage.getItem('mmi_user') || '';
-  const roll      = localStorage.getItem('mmi_roll')    || '';
-  const cls       = localStorage.getItem('mmi_class')   || '';
-  const section   = localStorage.getItem('mmi_section') || '';
-  const gender    = localStorage.getItem('mmi_gender')  || '';
-  const father    = _pf('father');
+  const name = _pf('name') || 'Student';
+  const username = _pf('username') || localStorage.getItem('mmi_user') || '';
+  const roll = localStorage.getItem('mmi_roll') || '';
+  const cls = localStorage.getItem('mmi_class') || '';
+  const section = localStorage.getItem('mmi_section') || '';
+  const gender = localStorage.getItem('mmi_gender') || '';
+  const father = _pf('father');
   const fatherMob = _pf('fatherMob');
-  const mother    = _pf('mother');
+  const mother = _pf('mother');
   const motherMob = _pf('motherMob');
-  const email     = _pf('email');
+  const email = _pf('email');
 
   // Sidebar / topbar name
   ['wbName', 'dtb-name', 'sb-fullname'].forEach(id => {
@@ -3228,31 +3726,35 @@ function initDashboard() {
   if (clsEl) clsEl.textContent = cls;
 
   const secEl = document.getElementById('sb-section');
-  if (secEl) secEl.textContent = section ? section.charAt(0).toUpperCase() + section.slice(1) : '';
+  if (secEl)
+    secEl.textContent =
+        section ? section.charAt(0).toUpperCase() + section.slice(1) : '';
 
   // Profile page fields
   function setField(id, val) {
     const el = document.getElementById(id);
     if (el) el.textContent = val || '–';
   }
-  setField('pp-fullname',   name);
-  setField('pp-username',   username || '–');
-  setField('pp-roll',       roll ? 'MMI-' + roll : '–');
-  setField('pp-class',      cls);
-  setField('pp-gender',     gender);
-  setField('pp-father',     father);
-  setField('pp-fatherMob',  fatherMob ? '+91-' + fatherMob : '–');
-  setField('pp-mother',     mother);
-  setField('pp-motherMob',  motherMob ? '+91-' + motherMob : '–');
-  setField('pp-email',      email);
-  setField('pp-section',    section ? section.charAt(0).toUpperCase() + section.slice(1) : '–');
-  setField('pp-session',    '2026 – 27');
+  setField('pp-fullname', name);
+  setField('pp-username', username || '–');
+  setField('pp-roll', roll ? 'MMI-' + roll : '–');
+  setField('pp-class', cls);
+  setField('pp-gender', gender);
+  setField('pp-father', father);
+  setField('pp-fatherMob', fatherMob ? '+91-' + fatherMob : '–');
+  setField('pp-mother', mother);
+  setField('pp-motherMob', motherMob ? '+91-' + motherMob : '–');
+  setField('pp-email', email);
+  setField(
+      'pp-section',
+      section ? section.charAt(0).toUpperCase() + section.slice(1) : '–');
+  setField('pp-session', '2026 – 27');
 
   // ID badge
-  const badgeRoll  = document.getElementById('pp-badge-roll');
-  const badgeCls   = document.getElementById('pp-badge-class');
-  if (badgeRoll) badgeRoll.textContent  = roll ? 'MMI-' + roll : '';
-  if (badgeCls)  badgeCls.textContent   = cls;
+  const badgeRoll = document.getElementById('pp-badge-roll');
+  const badgeCls = document.getElementById('pp-badge-class');
+  if (badgeRoll) badgeRoll.textContent = roll ? 'MMI-' + roll : '';
+  if (badgeCls) badgeCls.textContent = cls;
 }
 
 /* ─────────────────────────────────────────
@@ -3272,13 +3774,21 @@ function showToast(msg, type = 'green') {
     t = document.createElement('div');
     t.id = 'mmi-toast';
     Object.assign(t.style, {
-      position: 'fixed', bottom: '28px', left: '50%',
+      position: 'fixed',
+      bottom: '28px',
+      left: '50%',
       transform: 'translateX(-50%) translateY(16px)',
-      padding: '12px 28px', borderRadius: '50px',
-      fontSize: '0.88rem', fontWeight: '700',
-      color: '#fff', zIndex: '9999', opacity: '0',
-      transition: 'all 0.3s ease', fontFamily: 'Open Sans, sans-serif',
-      boxShadow: '0 6px 24px rgba(0,0,0,0.2)', pointerEvents: 'none'
+      padding: '12px 28px',
+      borderRadius: '50px',
+      fontSize: '0.88rem',
+      fontWeight: '700',
+      color: '#fff',
+      zIndex: '9999',
+      opacity: '0',
+      transition: 'all 0.3s ease',
+      fontFamily: 'Open Sans, sans-serif',
+      boxShadow: '0 6px 24px rgba(0,0,0,0.2)',
+      pointerEvents: 'none'
     });
     document.body.appendChild(t);
   }
@@ -3297,8 +3807,7 @@ function showToast(msg, type = 'green') {
 ───────────────────────────────────────── */
 function initFadeIn() {
   const els = document.querySelectorAll(
-    '.pillar-card, .facility-card, .centre-card, .testi-card, .event-item, .news-item, .qs-card, .dash-card'
-  );
+      '.pillar-card, .facility-card, .centre-card, .testi-card, .event-item, .news-item, .qs-card, .dash-card');
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -3307,7 +3816,7 @@ function initFadeIn() {
         io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.08 });
+  }, {threshold: 0.08});
 
   els.forEach(el => {
     el.style.opacity = '0';
@@ -3331,15 +3840,24 @@ function parseCSV(text) {
       const ch = line[i];
       if (inQuote) {
         if (ch === '"') {
-          if (line[i + 1] === '"') { cur += '"'; i++; }  // escaped quote
-          else inQuote = false;
+          if (line[i + 1] === '"') {
+            cur += '"';
+            i++;
+          }  // escaped quote
+          else
+            inQuote = false;
         } else {
           cur += ch;
         }
       } else {
-        if (ch === '"') { inQuote = true; }
-        else if (ch === ',') { fields.push(cur.trim()); cur = ''; }
-        else { cur += ch; }
+        if (ch === '"') {
+          inQuote = true;
+        } else if (ch === ',') {
+          fields.push(cur.trim());
+          cur = '';
+        } else {
+          cur += ch;
+        }
       }
     }
     fields.push(cur.trim());
@@ -3354,8 +3872,10 @@ function parseCSV(text) {
   });
   return lines.slice(1).map(line => {
     const cols = splitCSVLine(line);
-    const obj  = {};
-    headers.forEach((h, i) => { obj[h] = cols[i] || ''; });
+    const obj = {};
+    headers.forEach((h, i) => {
+      obj[h] = cols[i] || '';
+    });
     return obj;
   });
 }
@@ -3371,18 +3891,25 @@ async function loadDriveGallery() {
   const track = document.getElementById('scTrack');
   if (!track) return;
   try {
-    const cls      = localStorage.getItem('mmi_class') || '';
-    const username = (localStorage.getItem('mmi_user') || '').toLowerCase().replace(/\s+/g, '');
-    const res    = await fetch(`${APPS_SCRIPT_URL}?type=gallery&class=${cls}&student=${username}`);
-    const data   = await res.json();
+    const cls = localStorage.getItem('mmi_class') || '';
+    const username = (localStorage.getItem('mmi_user') || '')
+                         .toLowerCase()
+                         .replace(/\s+/g, '');
+    const res = await fetch(
+        `${APPS_SCRIPT_URL}?type=gallery&class=${cls}&student=${username}`);
+    const data = await res.json();
     const images = data.images || [];
     if (!images.length) return;
 
-    track.innerHTML = images.map((img, i) =>
-      `<div class="sc-slide"><img src="${img.url}" alt="${img.name}" loading="lazy" ondblclick="openLightbox(${i})"/></div>`
-    ).join('');
+    track.innerHTML =
+        images
+            .map(
+                (img, i) => `<div class="sc-slide"><img src="${img.url}" alt="${
+                    img.name}" loading="lazy" ondblclick="openLightbox(${
+                    i})"/></div>`)
+            .join('');
 
-    lbImages = images.map(img => ({ src: img.url, alt: img.name }));
+    lbImages = images.map(img => ({src: img.url, alt: img.name}));
 
     scIdx = 0;
     initCarousel();
@@ -3410,10 +3937,10 @@ async function loadDriveGallery() {
 function classToNotifKey(cls) {
   const c = (cls || '').toLowerCase().trim();
   if (c === 'kindergarten' || c === 'k' || c === 'kg') return 'k';
-  if (c === 'nursery'      || c === 'n' || c === 'nr') return 'n';
-  if (c === 'playgroup'    || c === 'pg')               return 'pg';
-  if (c === 'toddlers'     || c === 't')                return 't';
-  return 'p'; // Pre-Nursery / PN
+  if (c === 'nursery' || c === 'n' || c === 'nr') return 'n';
+  if (c === 'playgroup' || c === 'pg') return 'pg';
+  if (c === 'toddlers' || c === 't') return 't';
+  return 'p';  // Pre-Nursery / PN
 }
 
 async function loadNotifications() {
@@ -3421,45 +3948,62 @@ async function loadNotifications() {
   if (!list) return;
 
   const storedClass = localStorage.getItem('mmi_class') || '';
-  const studentKey  = classToNotifKey(storedClass);   // 'k' | 'n' | 'p' | 'pg' | 't'
+  const studentKey =
+      classToNotifKey(storedClass);  // 'k' | 'n' | 'p' | 'pg' | 't'
 
-  // Fetch with up to 3 attempts; reject HTML error pages returned by Google's CDN
+  // Fetch with up to 3 attempts; reject HTML error pages returned by Google's
+  // CDN
   let text = '';
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const res = await fetch(NOTIFICATIONS_CSV_URL + '&_=' + Date.now());
-      if (!res.ok) { await new Promise(r => setTimeout(r, 600)); continue; }
+      if (!res.ok) {
+        await new Promise(r => setTimeout(r, 600));
+        continue;
+      }
       const t = await res.text();
-      if (t.trim().startsWith('<')) { await new Promise(r => setTimeout(r, 600)); continue; }
+      if (t.trim().startsWith('<')) {
+        await new Promise(r => setTimeout(r, 600));
+        continue;
+      }
       text = t;
       break;
     } catch (e) {
-      if (attempt < 2) { await new Promise(r => setTimeout(r, 600)); continue; }
+      if (attempt < 2) {
+        await new Promise(r => setTimeout(r, 600));
+        continue;
+      }
     }
   }
 
   if (!text) {
-    list.innerHTML = '<p style="font-size:0.84rem;color:#aaa;text-align:center;padding:18px 0;">Could not load notifications.</p>';
+    list.innerHTML =
+        '<p style="font-size:0.84rem;color:#aaa;text-align:center;padding:18px 0;">Could not load notifications.</p>';
     return;
   }
 
   // Parse CSV; if the sheet omits the header row, inject it
   const lines = text.trim().split('\n').filter(l => l.trim());
-  const firstCol = (lines[0] || '').split(',')[0].replace(/^"|"$/g, '').trim().toLowerCase();
+  const firstCol =
+      (lines[0] || '').split(',')[0].replace(/^"|"$/g, '').trim().toLowerCase();
   const hasHeader = firstCol === 'date';
   const csvToParse = hasHeader ? text : 'date,type,class,message\n' + text;
   const rows = parseCSV(csvToParse);
 
   // Filter: show rows for everyone, this class, or this specific student
-  const username = (localStorage.getItem('mmi_user') || '').toLowerCase().replace(/\s+/g, '');
+  const username = (localStorage.getItem('mmi_user') || '')
+                       .toLowerCase()
+                       .replace(/\s+/g, '');
   const filtered = rows.filter(r => {
     const cls = (r.class || '').toLowerCase().trim();
-    // Each class is targeted separately: p = Pre-Nursery, pg = Playgroup, t = Toddlers
+    // Each class is targeted separately: p = Pre-Nursery, pg = Playgroup, t =
+    // Toddlers
     return cls === 'all' || cls === studentKey || cls === username;
   });
 
   if (!filtered.length) {
-    list.innerHTML = '<p style="font-size:0.84rem;color:#aaa;text-align:center;padding:18px 0;">No notifications at this time.</p>';
+    list.innerHTML =
+        '<p style="font-size:0.84rem;color:#aaa;text-align:center;padding:18px 0;">No notifications at this time.</p>';
     return;
   }
 
@@ -3480,16 +4024,18 @@ async function loadNotifications() {
   // Sort all notifications newest first
   filtered.sort((a, b) => parseNotifDate(b.date) - parseNotifDate(a.date));
 
-  list.innerHTML = filtered.map(r => {
-    const message = r.message || r.text || '';
-    const date    = r.date || '';
+  list.innerHTML = filtered
+                       .map(r => {
+                         const message = r.message || r.text || '';
+                         const date = r.date || '';
 
-    return `
+                         return `
       <div class="ns-item">
         <p>${message}</p>
         <span class="ns-time">${date}</span>
       </div>`;
-  }).join('');
+                       })
+                       .join('');
 }
 
 /* ─────────────────────────────────────────
@@ -3508,7 +4054,9 @@ function _buildGradeLabel() {
   const cls = localStorage.getItem('mmi_class') || '';
   const sec = localStorage.getItem('mmi_section') || '';
   if (!cls) return 'Student';
-  const secLabel = sec ? ' – ' + sec.charAt(0).toUpperCase() + sec.slice(1).toLowerCase() : '';
+  const secLabel = sec ?
+      ' – ' + sec.charAt(0).toUpperCase() + sec.slice(1).toLowerCase() :
+      '';
   return cls + secLabel;
 }
 
@@ -3517,14 +4065,15 @@ let _calPdfs = {};
 
 function _showCalPdf(month) {
   const tabsEl = document.getElementById('schoolCalTabs');
-  const frame  = document.getElementById('calPdfFrame');
-  const msg    = document.getElementById('calPdfMsg');
+  const frame = document.getElementById('calPdfFrame');
+  const msg = document.getElementById('calPdfMsg');
   if (!frame) return;
 
   // Update active tab
-  if (tabsEl) tabsEl.querySelectorAll('.school-cal-tab').forEach(b => {
-    b.classList.toggle('active', b.dataset.month === month);
-  });
+  if (tabsEl)
+    tabsEl.querySelectorAll('.school-cal-tab').forEach(b => {
+      b.classList.toggle('active', b.dataset.month === month);
+    });
 
   const pdf = _calPdfs[month];
   if (pdf) {
@@ -3536,22 +4085,33 @@ function _showCalPdf(month) {
 
 async function loadSchoolCalendar() {
   const storedClass = localStorage.getItem('mmi_class') || '';
-  const studentKey  = classToNotifKey(storedClass);
-  const tabsEl      = document.getElementById('schoolCalTabs');
-  const frame       = document.getElementById('calPdfFrame');
-  const msg         = document.getElementById('calPdfMsg');
+  const studentKey = classToNotifKey(storedClass);
+  const tabsEl = document.getElementById('schoolCalTabs');
+  const frame = document.getElementById('calPdfFrame');
+  const msg = document.getElementById('calPdfMsg');
 
-  const MONTH_NAMES = ['January','February','March','April','May','June',
-                       'July','August','September','October','November','December'];
+  const MONTH_NAMES = [
+    'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'
+  ];
 
   let data = null;
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
-      const section = (localStorage.getItem('mmi_section') || '').toLowerCase().trim();
-      const res = await fetch(APPS_SCRIPT_URL + '?type=calpdfs&class=' + studentKey + '&section=' + section + '&_=' + Date.now());
-      if (!res.ok) { await new Promise(r => setTimeout(r, 600)); continue; }
+      const section =
+          (localStorage.getItem('mmi_section') || '').toLowerCase().trim();
+      const res = await fetch(
+          APPS_SCRIPT_URL + '?type=calpdfs&class=' + studentKey +
+          '&section=' + section + '&_=' + Date.now());
+      if (!res.ok) {
+        await new Promise(r => setTimeout(r, 600));
+        continue;
+      }
       const j = await res.json();
-      if (j && j.pdfs) { data = j; break; }
+      if (j && j.pdfs) {
+        data = j;
+        break;
+      }
     } catch (e) {
       if (attempt < 2) await new Promise(r => setTimeout(r, 600));
     }
@@ -3561,8 +4121,8 @@ async function loadSchoolCalendar() {
 
   if (!pdfs.length) {
     if (tabsEl) tabsEl.innerHTML = '';
-    if (frame)  frame.style.display = 'none';
-    if (msg)    msg.style.display = '';
+    if (frame) frame.style.display = 'none';
+    if (msg) msg.style.display = '';
     return;
   }
 
@@ -3570,18 +4130,22 @@ async function loadSchoolCalendar() {
   _calPdfs = {};
   pdfs.forEach(p => {
     const [y, m] = p.month.split('-').map(Number);
-    _calPdfs[p.month] = { id: p.id, label: MONTH_NAMES[m - 1] + ' ' + y };
+    _calPdfs[p.month] = {id: p.id, label: MONTH_NAMES[m - 1] + ' ' + y};
   });
 
   const months = pdfs.map(p => p.month).sort();
   if (tabsEl) {
-    tabsEl.innerHTML = months.map((mo, i) => {
-      const icon   = i === 0 ? 'fa-calendar-check' : 'fa-calendar';
-      const active = i === 0 ? ' active' : '';
-      return `<button class="school-cal-tab${active}" data-month="${mo}" onclick="_showCalPdf('${mo}')">
+    tabsEl.innerHTML =
+        months
+            .map((mo, i) => {
+              const icon = i === 0 ? 'fa-calendar-check' : 'fa-calendar';
+              const active = i === 0 ? ' active' : '';
+              return `<button class="school-cal-tab${active}" data-month="${
+                  mo}" onclick="_showCalPdf('${mo}')">
         <i class="fa ${icon}"></i> ${_calPdfs[mo].label}
       </button>`;
-    }).join('');
+            })
+            .join('');
   }
 
   _showCalPdf(months[0]);
@@ -3601,38 +4165,40 @@ document.addEventListener('DOMContentLoaded', () => {
   loadSchoolCalendar();
 });
 
-window.addEventListener('resize', () => { scRender(false); });
+window.addEventListener('resize', () => {
+  scRender(false);
+});
 
 /* ─────────────────────────────────────────
    GALLERY LIGHTBOX
 ───────────────────────────────────────── */
 let lbImages = [];
-let lbIndex  = 0;
+let lbIndex = 0;
 
 function initGalleryLightbox() {
   const items = document.querySelectorAll('.gallery-item img');
   if (!items.length) return;
 
   // Populate lbImages so navigation (prev/next) works when opened via onclick
-  lbImages = Array.from(items).map(img => ({ src: img.src, alt: img.alt }));
+  lbImages = Array.from(items).map(img => ({src: img.src, alt: img.alt}));
 
   document.addEventListener('keydown', e => {
     const lb = document.getElementById('lightbox');
     if (!lb || !lb.classList.contains('open')) return;
-    if (e.key === 'Escape')      closeLightboxBtn();
-    if (e.key === 'ArrowLeft')   lbNav(-1);
-    if (e.key === 'ArrowRight')  lbNav(1);
+    if (e.key === 'Escape') closeLightboxBtn();
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
   });
 }
 
 function openLightbox(index) {
   lbIndex = index;
-  const lb    = document.getElementById('lightbox');
-  const img   = document.getElementById('lbImg');
-  const cap   = document.getElementById('lbCaption');
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lbImg');
+  const cap = document.getElementById('lbCaption');
   if (!lb || !img) return;
-  img.src    = lbImages[lbIndex].src;
-  img.alt    = lbImages[lbIndex].alt;
+  img.src = lbImages[lbIndex].src;
+  img.alt = lbImages[lbIndex].alt;
   cap.textContent = lbImages[lbIndex].alt || '';
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -3654,7 +4220,10 @@ function lbNav(dir, e) {
   lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
   const img = document.getElementById('lbImg');
   const cap = document.getElementById('lbCaption');
-  if (img) { img.src = lbImages[lbIndex].src; img.alt = lbImages[lbIndex].alt; }
+  if (img) {
+    img.src = lbImages[lbIndex].src;
+    img.alt = lbImages[lbIndex].alt;
+  }
   if (cap) cap.textContent = lbImages[lbIndex].alt || '';
 }
 
@@ -3674,24 +4243,25 @@ function openEditProfile() {
 
   // Pre-fill inputs with current values
   const map = {
-    'pp-fullname-input':  'mmi_name',
-    'pp-father-input':    'mmi_father',
+    'pp-fullname-input': 'mmi_name',
+    'pp-father-input': 'mmi_father',
     'pp-fatherMob-input': 'mmi_fatherMob',
-    'pp-mother-input':    'mmi_mother',
+    'pp-mother-input': 'mmi_mother',
     'pp-motherMob-input': 'mmi_motherMob',
-    'pp-email-input':     'mmi_email',
+    'pp-email-input': 'mmi_email',
   };
   Object.entries(map).forEach(([inputId, key]) => {
     const el = document.getElementById(inputId);
     if (el) {
-      const custom = localStorage.getItem('mmi_custom_' + key.replace('mmi_', ''));
+      const custom =
+          localStorage.getItem('mmi_custom_' + key.replace('mmi_', ''));
       el.value = (custom !== null ? custom : localStorage.getItem(key)) || '';
     }
   });
 
   grid.classList.add('editing');
-  document.getElementById('btn-edit-profile').style.display  = 'none';
-  document.getElementById('btn-save-profile').style.display  = '';
+  document.getElementById('btn-edit-profile').style.display = 'none';
+  document.getElementById('btn-save-profile').style.display = '';
   document.getElementById('btn-cancel-profile').style.display = '';
 
   // Focus first input
@@ -3703,37 +4273,50 @@ function saveProfile() {
   const grid = document.getElementById('pp-details-grid');
   if (!grid) return;
 
-  const name      = document.getElementById('pp-fullname-input').value.trim();
-  const father    = document.getElementById('pp-father-input').value.trim();
+  const name = document.getElementById('pp-fullname-input').value.trim();
+  const father = document.getElementById('pp-father-input').value.trim();
   const fatherMob = document.getElementById('pp-fatherMob-input').value.trim();
-  const mother    = document.getElementById('pp-mother-input').value.trim();
+  const mother = document.getElementById('pp-mother-input').value.trim();
   const motherMob = document.getElementById('pp-motherMob-input').value.trim();
-  const email     = document.getElementById('pp-email-input').value.trim();
+  const email = document.getElementById('pp-email-input').value.trim();
 
-  if (!name) { showToast('Full name cannot be empty.', 'red'); return; }
+  if (!name) {
+    showToast('Full name cannot be empty.', 'red');
+    return;
+  }
 
-  const saves = { mmi_name: name, mmi_father: father, mmi_fatherMob: fatherMob,
-                  mmi_mother: mother, mmi_motherMob: motherMob, mmi_email: email };
+  const saves = {
+    mmi_name: name,
+    mmi_father: father,
+    mmi_fatherMob: fatherMob,
+    mmi_mother: mother,
+    mmi_motherMob: motherMob,
+    mmi_email: email
+  };
   Object.entries(saves).forEach(([k, v]) => {
     localStorage.setItem(k, v);
     localStorage.setItem('mmi_custom_' + k.replace('mmi_', ''), v);
   });
 
-  const setText = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val || '–'; };
-  setText('pp-fullname',  name);
-  setText('pp-father',    father);
+  const setText = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val || '–';
+  };
+  setText('pp-fullname', name);
+  setText('pp-father', father);
   setText('pp-fatherMob', fatherMob ? '+91-' + fatherMob : '–');
-  setText('pp-mother',    mother);
+  setText('pp-mother', mother);
   setText('pp-motherMob', motherMob ? '+91-' + motherMob : '–');
-  setText('pp-email',     email);
+  setText('pp-email', email);
 
   ['wbName', 'dtb-name', 'sb-fullname'].forEach(id => {
-    const el = document.getElementById(id); if (el) el.textContent = name;
+    const el = document.getElementById(id);
+    if (el) el.textContent = name;
   });
 
   grid.classList.remove('editing');
-  document.getElementById('btn-edit-profile').style.display   = '';
-  document.getElementById('btn-save-profile').style.display   = 'none';
+  document.getElementById('btn-edit-profile').style.display = '';
+  document.getElementById('btn-save-profile').style.display = 'none';
   document.getElementById('btn-cancel-profile').style.display = 'none';
   showToast('Profile updated successfully!', 'green');
 }
@@ -3741,8 +4324,8 @@ function saveProfile() {
 function cancelEditProfile() {
   const grid = document.getElementById('pp-details-grid');
   if (grid) grid.classList.remove('editing');
-  document.getElementById('btn-edit-profile').style.display   = '';
-  document.getElementById('btn-save-profile').style.display   = 'none';
+  document.getElementById('btn-edit-profile').style.display = '';
+  document.getElementById('btn-save-profile').style.display = 'none';
   document.getElementById('btn-cancel-profile').style.display = 'none';
 }
 
@@ -3752,9 +4335,9 @@ function cancelEditProfile() {
 function openCuModal() {
   const overlay = document.getElementById('cuOverlay');
   if (!overlay) return;
-  document.getElementById('cu-new').value   = '';
+  document.getElementById('cu-new').value = '';
   document.getElementById('cu-admin').value = '';
-  document.getElementById('cu-pass').value  = '';
+  document.getElementById('cu-pass').value = '';
   document.getElementById('cuError').textContent = '';
   overlay.style.display = 'flex';
   document.body.style.overflow = 'hidden';
@@ -3768,37 +4351,70 @@ function closeCuModal() {
 }
 
 async function submitChangeUsername() {
-  const newUser    = (document.getElementById('cu-new').value   || '').trim();
-  const adminPass  = (document.getElementById('cu-admin').value || '').trim();
-  const password   = (document.getElementById('cu-pass').value  || '').trim();
-  const errorEl    = document.getElementById('cuError');
-  const saveBtn    = document.getElementById('cu-save-btn');
+  const newUser = (document.getElementById('cu-new').value || '').trim();
+  const adminPass = (document.getElementById('cu-admin').value || '').trim();
+  const password = (document.getElementById('cu-pass').value || '').trim();
+  const errorEl = document.getElementById('cuError');
+  const saveBtn = document.getElementById('cu-save-btn');
 
   errorEl.textContent = '';
 
-  const dbKey     = localStorage.getItem('mmi_dbkey') || (localStorage.getItem('mmi_user') || '').replace(/\s+/g,'').toLowerCase();
+  const dbKey = localStorage.getItem('mmi_dbkey') ||
+      (localStorage.getItem('mmi_user') || '')
+          .replace(/\s+/g, '')
+          .toLowerCase();
   const defaultPass = STUDENT_DB[dbKey] ? STUDENT_DB[dbKey].pass : '';
-  const localPass   = localStorage.getItem('mmi_pw_' + dbKey);
-  const activePass  = localPass || defaultPass;
+  const localPass = localStorage.getItem('mmi_pw_' + dbKey);
+  const activePass = localPass || defaultPass;
 
-  if (!newUser)              { errorEl.textContent = 'Please enter a new username.'; return; }
-  if (!adminPass)            { errorEl.textContent = 'Please enter the admin password.'; return; }
-  if (adminPass !== 'mmi@2018') { errorEl.textContent = 'Admin password is incorrect.'; return; }
-  if (!password)             { errorEl.textContent = 'Please enter your current password.'; return; }
-  if (password !== activePass) { errorEl.textContent = 'Current password is incorrect.'; return; }
-  if (newUser.toLowerCase().replace(/\s+/g,'') === (localStorage.getItem('mmi_user') || '').toLowerCase().replace(/\s+/g,'')) {
-    errorEl.textContent = 'New username must be different from the current one.'; return;
+  if (!newUser) {
+    errorEl.textContent = 'Please enter a new username.';
+    return;
+  }
+  if (!adminPass) {
+    errorEl.textContent = 'Please enter the admin password.';
+    return;
+  }
+  if (adminPass !== 'mmi@2018') {
+    errorEl.textContent = 'Admin password is incorrect.';
+    return;
+  }
+  if (!password) {
+    errorEl.textContent = 'Please enter your current password.';
+    return;
+  }
+  if (password !== activePass) {
+    errorEl.textContent = 'Current password is incorrect.';
+    return;
+  }
+  if (newUser.toLowerCase().replace(/\s+/g, '') ===
+      (localStorage.getItem('mmi_user') || '')
+          .toLowerCase()
+          .replace(/\s+/g, '')) {
+    errorEl.textContent =
+        'New username must be different from the current one.';
+    return;
   }
 
-  if (saveBtn) { saveBtn.disabled = true; saveBtn.textContent = 'Saving…'; }
+  if (saveBtn) {
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving…';
+  }
 
   let sheetOk = false;
   if (APPS_SCRIPT_URL) {
     try {
-      const res  = await fetch(APPS_SCRIPT_URL, {
-        method: 'POST', redirect: 'follow',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify({ type: 'updatecreds', key: dbKey, currentPass: password, defaultPass, newUsername: newUser })
+      const res = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        redirect: 'follow',
+        headers: {'Content-Type': 'text/plain'},
+        body: JSON.stringify({
+          type: 'updatecreds',
+          key: dbKey,
+          currentPass: password,
+          defaultPass,
+          newUsername: newUser
+        })
       });
       const data = await res.json();
       if (data.success) {
@@ -3811,7 +4427,10 @@ async function submitChangeUsername() {
     }
   }
 
-  if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = 'Update Username'; }
+  if (saveBtn) {
+    saveBtn.disabled = false;
+    saveBtn.textContent = 'Update Username';
+  }
 
   if (!sheetOk && APPS_SCRIPT_URL) return;
 
@@ -3828,9 +4447,9 @@ async function submitChangeUsername() {
 function openCpwModal() {
   const overlay = document.getElementById('cpwOverlay');
   if (!overlay) return;
-  document.getElementById('cpw-current').value  = '';
-  document.getElementById('cpw-new').value      = '';
-  document.getElementById('cpw-confirm').value  = '';
+  document.getElementById('cpw-current').value = '';
+  document.getElementById('cpw-new').value = '';
+  document.getElementById('cpw-confirm').value = '';
   document.getElementById('cpwError').textContent = '';
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -3844,43 +4463,78 @@ function closeCpwModal() {
 
 async function submitChangePassword() {
   const currentInput = document.getElementById('cpw-current');
-  const newInput     = document.getElementById('cpw-new');
+  const newInput = document.getElementById('cpw-new');
   const confirmInput = document.getElementById('cpw-confirm');
-  const errorEl      = document.getElementById('cpwError');
-  const saveBtn      = document.getElementById('cpw-save-btn');
+  const errorEl = document.getElementById('cpwError');
+  const saveBtn = document.getElementById('cpw-save-btn');
 
-  const currentVal = currentInput  ? currentInput.value.trim()  : '';
-  const newVal     = newInput      ? newInput.value.trim()      : '';
-  const confirmVal = confirmInput  ? confirmInput.value.trim()  : '';
+  const currentVal = currentInput ? currentInput.value.trim() : '';
+  const newVal = newInput ? newInput.value.trim() : '';
+  const confirmVal = confirmInput ? confirmInput.value.trim() : '';
 
   errorEl.textContent = '';
 
-  const dbKey       = (localStorage.getItem('mmi_dbkey') || (localStorage.getItem('mmi_user') || '').replace(/\s+/g,'').toLowerCase());
+  const dbKey =
+      (localStorage.getItem('mmi_dbkey') ||
+       (localStorage.getItem('mmi_user') || '')
+           .replace(/\s+/g, '')
+           .toLowerCase());
   const defaultPass = STUDENT_DB[dbKey] ? STUDENT_DB[dbKey].pass : '';
-  const localPass   = localStorage.getItem('mmi_pw_' + dbKey);
-  const activePass  = localPass || defaultPass;
+  const localPass = localStorage.getItem('mmi_pw_' + dbKey);
+  const activePass = localPass || defaultPass;
 
-  if (!dbKey)               { errorEl.textContent = 'Session expired. Please log in again.'; return; }
-  if (!currentVal)          { errorEl.textContent = 'Please enter your current password.'; return; }
-  if (currentVal !== activePass) { errorEl.textContent = 'Current password is incorrect.'; return; }
-  if (newVal.length < 6)    { errorEl.textContent = 'New password must be at least 6 characters.'; return; }
-  if (newVal !== confirmVal){ errorEl.textContent = 'Passwords do not match.'; return; }
-  if (newVal === activePass){ errorEl.textContent = 'New password must be different from the current one.'; return; }
+  if (!dbKey) {
+    errorEl.textContent = 'Session expired. Please log in again.';
+    return;
+  }
+  if (!currentVal) {
+    errorEl.textContent = 'Please enter your current password.';
+    return;
+  }
+  if (currentVal !== activePass) {
+    errorEl.textContent = 'Current password is incorrect.';
+    return;
+  }
+  if (newVal.length < 6) {
+    errorEl.textContent = 'New password must be at least 6 characters.';
+    return;
+  }
+  if (newVal !== confirmVal) {
+    errorEl.textContent = 'Passwords do not match.';
+    return;
+  }
+  if (newVal === activePass) {
+    errorEl.textContent =
+        'New password must be different from the current one.';
+    return;
+  }
 
-  if (saveBtn) { saveBtn.disabled = true; saveBtn.textContent = 'Saving…'; }
+  if (saveBtn) {
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving…';
+  }
 
   // POST to Apps Script → syncs across all devices
   let sheetOk = false;
   if (APPS_SCRIPT_URL) {
     try {
-      const res  = await fetch(APPS_SCRIPT_URL, {
-        method: 'POST', redirect: 'follow',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify({ type: 'updatecreds', key: dbKey, currentPass: currentVal, defaultPass, newPassword: newVal })
+      const res = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        redirect: 'follow',
+        headers: {'Content-Type': 'text/plain'},
+        body: JSON.stringify({
+          type: 'updatecreds',
+          key: dbKey,
+          currentPass: currentVal,
+          defaultPass,
+          newPassword: newVal
+        })
       });
       const data = await res.json();
-      if (data.success) sheetOk = true;
-      else errorEl.textContent = data.error || 'Could not save. Try again.';
+      if (data.success)
+        sheetOk = true;
+      else
+        errorEl.textContent = data.error || 'Could not save. Try again.';
     } catch (_) {
       errorEl.textContent = 'Network error — password saved locally only.';
     }
@@ -3889,11 +4543,17 @@ async function submitChangePassword() {
   // Always update localStorage cache (works offline / as fallback)
   localStorage.setItem('mmi_pw_' + dbKey, newVal);
 
-  if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = 'Save'; }
+  if (saveBtn) {
+    saveBtn.disabled = false;
+    saveBtn.textContent = 'Save';
+  }
 
   if (sheetOk || !APPS_SCRIPT_URL) {
     closeCpwModal();
-    showToast(sheetOk ? 'Password updated on all devices!' : 'Password updated locally.', 'green');
+    showToast(
+        sheetOk ? 'Password updated on all devices!' :
+                  'Password updated locally.',
+        'green');
   }
 }
 
@@ -3909,32 +4569,33 @@ let SCHOOL_CALENDAR = {};
 /* ─────────────────────────────────────────
    SCHOOL CALENDAR STATE
 ───────────────────────────────────────── */
-let schoolCalMonth   = '2026-05';
-let schoolCalDay     = null;
+let schoolCalMonth = '2026-05';
+let schoolCalDay = null;
 
 const SC_TAG_LABELS = {
-  holiday:    'Holiday',
-  special:    'Special',
-  activity:   'Activity',
+  holiday: 'Holiday',
+  special: 'Special',
+  activity: 'Activity',
   montessori: 'Montessori',
-  karate:     'Karate',
-  writing:    'Workbook',
-  craft:      'Art & Craft',
-  rhyme:      'Rhyme',
-  dance:      'Dance',
-  culture:    'Culture',
-  story:      'Story',
-  outdoor:    'Outdoor'
+  karate: 'Karate',
+  writing: 'Workbook',
+  craft: 'Art & Craft',
+  rhyme: 'Rhyme',
+  dance: 'Dance',
+  culture: 'Culture',
+  story: 'Story',
+  outdoor: 'Outdoor'
 };
 
 /* ─────────────────────────────────────────
    SWITCH MONTH TAB
 ───────────────────────────────────────── */
 function schoolCalShowMonth(key, btn) {
-  document.querySelectorAll('.school-cal-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.school-cal-tab')
+      .forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   schoolCalMonth = key;
-  schoolCalDay   = null;
+  schoolCalDay = null;
   renderSchoolCalendar(key);
 }
 
@@ -3957,11 +4618,12 @@ function renderSchoolCalendar(key) {
   }
 
   const [year, monthIdx] = key.split('-').map(Number);
-  const month       = monthIdx - 1;
+  const month = monthIdx - 1;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const firstDow    = new Date(year, month, 1).getDay(); // 0=Sun
+  const firstDow = new Date(year, month, 1).getDay();  // 0=Sun
 
-  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   // ── Theme banner
   const banner = `
@@ -3973,8 +4635,11 @@ function renderSchoolCalendar(key) {
     </div>`;
 
   // ── Column headers
-  const DOW   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const SUBJ  = ['','Practical Life','Sensorial','Language','Mathematics','Art & Culture',''];
+  const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const SUBJ = [
+    '', 'Practical Life', 'Sensorial', 'Language', 'Mathematics',
+    'Art & Culture', ''
+  ];
   let headHtml = '<div class="school-grid-head">';
   DOW.forEach((d, i) => {
     headHtml += `<div class="school-grid-hcell">
@@ -3986,33 +4651,40 @@ function renderSchoolCalendar(key) {
 
   // ── Day cells
   let bodyHtml = '<div class="school-grid-body">';
-  for (let i = 0; i < firstDow; i++) bodyHtml += '<div class="school-day-cell empty"></div>';
+  for (let i = 0; i < firstDow; i++)
+    bodyHtml += '<div class="school-day-cell empty"></div>';
 
   for (let d = 1; d <= daysInMonth; d++) {
-    const date      = new Date(year, month, d);
-    const dow       = date.getDay();
-    const isToday   = date.getTime() === today.getTime();
+    const date = new Date(year, month, d);
+    const dow = date.getDay();
+    const isToday = date.getTime() === today.getTime();
     const isWeekend = dow === 0 || dow === 6;
-    const events    = data.days[d] || [];
-    const hasHol    = events.some(e => e[0] === 'holiday');
-    const hasSpc    = events.some(e => e[0] === 'special');
+    const events = data.days[d] || [];
+    const hasHol = events.some(e => e[0] === 'holiday');
+    const hasSpc = events.some(e => e[0] === 'special');
 
     let cls = 'school-day-cell';
-    if (isWeekend)              cls += ' school-weekend';
-    if (hasHol)                 cls += ' school-hol';
-    else if (hasSpc)            cls += ' school-spc';
-    if (isToday)                cls += ' school-today';
-    if (schoolCalDay === d)     cls += ' school-sel';
+    if (isWeekend) cls += ' school-weekend';
+    if (hasHol)
+      cls += ' school-hol';
+    else if (hasSpc)
+      cls += ' school-spc';
+    if (isToday) cls += ' school-today';
+    if (schoolCalDay === d) cls += ' school-sel';
 
     // Unique-type dots (max 5)
     const seen = new Set();
-    const dots = events.map(e => {
-      if (seen.has(e[0])) return '';
-      seen.add(e[0]);
-      return `<span class="school-dot school-dot-${e[0]}"></span>`;
-    }).join('');
+    const dots =
+        events
+            .map(e => {
+              if (seen.has(e[0])) return '';
+              seen.add(e[0]);
+              return `<span class="school-dot school-dot-${e[0]}"></span>`;
+            })
+            .join('');
 
-    bodyHtml += `<div class="${cls}" onclick="schoolCalSelectDay(${d},'${key}')">
+    bodyHtml +=
+        `<div class="${cls}" onclick="schoolCalSelectDay(${d},'${key}')">
       <span class="school-day-num">${d}</span>
       <div class="school-dots-row">${dots}</div>
     </div>`;
@@ -4029,11 +4701,12 @@ function renderSchoolCalendar(key) {
     <div class="school-notes">
       <p class="school-notes-title"><i class="fa fa-info-circle"></i> Important Notes</p>
       <ul>${data.notes.map(n => `<li>${n}</li>`).join('')}</ul>
-    </div>` : '';
+    </div>` :
+                                                        '';
 
-  container.innerHTML = banner
-    + `<div class="school-cal-grid">${headHtml}${bodyHtml}</div>`
-    + detail + notesHtml;
+  container.innerHTML = banner +
+      `<div class="school-cal-grid">${headHtml}${bodyHtml}</div>` + detail +
+      notesHtml;
 
   if (schoolCalDay) schoolCalSelectDay(schoolCalDay, key);
 }
@@ -4046,35 +4719,43 @@ function schoolCalSelectDay(day, key) {
   schoolCalDay = day;
 
   // Highlight selected cell
-  document.querySelectorAll('.school-day-cell').forEach(c => c.classList.remove('school-sel'));
+  document.querySelectorAll('.school-day-cell')
+      .forEach(c => c.classList.remove('school-sel'));
   const allCells = document.querySelectorAll('.school-day-cell:not(.empty)');
   if (allCells[day - 1]) allCells[day - 1].classList.add('school-sel');
 
   const panel = document.getElementById('schoolCalDetail');
   if (!panel) return;
 
-  const data   = SCHOOL_CALENDAR[key];
+  const data = SCHOOL_CALENDAR[key];
   const events = data.days[day] || [];
   const [year, monthIdx] = key.split('-').map(Number);
-  const dateStr = new Date(year, monthIdx - 1, day).toLocaleDateString('en-IN', {
-    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
-  });
+  const dateStr =
+      new Date(year, monthIdx - 1, day).toLocaleDateString('en-IN', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
 
   if (!events.length) {
     panel.innerHTML = `
-      <div class="school-detail-head"><i class="fa fa-calendar-day"></i><span>${dateStr}</span></div>
+      <div class="school-detail-head"><i class="fa fa-calendar-day"></i><span>${
+        dateStr}</span></div>
       <p class="school-no-events">No activities scheduled for this day.</p>`;
-    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    panel.scrollIntoView({behavior: 'smooth', block: 'nearest'});
     return;
   }
 
-  const items = events.map(([type, text]) => `
+  const items = events
+                    .map(([type, text]) => `
     <div class="school-ev-row">
       <span class="school-ev-text">${text}</span>
     </div>`).join('');
 
   panel.innerHTML = `
-    <div class="school-detail-head"><i class="fa fa-calendar-day"></i><span>${dateStr}</span></div>
+    <div class="school-detail-head"><i class="fa fa-calendar-day"></i><span>${
+      dateStr}</span></div>
     <div class="school-ev-list">${items}</div>`;
-  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  panel.scrollIntoView({behavior: 'smooth', block: 'nearest'});
 }
