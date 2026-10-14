@@ -2986,7 +2986,7 @@ const STUDENT_DB = {
   'testpg2': {
     username: 'testpg2',
     pass: 'TESTpg002',
-    name: 'Test Playgroup Two',
+    name: 'Dakshit',
     role: 'student',
     roll: '911',
     class: 'Playgroup',
@@ -3061,7 +3061,7 @@ const STUDENT_DB = {
   'testpg4': {
     username: 'testpg4',
     pass: 'TESTpg004',
-    name: 'Test Playgroup Four',
+    name: 'Zayim',
     role: 'student',
     roll: '916',
     class: 'Playgroup',
@@ -3076,7 +3076,7 @@ const STUDENT_DB = {
   'testpg5': {
     username: 'testpg5',
     pass: 'TESTpg005',
-    name: 'Test Playgroup Five',
+    name: 'Shahzaiz Sheikh',
     role: 'student',
     roll: '917',
     class: 'Playgroup',
@@ -3117,6 +3117,51 @@ const STUDENT_DB = {
     motherMob: '',
     email: '',
     section: ''
+  },
+  'dakshit': {
+    username: 'Dakshit',
+    pass: '',
+    name: 'Dakshit',
+    role: 'student',
+    roll: '920',
+    class: 'Playgroup',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'azalea'
+  },
+  'zayim': {
+    username: 'zayim',
+    pass: '',
+    name: 'Zayim',
+    role: 'student',
+    roll: '921',
+    class: 'Playgroup',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'buttercup'
+  },
+  'shahzaizsheikh': {
+    username: 'Shahzaizsheikh',
+    pass: '',
+    name: 'Shahzaiz Sheikh',
+    role: 'student',
+    roll: '922',
+    class: 'Playgroup',
+    gender: '',
+    father: '',
+    fatherMob: '',
+    mother: '',
+    motherMob: '',
+    email: '',
+    section: 'buttercup'
   },
 };
 
