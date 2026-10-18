@@ -21,7 +21,14 @@ const CLASS_FOLDERS = {
 };
 // Images placed here are visible to ALL students regardless of class.
 const SHARED_GALLERY_FOLDER_ID = '1FfmMbigOAScA1naLmjUeFSb4VlTXQ6iI';
-const ATTENDANCE_SHEET_ID  = '1_QJnpEm1x5AYdLO_btG5iXKmzZKTRG4fvSMICUX5tEw';
+const ATTENDANCE_SHEET_ID  = '1_QJnpEm1x5AYdLO_btG5iXKmzZKTRG4fvSMICUX5tEw'; // credentials/notifications
+const ATTENDANCE_SHEET_IDS = {
+  'kindergarten': '1BKuvYCIWO0xyzuBI9hBNGlAr5JriDa6VLVjyfww2rmI',
+  'nursery':      '1YOglB9jn9KikFuODpHhXZVYTQyCPsz4gWfmxwRmrslI',
+  'pre-nursery':  '16SN8wDhv412Q52hIMJbVXxE2RKjYNh2opOKeUAH6l3U',
+  'playgroup':    '1Wn-qWlL2mzvmBSnQHCt4wBo--HRor9fKwy6PstZDSGs',
+  'toddlers':     '1nHQtFqqytQKDwb0vyLy3289BDlbGEdjt0O5neFLsYSw'
+};
 
 // Main "MMI Calendar PDFs" Drive folder — contains one subfolder per class.
 // Each subfolder name must contain a recognisable class keyword (see _classFromFolderName).
@@ -44,7 +51,7 @@ function doGet(e) {
 
   let result;
   if      (type === 'gallery')   result = getGalleryImages(cls, student);
-  else if (type === 'attendance') result = getAttendance(student);
+  else if (type === 'attendance') result = getAttendance(student, cls);
   else if (type === 'getcreds')  result = getCredentials((e.parameter.key || '').toLowerCase().trim());
   else if (type === 'finduser')  result = findByUsername((e.parameter.username || '').toLowerCase().replace(/\s+/g, '').trim());
   else if (type === 'calpdfs')   result = getCalendarPDFs(cls, (e.parameter.section || '').toLowerCase().trim());
@@ -316,9 +323,11 @@ function getGalleryImages(cls, student) {
 }
 
 // ── ATTENDANCE ────────────────────────────────────────────
-function getAttendance(student) {
+function getAttendance(student, cls) {
   try {
-    const ss      = SpreadsheetApp.openById(ATTENDANCE_SHEET_ID);
+    const sid = (cls && ATTENDANCE_SHEET_IDS[cls]) ? ATTENDANCE_SHEET_IDS[cls] : null;
+    if (!sid) return { records: [], error: 'Unknown or missing class' };
+    const ss      = SpreadsheetApp.openById(sid);
     const sheets  = ss.getSheets();
     const records = [];
 
